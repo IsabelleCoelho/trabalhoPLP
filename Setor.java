@@ -14,7 +14,7 @@ public class Setor {
 		this.colecoes = new ArrayList<Colecao>();
 	}
 
-	/** Adicionando uma nova peça a um setor */
+	/** Adicionanda uma nova peça a um setor */
 	public void adicionarPeca(Colecao umaColecao) {
 		colecoes.add(umaColecao);
 	}
