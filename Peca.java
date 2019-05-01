@@ -3,6 +3,7 @@ public class Peca {
 	private int anoDeAquisicao;
 	private String nomeObra;
 	private String estado;
+	
 
 	public Peca(int anoDeCriacao, int anoDeAquisicao,
 				String nomeObra, String estado) {

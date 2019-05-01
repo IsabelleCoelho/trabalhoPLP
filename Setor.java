@@ -15,7 +15,7 @@ public class Setor {
 	}
 
 	/** Adicionanda uma nova peça a um setor */
-	public void adicionarPeca(Colecao umaColecao) {
+	public void adicionarColecao(Colecao umaColecao) {
 		colecoes.add(umaColecao);
 	}
 
@@ -25,7 +25,10 @@ public class Setor {
 
 	public String getTipoDeExibicao() {
 		return tipoDeExibicao;
-	} 
+	}
+	public void setTipoDeExibicao(String tipoDeExibicao){
+		this.tipoDeExibicao = tipoDeExibicao;
+	}
 
 	@Override
 	public String toString(){

@@ -1,14 +1,28 @@
 import java.util.*;
 public class Colecao{
-	private int quantidadeDeObras;
 	private ArrayList<Peca> pecas;
-	public Acervo(){
-		this.quantidadeDeObras = 0;
+	private String nome;
+	private boolean exposto;
+
+	public Colecao(String nome){
 		pecas = new ArrayList<Peca>();
+		this.exposto = False;
+		this.nome = nome;
+	}
+	public int getQuantidadeDePecas(){
+		return pecas.size();
+	}
+	public getNome(){
+		return nome;
+	}
+	public void setExposto(boolean exposto){
+		this.exposto = exposto;
+	}
+	public boolean isExposto(){
+		return exposto;
 	}
 	public bolean adicionarPeca(Peca umaPeca){
 		return pecas.add(umaPeca);
-		quantidadeDeObras++;
 	}
 	public bolean removerPeca(String nomeObra){
 		for (Peca peca : pecas) {
@@ -28,5 +42,4 @@ public class Colecao{
 			return out;
 		} 
 	}
-
 }

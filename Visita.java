@@ -1,13 +1,10 @@
 import java.util.*;
 
 public class Visita {
-
-	private Visitante visitante;
 	private ArrayList<Setor> listaSetores;
 	private Data dataVisitacao;
 
-	public Visita(Visitante visitante,Data dataVisitacao){
-		this.visitante = visitante;
+	public Visita(Data dataVisitacao){
 		this.dataVisitacao = dataVisitacao;
 		this.listaSetores = new ArrayList<Setor>();
 	}
