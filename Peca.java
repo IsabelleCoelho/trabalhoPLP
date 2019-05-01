@@ -14,8 +14,17 @@ public class Peca {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	public int getAnoDeCriacao() {
+		return anoDeCriacao;
+	}
+	public int getAnoDeAquisicao() {
+		return anoDeAquisicao;
+	}
 	public Sring getNomeObra() {
 		return nomeObra;
+	}
+	public String getEstado() {
+		return estado;
 	}
 	@Override
 	public String toString(){
