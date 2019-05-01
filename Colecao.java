@@ -8,6 +8,7 @@ public class Colecao{
 	}
 	public bolean adicionarPeca(Peca umaPeca){
 		return pecas.add(umaPeca);
+		quantidadeDeObras++;
 	}
 	public bolean removerPeca(String nomeObra){
 		for (Peca peca : pecas) {

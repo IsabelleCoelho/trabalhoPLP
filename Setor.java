@@ -19,6 +19,14 @@ public class Setor {
 		colecoes.add(umaColecao);
 	}
 
+	public String getNomeSetor() {
+		return nomeSetor;
+	}
+
+	public String getTipoDeExibicao() {
+		return tipoDeExibicao;
+	} 
+
 	@Override
 	public String toString(){
 		String out = "Setor " + nomeSetor + " exibe ";
