@@ -21,7 +21,7 @@ public class Peca {
 	public int getAnoDeAquisicao() {
 		return anoDeAquisicao;
 	}
-	public Sring getNomeObra() {
+	public String getNomeObra() {
 		return nomeObra;
 	}
 	public String getEstado() {

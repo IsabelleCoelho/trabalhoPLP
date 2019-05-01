@@ -9,7 +9,7 @@ public class Pessoa {
 	public String getNome() {
 		return nome;
 	}
-	public int cpf(){
+	public int getCpf(){
 		return cpf;
 	}
 	@Override

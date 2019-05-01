@@ -6,13 +6,13 @@ public class Colecao{
 
 	public Colecao(String nome){
 		pecas = new ArrayList<Peca>();
-		this.exposto = False;
+		this.exposto = false;
 		this.nome = nome;
 	}
 	public int getQuantidadeDePecas(){
 		return pecas.size();
 	}
-	public getNome(){
+	public String getNome(){
 		return nome;
 	}
 	public void setExposto(boolean exposto){
@@ -21,25 +21,24 @@ public class Colecao{
 	public boolean isExposto(){
 		return exposto;
 	}
-	public bolean adicionarPeca(Peca umaPeca){
+	public boolean adicionarPeca(Peca umaPeca){
 		return pecas.add(umaPeca);
 	}
-	public bolean removerPeca(String nomeObra){
+	public boolean removerPeca(String nomeObra){
 		for (Peca peca : pecas) {
 			if(peca.getNomeObra().equals(nomeObra)){
 				pecas.remove(peca);
-				return True;
+				return true;
 			}
 		}
 		return False;
 	}
-	@Overwrite
-	public toString(){
-		String out = "Peças da Coleção";
+	@Override
+	public String toString(){
+		String out = "Peças da Coleção " + nome + ":\n" ;
 		for(Peca peca : pecas){
-			out += peca.getNomeObra();
-			out += "\n";
-			return out;
+			out += peca.getNomeObra() + "\n";
 		} 
+		return out;
 	}
 }

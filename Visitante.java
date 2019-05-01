@@ -5,7 +5,7 @@ public class Visitante extends Pessoa {
 		super(nome, cpf);
 		listaVisitas = new ArrayList<Visita>();
 	}
-	public bolean adicionarVisita(Visita umaVisita){
+	public boolean adicionarVisita(Visita umaVisita){
 		return listaVisitas.add(umaVisita);
 	}
 

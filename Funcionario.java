@@ -20,12 +20,6 @@ public class Funcionario extends Pessoa {
 		return super.getNome();
 	}
 	/**
-	 * @return the cpf
-	 */
-	public int getCpf() {
-		return cpf;
-	}
-	/**
 	 * @return the salario
 	 */
 	public float getSalario() {

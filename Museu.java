@@ -4,13 +4,13 @@ public class Museu{
     private ArrayList<Visitante> visitantes;
     private ArrayList<Funcionario> funcionarios;
     private ArrayList<Setor> setores;
-    private ArrayList<Coelecao> colecoes;
+    private ArrayList<Colecao> colecoes;
 
     public Museu(){
         visitantes = new ArrayList<Visitante>();
         funcionarios = new ArrayList<Funcionario>();
         setores = new ArrayList<Setor>();
-        colecoes = new ArrayList<Coelecao>();
+        colecoes = new ArrayList<Colecao>();
         //Adicionar aqui os setores a serem adicionados
         setores.add(new Setor("Permanente", "Setor 1"));
         setores.add(new Setor("Temporario", "Setor 2"));
@@ -26,11 +26,11 @@ public class Museu{
     }
 
     public void registrarVisitante(String nome, int cpf, Visita visita){
-        boolean inserido = False;
+        boolean inserido = false;
         for (Visitante visitante : visitantes) {
             if(visitante.getCpf() == cpf){
                 visitante.adicionarVisita(visita);
-                inserido = True;
+                inserido = true;
             }
         }
         if(!inserido){
@@ -40,23 +40,25 @@ public class Museu{
         }
     }
     public boolean cadastrarColecao(Colecao colecao){
-        boolean inserido = False;
+        boolean inserido = false;
         for (Colecao col : colecoes) {
             if(col.getNome().equals(colecao.getNome())){
-                inserido = True;
+                inserido = true;
                 System.out.println("Colecao já existe");
-                return False;
+                return false;
             }
         }
         if(!inserido){
             colecoes.add(colecao);
             System.out.println("Coleção cadastrada");
-            return True;
+            return true;
         }
+        System.out.println("#debug possível erro de lógica");
+        return false; //Nunca chegará neste return
     }
     public boolean contratarFuncionario(String nome, int cpf, float salario, String ocupacao, String nomeSetor){
         Setor novoSetor = null;
-        for (Setor setor : Setores) {
+        for (Setor setor : setores) {
             if(nomeSetor.equals(setor.getNomeSetor())){
                 novoSetor = setor;
             }
@@ -64,21 +66,21 @@ public class Museu{
         for (Funcionario funcionario : funcionarios) {
             if(funcionario.getCpf() == cpf){
                 System.out.println("CPF já cadastrado, erro");
-                return False;
+                return false;
             }
         }
         if(novoSetor != null){
             funcionarios.add(new Funcionario(nome, cpf, salario, ocupacao, novoSetor));
-            return True;
+            return true;
         }
         System.out.println("Setor não cadastrado, erro na contratação");
-        return False;
+        return false;
     }
     public boolean exibirColecao(String nomeSetor, String nomeColecao){
         Setor set = null;
         Colecao col = null;
         for (Setor setor : setores) {
-            if(nomeSetor.equals(setor.getNome())){
+            if(nomeSetor.equals(setor.getNomeSetor())){
                 set = setor;
             }
         }
@@ -90,17 +92,17 @@ public class Museu{
         if(set != null && col != null){
             if(col.isExposto()){
                 System.out.println("Colecao já em exposicao");
-                return False;
+                return false;
             }
             else{
                 System.out.println("Sucesso!!!");
-                col.setExposto(True);
+                col.setExposto(true);
                 set.adicionarColecao(col);
-                return True;
+                return true;
             }
         }
         System.out.println("Parâmetros inválidos");
-        return False;
+        return false;
     }
 }
 
