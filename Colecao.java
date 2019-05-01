@@ -9,8 +9,14 @@ public class Colecao{
 	public bolean adicionarPeca(Peca umaPeca){
 		return pecas.add(umaPeca);
 	}
-	public bolean removerPeca(String get.NomeObra()){
-
+	public bolean removerPeca(String nomeObra){
+		for (Peca peca : pecas) {
+			if(peca.getNomeObra().equals(nomeObra)){
+				pecas.remove(peca);
+				return True;
+			}
+		}
+		return False;
 	}
 	@Overwrite
 	public toString(){
