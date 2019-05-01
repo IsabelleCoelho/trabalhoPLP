@@ -26,7 +26,8 @@ public class Setor {
 			out = out + " temporariamente ";
 		}
 		for (Colecao umaColecao : colecoes) {
-			out = out + umaColecao.nomeColecao;
+			out = out + umaColecao.nomeColecao + "\n";
 		}
+		return out;
 	}
 }
