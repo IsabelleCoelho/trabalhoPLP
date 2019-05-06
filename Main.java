@@ -10,7 +10,8 @@ public class Main{
                             "|6.Excluir Coleção                  |\n" +
                             "|7.Gerar relatório de obras         |\n" +
                             "|8.Gerar relatório de visitantes    |\n" +
-                            "|9.            |\n" +
+                            "|9.Sair                             |\n" +
+                            "-------------------------------------\n" )
                             
     }
     public static void main(String[] args) {

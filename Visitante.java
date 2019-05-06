@@ -1,12 +1,15 @@
 import java.util.*;
 public class Visitante extends Pessoa {
-	private ArrayList<Visita> listaVisitas;
-	public Visitante(String nome, int cpf){
-		super(nome, cpf);
-		listaVisitas = new ArrayList<Visita>();
-	}
-	public boolean adicionarVisita(Visita umaVisita){
-		return listaVisitas.add(umaVisita);
-	}
+    private String origem;
+    private String interesse;
+    private String faixaEtaria;
+    
+    public Visitante(String nome, int cpf,
+                     String origem, String interesse, String faixaEtaria){
+        super(nome, cpf);
+        this.origem = origem;
+        this.interesse = interesse;
+        this.faixaEtaria = faixaEtaria;
+    }
 
 }
