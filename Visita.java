@@ -3,16 +3,22 @@ import java.util.*;
 public class Visita {
     private ArrayList<Setor> listaSetores;
     private Data dataVisitacao;
-    private Visitante pessoaVisitante;
 
-    public Visita(Data dataVisitacao, listaSetoresVisitados
-                  Visitante pessoaVisitante){
+    public Visita(Data dataVisitacao, ArrayList<Setor> listaSetoresVisitados){
         this.dataVisitacao = dataVisitacao;
-        this.listaSetores = new ArrayList<Setor>();
-        this.pessoaVisitante = pessoaVisitante;
+        this.listaSetores = listaSetoresVisitados;
     }
 
     public boolean adicionarSetorVisitado(Setor umSetor){
         return listaSetores.add(umSetor);
+    }
+
+    @Override
+    public String toString() {
+        String out = "Visita do dia: " + dataVisitacao.toString();
+        for (Setor setor : listaSetores) {
+            out += "\n" + setor.getNomeSetor();
+        }
+        return out;
     }
 }

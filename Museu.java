@@ -34,8 +34,18 @@ public class Museu{
             }
         }
         if(!inserido){
+            System.out.println("Usuário ainda não inserido. Deseja cadastrar interesse, origem e idade? (s/n)");
             Visitante novo = new Visitante(nome, cpf);
             novo.adicionarVisita(visita);
+            Scanner scan = new Scanner(System.in);
+            if(scan.nextLine() == "s"){
+                System.out.println("Origem do Visitante: ");
+                novo.setOrigem(scan.nextLine());
+                System.out.println("Idade de visitante: ");
+                novo.setFaixaEtaria(scan.nextInt());
+                System.out.println("Interesse do visitante");
+                novo.setInteresse(scan.nextLine());
+            }
             visitantes.add(novo);
         }
     }
@@ -56,13 +66,16 @@ public class Museu{
         System.out.println("#debug possível erro de lógica");
         return false; //Nunca chegará neste return
     }
-    public boolean contratarFuncionario(String nome, int cpf, float salario, String ocupacao, String nomeSetor){
-        Setor novoSetor = null;
+    public Setor getSetor(String nomeSetor){
         for (Setor setor : setores) {
             if(nomeSetor.equals(setor.getNomeSetor())){
-                novoSetor = setor;
+                return setor;
             }
         }
+        return null;
+    }
+    public boolean contratarFuncionario(String nome, int cpf, float salario, String ocupacao, String nomeSetor){
+        Setor novoSetor = getSetor(nomeSetor);
         for (Funcionario funcionario : funcionarios) {
             if(funcionario.getCpf() == cpf){
                 System.out.println("CPF já cadastrado, erro");
@@ -103,6 +116,13 @@ public class Museu{
         }
         System.out.println("Parâmetros inválidos");
         return false;
+    }
+    public String listarSetores(){
+        String out = "";
+        for (Setor setor : setores) {
+            out += setor.getNomeSetor() + "\n";
+        }
+        return out;
     }
 }
 

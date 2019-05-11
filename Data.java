@@ -19,7 +19,12 @@ public class Data {
     public int getMes() {
         return this.mes;
     }
-    public int setAno() {
+    public int getAno() {
         return this.ano;
+    }
+
+    @Override
+    public String toString(){
+        return getDia() + "/" + getMes() + "/" + getAno();
     }
 }
