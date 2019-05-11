@@ -43,7 +43,7 @@ public class Visitante extends Pessoa {
             out += getFaixaEtaria() + " anos de idade ";
             out += "Com interesse em " + getInteresse();
         }
-        out += "Visitou: \n";
+        out += " Visitou: \n";
         for (Visita visita : visitas) {
             out += visita.toString();
         }

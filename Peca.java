@@ -5,12 +5,18 @@ public class Peca {
     private String estado;
     
 
-    public Peca(int anoDeCriacao, int anoDeAquisicao,
-                String nomeObra, String estado) {
+    public Peca(String nomeObra, int anoDeCriacao, 
+                int anoDeAquisicao, String estado) {
+        this.nomeObra = nomeObra;
         this.anoDeCriacao = anoDeCriacao;
         this.anoDeAquisicao = anoDeAquisicao;
-        this.nomeObra = nomeObra;
         this.estado = estado;
+    }
+    public String getNomeObra() {
+        return nomeObra;
+    }
+    public String getEstado() {
+        return estado;
     }
     public void setEstado(String estado) {
         this.estado = estado;
@@ -20,12 +26,6 @@ public class Peca {
     }
     public int getAnoDeAquisicao() {
         return anoDeAquisicao;
-    }
-    public String getNomeObra() {
-        return nomeObra;
-    }
-    public String getEstado() {
-        return estado;
     }
     @Override
     public String toString(){

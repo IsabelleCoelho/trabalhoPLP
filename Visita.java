@@ -8,11 +8,7 @@ public class Visita {
         this.dataVisitacao = dataVisitacao;
         this.listaSetores = listaSetoresVisitados;
     }
-
-    public boolean adicionarSetorVisitado(Setor umSetor){
-        return listaSetores.add(umSetor);
-    }
-
+    
     @Override
     public String toString() {
         String out = "Visita do dia: " + dataVisitacao.toString();

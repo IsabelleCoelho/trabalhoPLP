@@ -38,15 +38,19 @@ public class Museu{
             Visitante novo = new Visitante(nome, cpf);
             novo.adicionarVisita(visita);
             Scanner scan = new Scanner(System.in);
-            if(scan.nextLine() == "s"){
+            String check = scan.nextLine();
+            if(check.equals("s")){
                 System.out.println("Origem do Visitante: ");
                 novo.setOrigem(scan.nextLine());
                 System.out.println("Idade de visitante: ");
                 novo.setFaixaEtaria(scan.nextInt());
+                scan.nextLine();
                 System.out.println("Interesse do visitante");
                 novo.setInteresse(scan.nextLine());
+                scan.nextLine();
             }
             visitantes.add(novo);
+            System.out.println(novo);
         }
     }
     public boolean cadastrarColecao(Colecao colecao){
@@ -123,6 +127,9 @@ public class Museu{
             out += setor.getNomeSetor() + "\n";
         }
         return out;
+    }
+    public boolean registrarPeca(){
+        return true;
     }
 }
 
