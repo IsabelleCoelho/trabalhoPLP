@@ -19,8 +19,8 @@ public class Main{
                             "|9.  Consultar coleção               |\n" +
                             "|10. Consultar peça                  |\n" +
                             "|11. Consultar funcionário           |\n" +
-                            "|10. Gerar relatório de obras        |\n" + //Ainda não implementado
-                            "|12. Gerar relatório de visitantes   |\n" + //Ainda não implementado
+                            "|12. Gerar relatório de obras        |\n" + //Ainda não implementado
+                            "|13. Gerar relatório de visitantes   |\n" + //Ainda não implementado
                             "|0.  Sair                            |\n" + //Ainda não implementado
                             "|------------------------------------|\n" );
     }
@@ -75,7 +75,11 @@ public class Main{
         colecao = museu.getColecao(nomeColecao);
         System.out.println(colecao.toString());
     }
-
+    private static void consultarFuncionario(int CPFfuncionario){
+        Funcionario funcionario;
+        funcionario = museu.getFuncionario(CPFfuncionario);
+        System.out.println(funcionario.toString());
+    }
 
 
     public static void main(String[] args) {
@@ -138,6 +142,22 @@ public class Main{
                     System.out.println("Nome da coleção a ser consultado");
                     String nomeColecao = scan.nextLine();
                     consultarColecao(nomeColecao);
+                break;
+                case "10":
+                    System.out.println("Nome da peca a ser consultado");
+                    String nomePeca = scan.nextLine();
+                break;
+                case "11":
+                    System.out.println("CPF do funcionario");
+                    int CPFconsultaFuncionario = scan.nextInt();
+                    scan.nextLine();
+                    consultarFuncionario(CPFconsultaFuncionario);
+                break;
+                case "12":
+
+                break;
+                case "13":
+
                 break;
                 case "0":
                     scan.close();
