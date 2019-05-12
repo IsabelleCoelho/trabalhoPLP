@@ -6,6 +6,7 @@ public class Main{
     private static Data data = new Data(12, 5, 2019);
 
     private static void mainMenu(){
+<<<<<<< HEAD
         System.out.println ("|-----------------------------------|\n" +
                             "|MENU:                              |\n" +
                             "|1. Registrar visita                |\n" +
@@ -20,6 +21,25 @@ public class Main{
                             "|10.Gerar relatório de visitantes   |\n" + //Ainda não implementado
                             "|0. Sair                            |\n" + //Ainda não implementado
                             "|-----------------------------------|\n" );
+=======
+        System.out.println ("|------------------------------------|\n" +
+                            "|MENU:                               |\n" +
+                            "|1.  Registrar visita                |\n" +
+                            "|2.  Registrar coleção               |\n" + //Ainda não implementado
+                            "|3.  Registrar peça                  |\n" + //Testar
+                            "|4.  Registrar funcionário           |\n" + //Ainda não implementado
+                            "|5.  Excluir funcionário             |\n" + //Ainda não implementado
+                            "|6.  Excluir coleção                 |\n" + //Ainda não implementado
+                            "|7.  Listar funcionários             |\n" + //Ainda não implementado
+                            "|8.  Consultar visitante             |\n" +
+                            "|9.  Consultar coleção               |\n" +
+                            "|10. Consultar peça                  |\n" +
+                            "|11. Consultar funcionário           |\n" +
+                            "|12. Gerar relatório de obras        |\n" + //Ainda não implementado
+                            "|13. Gerar relatório de visitantes   |\n" + //Ainda não implementado
+                            "|0.  Sair                            |\n" + //Ainda não implementado
+                            "|------------------------------------|\n" );
+>>>>>>> ccf668375f7cb9b163bca35aa4563033d5fcf306
     }
 
     private static void adicionarVisitante(String nomeVisitante, int cpf){
@@ -44,13 +64,10 @@ public class Main{
         Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
         museu.registrarPeca(peca, colecao);
     }
-    private static void adicionarColecao(String nome){
-        System.out.println("Digite o nome da nova coleção");
-        String lido;
-        lido = scan.nextLine();
+    private static void adicionarColecao(String lido){
         Colecao colecao = museu.getColecao(lido);
         if (colecao != null) {
-            System.out.println("Colecao ja inserida");
+            System.out.println("Colecão já inserida");
         }
         else {
             museu.registrarColecao(new Colecao(lido));
@@ -68,8 +85,35 @@ public class Main{
     private static void consultarVisitante(String nomeConsultaVisitante, int CPFconsultaVisitante){
         Visitante visitante;
         visitante = museu.getVisitante(CPFconsultaVisitante);
-        System.out.println(visitante.toString());
+        if(visitante != null){
+            System.out.println(visitante.toString());
+        }
+        else{
+            System.out.println("Visitante não registrado.");
+        }
     }
+    private static void consultarColecao(String nomeColecao){
+        Colecao colecao;
+        colecao = museu.getColecao(nomeColecao);
+        if(colecao != null){
+            System.out.println(colecao.toString());
+        }
+        else{
+            System.out.println("Coleção não registrada.");
+        }
+    }
+    private static void consultarFuncionario(int CPFfuncionario){
+        Funcionario funcionario;
+        funcionario = museu.getFuncionario(CPFfuncionario);
+        if(funcionario != null){
+            System.out.println(funcionario.toString());
+        }
+        else{
+            System.out.println("Funcionario não registrado.");
+        }
+        
+    }
+
 
     public static void main(String[] args) {
         String opcao;
@@ -86,7 +130,10 @@ public class Main{
                     adicionarVisitante(nomeVisitante, cpfVisitante);
                 break;
                 case "2":
-                    
+                    System.out.println("Digite o nome da nova coleção");
+                    String lido;
+                    lido = scan.nextLine();
+                    adicionarColecao(lido);  
                 break;
                 case "3":
                     System.out.println("Nome da peça a ser registrada");
@@ -117,15 +164,33 @@ public class Main{
                     System.out.println(museu.listarFuncionarios()); 
                 break;
                 case "8":
-                    
-                break;
-                case "9":
                     System.out.println("Nome do visitante a ser consultado");
                     String nomeConsultaVisitante = scan.nextLine();
                     System.out.println("CPF do visitante");
                     int CPFconsultaVisitante = scan.nextInt();
                     scan.nextLine();
                     consultarVisitante(nomeConsultaVisitante, CPFconsultaVisitante);
+                break;
+                case "9":
+                    System.out.println("Nome da coleção a ser consultado");
+                    String nomeColecao = scan.nextLine();
+                    consultarColecao(nomeColecao);
+                break;
+                case "10":
+                    System.out.println("Nome da peca a ser consultado");
+                    String nomePeca = scan.nextLine();
+                break;
+                case "11":
+                    System.out.println("CPF do funcionario");
+                    int CPFconsultaFuncionario = scan.nextInt();
+                    scan.nextLine();
+                    consultarFuncionario(CPFconsultaFuncionario);
+                break;
+                case "12":
+
+                break;
+                case "13":
+
                 break;
                 case "0":
                     scan.close();
