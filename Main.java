@@ -28,7 +28,7 @@ public class Main{
                             "|------------------------------------|\n" );
     }
 
-    private static void adicionarVisitante(String nomeVisitante, int cpf){
+    private static void adicionarVisitante(String nomeVisitante, long cpf){
         System.out.println("Quais setores " + nomeVisitante + " visitou?");
         System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
         System.out.println(museu.listarSetores());
@@ -45,7 +45,14 @@ public class Main{
         Visita visita = new Visita(data, setoresVisitados);
         museu.registrarVisitante(nomeVisitante, cpf, visita);
     }
-
+    private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor){
+        if(museu.getFuncionario(cpf) != null){
+            System.out.println("Funcionario já existe");
+        }else{
+            museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
+            System.out.println("Funcionario registrado!");
+        }
+    }
     private static void registrarPeca(String nomeObra, int anoDeCriacao, int anoDeAquisicao, String estado, String colecao) {
         Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
         museu.registrarPeca(peca, colecao);
@@ -60,7 +67,7 @@ public class Main{
         }
     }
 
-    private static void removerFuncionario(int cpf){
+    private static void removerFuncionario(long cpf){
         if (museu.excluirFuncionario(cpf)) {
             System.out.println("Funcionário removido com sucesso!");
         }
@@ -76,7 +83,7 @@ public class Main{
             System.out.println("Coleção não registrada.");
         }
     }
-    private static void consultarVisitante(String nomeConsultaVisitante, int CPFconsultaVisitante){
+    private static void consultarVisitante(String nomeConsultaVisitante, long CPFconsultaVisitante){
         Visitante visitante;
         visitante = museu.getVisitante(CPFconsultaVisitante);
         if(visitante != null){
@@ -96,7 +103,7 @@ public class Main{
             System.out.println("Coleção não registrada.");
         }
     }
-    private static void consultarFuncionario(int CPFfuncionario){
+    private static void consultarFuncionario(long CPFfuncionario){
         Funcionario funcionario;
         funcionario = museu.getFuncionario(CPFfuncionario);
         if(funcionario != null){
@@ -142,7 +149,7 @@ public class Main{
                     System.out.println("Nome do visitante a ser registrado");
                     String nomeVisitante = scan.nextLine();
                     System.out.println("CPF do visitante a ser registrado");
-                    int cpfVisitante = scan.nextInt();
+                    long cpfVisitante = scan.nextLong();
                     scan.nextLine();
                     adicionarVisitante(nomeVisitante, cpfVisitante);
                 break;
@@ -167,17 +174,33 @@ public class Main{
                     registrarPeca(nomeObra, anoDeCriacao, anoDeAquisicao, estado, colecao);
                 break;
                 case "4":
-                    
+                    System.out.println("Escreva os dados do usuario");
+                    System.out.println("Nome");
+                    String nome;
+                    nome = scan.nextLine();
+                    System.out.println("CPF");
+                    long cpf;
+                    cpf = scan.nextLong();
+                    System.out.println("Salário");
+                    int salario;
+                    salario = scan.nextInt();
+                    System.out.println("Ocupação");
+                    String ocupacao;
+                    ocupacao = scan.nextLine();
+                    System.out.println("Nome do setor que ele irá trabalhar");
+                    String nomeSetor;
+                    nomeSetor = scan.nextLine();
+                    adicionarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
                 break;
                 case "5":
                     System.out.println("CPF do funcionário a ser excluído");
-                    int cpf = scan.nextInt();
-                    removerFuncionario(cpf);
+                    long cpfFuncionario = scan.nextLong();
+                    removerFuncionario(cpfFuncionario);
                 break;
                 case "6":
                     System.out.println("Nome da coleção a ser removida");
-                    String nome = scan.nextLine();
-                    removerColecao(nome);
+                    String nomeColecao = scan.nextLine();
+                    removerColecao(nomeColecao);
                 break;
                 case "7":
                     System.out.println(museu.listarFuncionarios());
@@ -192,14 +215,14 @@ public class Main{
                     System.out.println("Nome do visitante a ser consultado");
                     String nomeConsultaVisitante = scan.nextLine();
                     System.out.println("CPF do visitante");
-                    int CPFconsultaVisitante = scan.nextInt();
+                    long CPFconsultaVisitante = scan.nextLong();
                     scan.nextLine();
                     consultarVisitante(nomeConsultaVisitante, CPFconsultaVisitante);
                 break;
                 case "11":
                     System.out.println("Nome da coleção a ser consultado");
-                    String nomeColecao = scan.nextLine();
-                    consultarColecao(nomeColecao);
+                    String nomeColecaoConsulta = scan.nextLine();
+                    consultarColecao(nomeColecaoConsulta);
                 break;
                 case "12":
                     System.out.println("Nome da peca a ser consultado:");
@@ -217,7 +240,7 @@ public class Main{
                 break;
                 case "14":
                     System.out.println("CPF do funcionario");
-                    int CPFconsultaFuncionario = scan.nextInt();
+                    long CPFconsultaFuncionario = scan.nextLong();
                     scan.nextLine();
                     consultarFuncionario(CPFconsultaFuncionario);
                 break;

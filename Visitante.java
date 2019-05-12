@@ -5,7 +5,7 @@ public class Visitante extends Pessoa {
     private int faixaEtaria;
     private ArrayList<Visita> visitas;
     
-    public Visitante(String nome, int cpf){
+    public Visitante(String nome, long cpf){
         super(nome, cpf);
         this.origem = null;
         this.interesse = null;
