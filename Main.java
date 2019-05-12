@@ -18,7 +18,7 @@ public class Main{
                             "|8.  Consultar visitante             |\n" +
                             "|9.  Consultar coleção               |\n" +
                             "|10. Consultar peça                  |\n" +
-                            "|11. Consultar funcionár             |\n" +
+                            "|11. Consultar funcionário           |\n" +
                             "|10. Gerar relatório de obras        |\n" + //Ainda não implementado
                             "|12. Gerar relatório de visitantes   |\n" + //Ainda não implementado
                             "|0.  Sair                            |\n" + //Ainda não implementado
