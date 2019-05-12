@@ -1,7 +1,5 @@
 import java.util.*;
 
-import jdk.internal.loader.BootLoader;
-
 public class Museu{
     private ArrayList<Visitante> visitantes;
     private ArrayList<Funcionario> funcionarios;
