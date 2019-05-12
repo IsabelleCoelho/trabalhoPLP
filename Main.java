@@ -21,8 +21,9 @@ public class Main{
                             "|11. Consultar coleção               |\n" +
                             "|12. Consultar peça                  |\n" +
                             "|13. Consultar funcionário           |\n" +
-                            "|14. Gerar relatório de obras        |\n" + 
-                            "|15. Gerar relatório de visitantes   |\n" + 
+                            "|14. Alterar estado da coleção       |\n" +
+                            "|15. Gerar relatório de obras        |\n" + 
+                            "|16. Gerar relatório de visitantes   |\n" + 
                             "|0.  Sair                            |\n" + 
                             "|------------------------------------|\n" );
     }
@@ -105,6 +106,22 @@ public class Main{
             System.out.println("Funcionario não registrado.");
         }
         
+    }
+
+    private static void mudarEstadoColecao(String nomeColecao, String opcao){
+        if(museu.getColecao(nomeColecao) == null){
+            System.out.println("Coleção não registrada.");
+        }
+        else{
+            if(opcao == "retirar"){
+                museu.retirarDeExibicao(nomeColecao);
+            }
+            else{
+                System.out.println("Qual o setor no qual a coleção será exibida?");
+                String setor = scan.nextLine();
+                museu.colocarEmExibicao(nomeColecao,setor);
+            }
+        }
     }
 
     private static void consultarPeca(String nomePeca, String nomeColecao){
@@ -192,15 +209,22 @@ public class Main{
                     consultarPeca(nomePeca, nomeColecao_consultaObra);
                 break;
                 case "13":
+                    System.out.println("Qual coleção será alterada?");
+                    String nomeColecao = scan.nextLine();
+                    System.out.println("Para colocar a coleção em exibição digite 'expor'. Se deseja tira-la de exibição, digite 'retirar' .");
+                    String opcao = scan.nextLine();
+                    mudarEstadoColecao(nomeColecao, opcao);
+                break;
+                case "14":
                     System.out.println("CPF do funcionario");
                     int CPFconsultaFuncionario = scan.nextInt();
                     scan.nextLine();
                     consultarFuncionario(CPFconsultaFuncionario);
                 break;
-                case "14":
+                case "15":
                     System.out.println("Ainda não implementado");
                 break;
-                case "15":
+                case "16":
                     System.out.println("Ainda não implementado");
                 break;
                 case "0":

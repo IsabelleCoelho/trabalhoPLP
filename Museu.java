@@ -1,5 +1,7 @@
 import java.util.*;
 
+import jdk.internal.loader.BootLoader;
+
 public class Museu{
     private ArrayList<Visitante> visitantes;
     private ArrayList<Funcionario> funcionarios;
@@ -202,6 +204,19 @@ public class Museu{
             return colecao.getPeca(peca);
         }
         return null;
+    }
+
+    public boolean retirarDeExibicao(String nomeColecao){
+        Colecao colecao = getColecao(nomeColecao);
+        colecao.setExposto(false);
+        return colecao.getSetor().removerColecao(nomeColecao);
+    }
+
+    public boolean colocarEmExibicao(String nomeColecao,String nomeSetor){
+        Colecao colecao = getColecao(nomeColecao);
+        colecao.setExposto(true);
+        Setor setor = getSetor(nomeSetor);
+        return setor.adicionarColecao(colecao);
     }
 }
 
