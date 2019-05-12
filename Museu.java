@@ -25,7 +25,7 @@ public class Museu{
         return "";
     }
 
-    public void registrarVisitante(String nome, int cpf, Visita visita){
+    public void registrarVisitante(String nome, long cpf, Visita visita){
         Visitante visitante = getVisitante(cpf);
         if(visitante != null){
             visitante.adicionarVisita(visita);
@@ -75,7 +75,7 @@ public class Museu{
         }
         return null;
     }
-    public Funcionario getFuncionario(int cpf){
+    public Funcionario getFuncionario(long cpf){
         for (Funcionario funcionario : funcionarios) {
             if(cpf == funcionario.getCpf()){
                 return funcionario;
@@ -83,7 +83,7 @@ public class Museu{
         }
         return null;
     }
-    public boolean contratarFuncionario(String nome, int cpf, float salario, String ocupacao, String nomeSetor){
+    public boolean contratarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor){
         Setor novoSetor = getSetor(nomeSetor);
         for (Funcionario funcionario : funcionarios) {
             if(funcionario.getCpf() == cpf){
@@ -149,7 +149,7 @@ public class Museu{
         System.out.println("Colecao não existe");
         return false;
     }
-    public boolean excluirFuncionario(int cpf){
+    public boolean excluirFuncionario(long cpf){
         Funcionario funcionario = getFuncionario(cpf);
         if(funcionario != null){
             return funcionarios.remove(funcionario);
@@ -187,7 +187,7 @@ public class Museu{
         return out;
     }
 
-    public Visitante getVisitante(int CPFconsultaVisitante){
+    public Visitante getVisitante(long CPFconsultaVisitante){
         for(Visitante visitante : visitantes){
             if(visitante.getCpf() == CPFconsultaVisitante){
                 return visitante;

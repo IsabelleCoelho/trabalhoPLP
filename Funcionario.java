@@ -3,7 +3,7 @@ public class Funcionario extends Pessoa {
     private String ocupacao;
     private Setor trabalhaEm;
 
-    public Funcionario(String nome, int cpf, float salario, String ocupacao, Setor setor){
+    public Funcionario(String nome, long cpf, float salario, String ocupacao, Setor setor){
         super(nome, cpf);
         this.salario = salario;
         this.ocupacao = ocupacao;

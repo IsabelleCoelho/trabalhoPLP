@@ -27,7 +27,7 @@ public class Main{
                             "|------------------------------------|\n" );
     }
 
-    private static void adicionarVisitante(String nomeVisitante, int cpf){
+    private static void adicionarVisitante(String nomeVisitante, long cpf){
         System.out.println("Quais setores " + nomeVisitante + " visitou?");
         System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
         System.out.println(museu.listarSetores());
@@ -59,7 +59,7 @@ public class Main{
         }
     }
 
-    private static void removerFuncionario(int cpf){
+    private static void removerFuncionario(long cpf){
         if (museu.excluirFuncionario(cpf)) {
             System.out.println("Funcionário removido com sucesso!");
         }
@@ -75,7 +75,7 @@ public class Main{
             System.out.println("Coleção não registrada.");
         }
     }
-    private static void consultarVisitante(String nomeConsultaVisitante, int CPFconsultaVisitante){
+    private static void consultarVisitante(String nomeConsultaVisitante, long CPFconsultaVisitante){
         Visitante visitante;
         visitante = museu.getVisitante(CPFconsultaVisitante);
         if(visitante != null){
@@ -95,7 +95,7 @@ public class Main{
             System.out.println("Coleção não registrada.");
         }
     }
-    private static void consultarFuncionario(int CPFfuncionario){
+    private static void consultarFuncionario(long CPFfuncionario){
         Funcionario funcionario;
         funcionario = museu.getFuncionario(CPFfuncionario);
         if(funcionario != null){
@@ -125,7 +125,7 @@ public class Main{
                     System.out.println("Nome do visitante a ser registrado");
                     String nomeVisitante = scan.nextLine();
                     System.out.println("CPF do visitante a ser registrado");
-                    int cpfVisitante = scan.nextInt();
+                    long cpfVisitante = scan.nextLong();
                     scan.nextLine();
                     adicionarVisitante(nomeVisitante, cpfVisitante);
                 break;
@@ -154,7 +154,7 @@ public class Main{
                 break;
                 case "5":
                     System.out.println("CPF do funcionário a ser excluído");
-                    int cpf = scan.nextInt();
+                    long cpf = scan.nextLong();
                     removerFuncionario(cpf);
                 break;
                 case "6":
@@ -176,7 +176,7 @@ public class Main{
                     System.out.println("Nome do visitante a ser consultado");
                     String nomeConsultaVisitante = scan.nextLine();
                     System.out.println("CPF do visitante");
-                    int CPFconsultaVisitante = scan.nextInt();
+                    long CPFconsultaVisitante = scan.nextLong();
                     scan.nextLine();
                     consultarVisitante(nomeConsultaVisitante, CPFconsultaVisitante);
                 break;
@@ -194,7 +194,7 @@ public class Main{
                 break;
                 case "13":
                     System.out.println("CPF do funcionario");
-                    int CPFconsultaFuncionario = scan.nextInt();
+                    long CPFconsultaFuncionario = scan.nextLong();
                     scan.nextLine();
                     consultarFuncionario(CPFconsultaFuncionario);
                 break;
