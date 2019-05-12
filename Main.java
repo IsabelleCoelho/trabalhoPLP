@@ -17,8 +17,8 @@ public class Main{
                             "|7.  Listar funcionários             |\n" +
                             "|8.  Listar visitantes               |\n" +
                             "|9.  Listar coleções                 |\n" + 
-                            "|10.  Consultar visitante             |\n" +
-                            "|11.  Consultar coleção               |\n" +
+                            "|10. Consultar visitante             |\n" +
+                            "|11. Consultar coleção               |\n" +
                             "|12. Consultar peça                  |\n" +
                             "|13. Consultar funcionário           |\n" +
                             "|14. Gerar relatório de obras        |\n" + 
