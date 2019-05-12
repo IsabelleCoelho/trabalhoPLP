@@ -9,19 +9,21 @@ public class Main{
         System.out.println ("|------------------------------------|\n" +
                             "|MENU:                               |\n" +
                             "|1.  Registrar visita                |\n" +
-                            "|2.  Registrar coleção               |\n" + //Testar
-                            "|3.  Registrar peça                  |\n" + //Testar
-                            "|4.  Registrar funcionário           |\n" + //Ainda não implementado
-                            "|5.  Excluir funcionário             |\n" + //Ainda não implementado
-                            "|6.  Excluir coleção                 |\n" + //Ainda não implementado
-                            "|7.  Listar funcionários             |\n" + //Ainda não implementado
-                            "|8.  Consultar visitante             |\n" +
-                            "|9.  Consultar coleção               |\n" +
-                            "|10. Consultar peça                  |\n" +
-                            "|11. Consultar funcionário           |\n" +
-                            "|12. Gerar relatório de obras        |\n" + //Ainda não implementado
-                            "|13. Gerar relatório de visitantes   |\n" + //Ainda não implementado
-                            "|0.  Sair                            |\n" + //Ainda não implementado
+                            "|2.  Registrar coleção               |\n" + 
+                            "|3.  Registrar peça                  |\n" + 
+                            "|4.  Registrar funcionário           |\n" + 
+                            "|5.  Excluir funcionário             |\n" + 
+                            "|6.  Excluir coleção                 |\n" + 
+                            "|7.  Listar funcionários             |\n" +
+                            "|8.  Listar visitantes               |\n" +
+                            "|9.  Listar coleções                 |\n" + 
+                            "|10.  Consultar visitante             |\n" +
+                            "|11.  Consultar coleção               |\n" +
+                            "|12. Consultar peça                  |\n" +
+                            "|13. Consultar funcionário           |\n" +
+                            "|14. Gerar relatório de obras        |\n" + 
+                            "|15. Gerar relatório de visitantes   |\n" + 
+                            "|0.  Sair                            |\n" + 
                             "|------------------------------------|\n" );
     }
 
@@ -164,6 +166,12 @@ public class Main{
                     System.out.println(museu.listarFuncionarios());
                 break;
                 case "8":
+                    
+                break;
+                case "9":
+                    
+                break;
+                case "10":
                     System.out.println("Nome do visitante a ser consultado");
                     String nomeConsultaVisitante = scan.nextLine();
                     System.out.println("CPF do visitante");
@@ -171,28 +179,28 @@ public class Main{
                     scan.nextLine();
                     consultarVisitante(nomeConsultaVisitante, CPFconsultaVisitante);
                 break;
-                case "9":
+                case "11":
                     System.out.println("Nome da coleção a ser consultado");
                     String nomeColecao = scan.nextLine();
                     consultarColecao(nomeColecao);
                 break;
-                case "10":
+                case "12":
                     System.out.println("Nome da peca a ser consultado:");
                     String nomePeca = scan.nextLine();
                     System.out.println("Nome da coleção onde a peça se encontra:");
                     String nomeColecao_consultaObra = scan.nextLine();
                     consultarPeca(nomePeca, nomeColecao_consultaObra);
                 break;
-                case "11":
+                case "13":
                     System.out.println("CPF do funcionario");
                     int CPFconsultaFuncionario = scan.nextInt();
                     scan.nextLine();
                     consultarFuncionario(CPFconsultaFuncionario);
                 break;
-                case "12":
+                case "14":
                     System.out.println("Ainda não implementado");
                 break;
-                case "13":
+                case "15":
                     System.out.println("Ainda não implementado");
                 break;
                 case "0":
