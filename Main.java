@@ -166,7 +166,7 @@ public class Main{
                     System.out.println(museu.listarFuncionarios());
                 break;
                 case "8":
-                    
+                    System.out.println(museu.listarVisitantes());
                 break;
                 case "9":
                     

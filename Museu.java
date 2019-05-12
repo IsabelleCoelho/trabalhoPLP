@@ -163,6 +163,14 @@ public class Museu{
         }
         return false;
     }
+    public String listarVisitantes(){
+        String out = "";
+        for (Visitante visitante : visitantes) {
+            out += visitante.toString() + "\n";
+        }
+        return out;
+    }
+
     public String listarFuncionarios(){
         String out = "";
         for (Funcionario funcionario : funcionarios) {
