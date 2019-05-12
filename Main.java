@@ -44,8 +44,8 @@ public class Main{
         Visita visita = new Visita(data, setoresVisitados);
         museu.registrarVisitante(nomeVisitante, cpf, visita);
     }
-    private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor)
-        if(getFuncionario(cpf) != null){
+    private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor){
+        if(museu.getFuncionario(cpf) != null){
             System.out.println("Funcionario já existe");
         }else{
             museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
@@ -163,7 +163,7 @@ public class Main{
                     nome = scan.nextLine();
                     System.out.println("CPF");
                     long cpf;
-                    cpf = scan.nexLong();
+                    cpf = scan.nextLong();
                     System.out.println("Salário");
                     int salario;
                     salario = scan.nextInt();
@@ -177,13 +177,13 @@ public class Main{
                 break;
                 case "5":
                     System.out.println("CPF do funcionário a ser excluído");
-                    long cpf = scan.nextLong();
-                    removerFuncionario(cpf);
+                    long cpfFuncionario = scan.nextLong();
+                    removerFuncionario(cpfFuncionario);
                 break;
                 case "6":
                     System.out.println("Nome da coleção a ser removida");
-                    String nome = scan.nextLine();
-                    removerColecao(nome);
+                    String nomeColecao = scan.nextLine();
+                    removerColecao(nomeColecao);
                 break;
                 case "7":
                     System.out.println(museu.listarFuncionarios());
@@ -204,8 +204,8 @@ public class Main{
                 break;
                 case "11":
                     System.out.println("Nome da coleção a ser consultado");
-                    String nomeColecao = scan.nextLine();
-                    consultarColecao(nomeColecao);
+                    String nomeColecaoConsulta = scan.nextLine();
+                    consultarColecao(nomeColecaoConsulta);
                 break;
                 case "12":
                     System.out.println("Nome da peca a ser consultado:");
