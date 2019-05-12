@@ -9,7 +9,7 @@ public class Main{
         System.out.println ("|------------------------------------|\n" +
                             "|MENU:                               |\n" +
                             "|1.  Registrar visita                |\n" +
-                            "|2.  Registrar coleção               |\n" + //Ainda não implementado
+                            "|2.  Registrar coleção               |\n" + //Testar
                             "|3.  Registrar peça                  |\n" + //Testar
                             "|4.  Registrar funcionário           |\n" + //Ainda não implementado
                             "|5.  Excluir funcionário             |\n" + //Ainda não implementado
@@ -47,13 +47,13 @@ public class Main{
         Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
         museu.registrarPeca(peca, colecao);
     }
-    private static void adicionarColecao(String lido){
-        Colecao colecao = museu.getColecao(lido);
+    private static void adicionarColecao(String nomeColecao){
+        Colecao colecao = museu.getColecao(nomeColecao);
         if (colecao != null) {
             System.out.println("Colecão já inserida");
         }
         else {
-            museu.registrarColecao(new Colecao(lido));
+            museu.registrarColecao(new Colecao(nomeColecao));
         }
     }
 
@@ -151,7 +151,7 @@ public class Main{
                     
                 break;
                 case "7":
-                    System.out.println(museu.listarFuncionarios()); 
+                    System.out.println(museu.listarFuncionarios());
                 break;
                 case "8":
                     System.out.println("Nome do visitante a ser consultado");
@@ -180,10 +180,10 @@ public class Main{
                     consultarFuncionario(CPFconsultaFuncionario);
                 break;
                 case "12":
-
+                    System.out.println("Ainda não implementado");
                 break;
                 case "13":
-
+                    System.out.println("Ainda não implementado");
                 break;
                 case "0":
                     scan.close();

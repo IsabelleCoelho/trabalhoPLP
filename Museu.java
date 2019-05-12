@@ -159,7 +159,7 @@ public class Museu{
     public boolean excluirColecao(String nome){
         Colecao colecao = getColecao(nome);
         if(colecao != null){
-            return colecaos.remove(colecao);
+            return colecoes.remove(colecao);
         }
         return false;
     }
