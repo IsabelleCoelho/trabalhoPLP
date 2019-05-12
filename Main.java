@@ -157,7 +157,7 @@ public class Main{
                 break;
                 case "6":
                     System.out.println("Nome da coleção a ser removida");
-                    String nome = scan.nexLine();
+                    String nome = scan.nextLine();
                     removerColecao(nome);
                 break;
                 case "7":
