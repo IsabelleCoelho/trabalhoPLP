@@ -68,17 +68,33 @@ public class Main{
     private static void consultarVisitante(String nomeConsultaVisitante, int CPFconsultaVisitante){
         Visitante visitante;
         visitante = museu.getVisitante(CPFconsultaVisitante);
-        System.out.println(visitante.toString());
+        if(visitante != null){
+            System.out.println(visitante.toString());
+        }
+        else{
+            System.out.println("Visitante não registrado.");
+        }
     }
     private static void consultarColecao(String nomeColecao){
         Colecao colecao;
         colecao = museu.getColecao(nomeColecao);
-        System.out.println(colecao.toString());
+        if(colecao != null){
+            System.out.println(colecao.toString());
+        }
+        else{
+            System.out.println("Coleção não registrada.");
+        }
     }
     private static void consultarFuncionario(int CPFfuncionario){
         Funcionario funcionario;
         funcionario = museu.getFuncionario(CPFfuncionario);
-        System.out.println(funcionario.toString());
+        if(funcionario != null){
+            System.out.println(funcionario.toString());
+        }
+        else{
+            System.out.println("Funcionario não registrado.");
+        }
+        
     }
 
 
