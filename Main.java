@@ -70,6 +70,13 @@ public class Main{
         visitante = museu.getVisitante(CPFconsultaVisitante);
         System.out.println(visitante.toString());
     }
+    private static void consultarColecao(String nomeColecao){
+        Colecao colecao;
+        colecao = museu.getColecao(nomeColecao);
+        System.out.println(colecao.toString());
+    }
+
+
 
     public static void main(String[] args) {
         String opcao;
@@ -120,7 +127,7 @@ public class Main{
                     System.out.println(museu.listarFuncionarios()); 
                 break;
                 case "8":
-                System.out.println("Nome do visitante a ser consultado");
+                    System.out.println("Nome do visitante a ser consultado");
                     String nomeConsultaVisitante = scan.nextLine();
                     System.out.println("CPF do visitante");
                     int CPFconsultaVisitante = scan.nextInt();
@@ -128,7 +135,9 @@ public class Main{
                     consultarVisitante(nomeConsultaVisitante, CPFconsultaVisitante);
                 break;
                 case "9":
-                
+                    System.out.println("Nome da coleção a ser consultado");
+                    String nomeColecao = scan.nextLine();
+                    consultarColecao(nomeColecao);
                 break;
                 case "0":
                     scan.close();
