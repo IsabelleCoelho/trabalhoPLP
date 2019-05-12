@@ -41,4 +41,13 @@ public class Colecao{
         } 
         return out;
     }
+
+    public Peca getPeca(String nomePeca){
+        for (Peca peca : pecas) {
+            if (nomePeca.equals(peca.getNomeObra())) {
+                return peca;
+            }
+        }
+        return null;
+    }
 }

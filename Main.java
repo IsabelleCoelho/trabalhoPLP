@@ -97,6 +97,13 @@ public class Main{
         
     }
 
+    private static void consultarPeca(String nomePeca, String nomeColecao){
+        Peca peca = museu.consultarPeca(nomePeca, nomeColecao);
+        if (peca != null) {
+            System.out.println(peca);
+        }
+        System.out.println("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
+    }
 
     public static void main(String[] args) {
         String opcao;
@@ -160,8 +167,11 @@ public class Main{
                     consultarColecao(nomeColecao);
                 break;
                 case "10":
-                    System.out.println("Nome da peca a ser consultado");
+                    System.out.println("Nome da peca a ser consultado:");
                     String nomePeca = scan.nextLine();
+                    System.out.println("Nome da coleção onde a peça se encontra:");
+                    String nomeColecao_consultaObra = scan.nextLine();
+                    consultarPeca(nomePeca, nomeColecao_consultaObra);
                 break;
                 case "11":
                     System.out.println("CPF do funcionario");
