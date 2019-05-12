@@ -172,5 +172,13 @@ public class Museu{
         }
         return null;
     }
+
+    public Peca consultarPeca(String peca, String nomeColecao){
+        Colecao colecao = getColecao(nomeColecao);
+        if (colecao != null) {
+            return colecao.getPeca(peca);
+        }
+        return null;
+    }
 }
 

@@ -6,22 +6,6 @@ public class Main{
     private static Data data = new Data(12, 5, 2019);
 
     private static void mainMenu(){
-<<<<<<< HEAD
-        System.out.println ("|-----------------------------------|\n" +
-                            "|MENU:                              |\n" +
-                            "|1. Registrar visita                |\n" +
-                            "|2. Registrar coleção               |\n" + //Ainda não implementado
-                            "|3. Registrar peça                  |\n" + //Testar
-                            "|4. Registrar funcionário           |\n" + //Ainda não implementado
-                            "|5. Excluir funcionário             |\n" + //Ainda não implementado
-                            "|6. Excluir coleção                 |\n" + //Ainda não implementado
-                            "|7. Listar funcionários             |\n" + //Ainda não implementado
-                            "|8. Consultar visitante             |\n" + //Testar
-                            "|9. Gerar relatório de obras        |\n" + //Ainda não implementado
-                            "|10.Gerar relatório de visitantes   |\n" + //Ainda não implementado
-                            "|0. Sair                            |\n" + //Ainda não implementado
-                            "|-----------------------------------|\n" );
-=======
         System.out.println ("|------------------------------------|\n" +
                             "|MENU:                               |\n" +
                             "|1.  Registrar visita                |\n" +
@@ -39,7 +23,6 @@ public class Main{
                             "|13. Gerar relatório de visitantes   |\n" + //Ainda não implementado
                             "|0.  Sair                            |\n" + //Ainda não implementado
                             "|------------------------------------|\n" );
->>>>>>> ccf668375f7cb9b163bca35aa4563033d5fcf306
     }
 
     private static void adicionarVisitante(String nomeVisitante, int cpf){
@@ -114,6 +97,13 @@ public class Main{
         
     }
 
+    private static void consultarPeca(String nomePeca, String nomeColecao){
+        Peca peca = museu.consultarPeca(nomePeca, nomeColecao);
+        if (peca != null) {
+            System.out.println(peca);
+        }
+        System.out.println("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
+    }
 
     public static void main(String[] args) {
         String opcao;
@@ -177,8 +167,11 @@ public class Main{
                     consultarColecao(nomeColecao);
                 break;
                 case "10":
-                    System.out.println("Nome da peca a ser consultado");
+                    System.out.println("Nome da peca a ser consultado:");
                     String nomePeca = scan.nextLine();
+                    System.out.println("Nome da coleção onde a peça se encontra:");
+                    String nomeColecao_consultaObra = scan.nextLine();
+                    consultarPeca(nomePeca, nomeColecao_consultaObra);
                 break;
                 case "11":
                     System.out.println("CPF do funcionario");
