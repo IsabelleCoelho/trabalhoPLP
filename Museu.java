@@ -159,6 +159,13 @@ public class Museu{
         }
         return false;
     }
+    public boolean excluirColecao(String nome){
+        Colecao colecao = getColecao(nome);
+        if(colecao != null){
+            return colecaos.remove(colecao);
+        }
+        return false;
+    }
     public String listarFuncionarios(){
         String out = "";
         for (Funcionario funcionario : funcionarios) {
