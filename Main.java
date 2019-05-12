@@ -169,6 +169,7 @@ public class Main{
                     
                 break;
                 case "9":
+                    System.out.println(museu.listarColecoes());
                     
                 break;
                 case "10":

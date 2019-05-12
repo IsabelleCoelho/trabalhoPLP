@@ -156,6 +156,7 @@ public class Museu{
         }
         return false;
     }
+    
     public boolean excluirColecao(String nome){
         Colecao colecao = getColecao(nome);
         if(colecao != null){
@@ -167,6 +168,13 @@ public class Museu{
         String out = "";
         for (Funcionario funcionario : funcionarios) {
             out += funcionario.toString() + "\n";
+        }
+        return out;
+    }
+    public String listarColecoes(){
+        String out = "";
+        for (Colecao colecao : colecoes) {
+            out += colecao.toString() + "\n";
         }
         return out;
     }
