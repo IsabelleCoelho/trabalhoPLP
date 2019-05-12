@@ -9,8 +9,8 @@ public class Main{
         System.out.println ("|-----------------------------------|\n" +
                             "|MENU:                              |\n" +
                             "|1.Registrar visita                 |\n" +
-                            "|2.Registrar coleção                |\n" + //Testar
-                            "|3.Registrar peça                   |\n" + //Ainda não implementado
+                            "|2.Registrar coleção                |\n" + //Ainda não implementado
+                            "|3.Registrar peça                   |\n" + //Testar
                             "|4.Registrar funcionário            |\n" + //Ainda não implementado
                             "|5.Excluir funcionário              |\n" + //Ainda não implementado
                             "|6.Excluir Coleção                  |\n" + //Ainda não implementado
@@ -43,6 +43,9 @@ public class Main{
         museu.registrarPeca(peca, colecao);
     }
 
+    private static void removerFuncionario(int cpf){
+        
+    }
     public static void main(String[] args) {
         String opcao;
         do{

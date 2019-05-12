@@ -78,6 +78,14 @@ public class Museu{
         }
         return null;
     }
+    public Funcionario getFuncionario(int cpf){
+        for (Funcionario funcionario : funcionarios) {
+            if(cpf == funcionario.getCpf()){
+                return funcionario;
+            }
+        }
+        return null;
+    }
     public boolean contratarFuncionario(String nome, int cpf, float salario, String ocupacao, String nomeSetor){
         Setor novoSetor = getSetor(nomeSetor);
         for (Funcionario funcionario : funcionarios) {
@@ -142,6 +150,13 @@ public class Museu{
             return colecao.adicionarPeca(peca);
         }
         System.out.println("Colecao não existe");
+        return false;
+    }
+    public boolean excluirFuncionario(int cpf){
+        Funcionario funcionario = getFuncionario(cpf);
+        if(funcionario != null){
+            return funcionarios.remove(funcionario);
+        }
         return false;
     }
 }
