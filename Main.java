@@ -9,7 +9,7 @@ public class Main{
         System.out.println ("|-----------------------------------|\n" +
                             "|MENU:                              |\n" +
                             "|1.Registrar visita                 |\n" +
-                            "|2.Registrar peça                   |\n" + //Ainda não implementado
+                            "|2.Registrar peça                   |\n" + //Testar
                             "|3.Registrar coleção                |\n" + //Ainda não implementado
                             "|4.Registrar funcionário            |\n" + //Ainda não implementado
                             "|5.Excluir funcionário              |\n" + //Ainda não implementado
@@ -30,19 +30,18 @@ public class Main{
         do {
             read = scan.nextLine();
             setor = museu.getSetor(read);
-            if(read != "-1"){
-                if(setor != null){
-                    setoresVisitados.add(setor);
-                }
-                else{
-                    System.out.println("Setor inválido\n");
-                }
+            if(setor != null){
+                setoresVisitados.add(setor);
             }
         } while (!read.equals("-1"));
         Visita visita = new Visita(data, setoresVisitados);
         museu.registrarVisitante(nomeVisitante, cpf, visita);
     }
 
+    private static void registrarPeca(String nomeObra, int anoDeCriacao, int anoDeAquisicao, String estado, String colecao) {
+        Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
+        museu.registrarPeca(peca, colecao);
+    }
 
     public static void main(String[] args) {
         String opcao;
@@ -68,7 +67,9 @@ public class Main{
                     scan.nextLine();
                     System.out.println("Estado de conservação da peça a ser registrada");
                     String estado = scan.nextLine();
-
+                    System.out.println("Colecao a ser inserida");
+                    String colecao = scan.nextLine();
+                    registrarPeca(nomeObra, anoDeCriacao, anoDeAquisicao, estado, colecao);
                 break;
                 case "3":
                     

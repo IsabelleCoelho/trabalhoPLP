@@ -128,8 +128,21 @@ public class Museu{
         }
         return out;
     }
-    public boolean registrarPeca(){
-        return true;
+    private Colecao getColecao(String nomeColecao){
+        for (Colecao colecao : colecoes) {
+            if(colecao.getNome().equals(nomeColecao)){
+                return colecao;
+            }
+        }
+        return null;
+    }
+    public boolean registrarPeca(Peca peca, String nomeColecao){
+        Colecao colecao = getColecao(nomeColecao);
+        if(colecao != null){
+            return colecao.adicionarPeca(peca);
+        }
+        System.out.println("Colecao não existe");
+        return false;
     }
 }
 
