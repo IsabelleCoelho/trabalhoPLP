@@ -65,6 +65,14 @@ public class Main{
             System.out.println("Funcionario não registrado.");
         }
     }
+    private static void removerColecao(String nome){
+        if (museu.excluirColecao(nome)){
+            System.out.println("Coleção removido com sucesso!");
+        }
+        else{
+            System.out.println("Coleção não registrada.");
+        }
+    }
     private static void consultarVisitante(String nomeConsultaVisitante, int CPFconsultaVisitante){
         Visitante visitante;
         visitante = museu.getVisitante(CPFconsultaVisitante);
@@ -148,7 +156,9 @@ public class Main{
                     removerFuncionario(cpf);
                 break;
                 case "6":
-                    
+                    System.out.println("Nome da coleção a ser removida");
+                    String nome = scan.nexLine();
+                    removerColecao(nome);
                 break;
                 case "7":
                     System.out.println(museu.listarFuncionarios());
