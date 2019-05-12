@@ -159,5 +159,12 @@ public class Museu{
         }
         return false;
     }
+    public String listarFuncionarios(){
+        String out = "";
+        for (Funcionario funcionario : funcionarios) {
+            out += funcionario.toString() + "\n";
+        }
+        return out;
+    }
 }
 

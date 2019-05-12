@@ -13,9 +13,10 @@ public class Main{
                             "|3.Registrar peça                   |\n" + //Testar
                             "|4.Registrar funcionário            |\n" + //Ainda não implementado
                             "|5.Excluir funcionário              |\n" + //Ainda não implementado
-                            "|6.Excluir Coleção                  |\n" + //Ainda não implementado
-                            "|7.Gerar relatório de obras         |\n" + //Ainda não implementado
-                            "|8.Gerar relatório de visitantes    |\n" + //Ainda não implementado
+                            "|6.Excluir coleção                  |\n" + //Ainda não implementado
+                            "|7.Listar funcionários              |\n" + //Ainda não implementado
+                            "|8.Gerar relatório de obras         |\n" + //Ainda não implementado
+                            "|9.Gerar relatório de visitantes    |\n" + //Ainda não implementado
                             "|0.Sair                             |\n" + //Ainda não implementado
                             "|-----------------------------------|\n" );
     }
@@ -56,7 +57,12 @@ public class Main{
     }
 
     private static void removerFuncionario(int cpf){
-
+        if (museu.excluirFuncionario(cpf)) {
+            System.out.println("Funcionário removido com sucesso!");
+        }
+        else{
+            System.out.println("Funcionario não registrado.");
+        }
     }
     public static void main(String[] args) {
         String opcao;
@@ -93,16 +99,21 @@ public class Main{
                     
                 break;
                 case "5":
-                    
+                    System.out.println("CPF do funcionário a ser excluído");
+                    int cpf = scan.nextInt();
+                    removerFuncionario(cpf);
                 break;
                 case "6":
                     
                 break;
                 case "7":
-                    
+                    System.out.println(museu.listarFuncionarios()); 
                 break;
                 case "8":
                     
+                break;
+                case "9":
+
                 break;
                 case "0":
                     scan.close();
