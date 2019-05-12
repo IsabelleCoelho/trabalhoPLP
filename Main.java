@@ -16,6 +16,7 @@ public class Main{
                             "|6.Excluir Coleção                  |\n" + //Ainda não implementado
                             "|7.Gerar relatório de obras         |\n" + //Ainda não implementado
                             "|8.Gerar relatório de visitantes    |\n" + //Ainda não implementado
+                            "|9.Consultar visitante              |\n" +
                             "|0.Sair                             |\n" + //Ainda não implementado
                             "|-----------------------------------|\n" );
     }
@@ -58,6 +59,12 @@ public class Main{
     private static void removerFuncionario(int cpf){
 
     }
+    private static void consultarVisitante(String nomeConsultaVisitante, int CPFconsultaVisitante){
+        Visitante visitante;
+        visitante = museu.getVisitanteConsulta(nomeConsultaVisitante, CPFconsultaVisitante);
+        System.out.println(visitante.toString());
+    }
+
     public static void main(String[] args) {
         String opcao;
         do{
@@ -103,6 +110,14 @@ public class Main{
                 break;
                 case "8":
                     
+                break;
+                case "9":
+                System.out.println("Nome do visitante a ser consultado");
+                String nomeConsultaVisitante = scan.nextLine();
+                System.out.println("CPF do visitante");
+                int CPFconsultaVisitante = scan.nextInt();
+                scan.nextLine();
+                consultarVisitante(nomeConsultaVisitante, CPFconsultaVisitante);
                 break;
                 case "0":
                     scan.close();

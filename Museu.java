@@ -159,5 +159,14 @@ public class Museu{
         }
         return false;
     }
+    public Visitante getVisitanteConsulta(String nomeConsultaVisitante, int CPFconsultaVisitante){
+        for(Visitante visitante : visitantes){
+            if((visitante.getNome().equals(nomeConsultaVisitante))
+                    && (visitante.getCpf() == CPFconsultaVisitante)) {
+                return visitante;
+            }
+        }
+        return null;
+    }
 }
 
