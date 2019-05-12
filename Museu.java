@@ -53,7 +53,7 @@ public class Museu{
             System.out.println(novo);
         }
     }
-    public boolean cadastrarColecao(Colecao colecao){
+    public boolean registrarColecao(Colecao colecao){
         boolean inserido = false;
         for (Colecao col : colecoes) {
             if(col.getNome().equals(colecao.getNome())){
@@ -136,7 +136,7 @@ public class Museu{
         }
         return out;
     }
-    private Colecao getColecao(String nomeColecao){
+    public Colecao getColecao(String nomeColecao){
         for (Colecao colecao : colecoes) {
             if(colecao.getNome().equals(nomeColecao)){
                 return colecao;

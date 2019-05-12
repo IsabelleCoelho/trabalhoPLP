@@ -46,19 +46,17 @@ public class Main{
         System.out.println("Digite o nome da nova coleção");
         String lido;
         lido = scan.nextLine();
-        if(colecao.getColecao.equals(lido){
-            System.out.println("Coleção já existe");
-        }else{
-            museu.registrarColecao(lido);
-        }     
-    }
-    private static void registrarColecao(String nome){
-        Colecao colacao = new Colecao(nome);
-        museu.registrarColecao(nome);
+        Colecao colecao = museu.getColecao(lido);
+        if (colecao != null) {
+            System.out.println("Colecao ja inserida");
+        }
+        else {
+            museu.registrarColecao(new Colecao(lido));
+        }
     }
 
     private static void removerFuncionario(int cpf){
-        
+
     }
     public static void main(String[] args) {
         String opcao;
