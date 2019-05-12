@@ -9,8 +9,8 @@ public class Main{
         System.out.println ("|-----------------------------------|\n" +
                             "|MENU:                              |\n" +
                             "|1.Registrar visita                 |\n" +
-                            "|2.Registrar peça                   |\n" + //Testar
-                            "|3.Registrar coleção                |\n" + //Ainda não implementado
+                            "|2.Registrar coleção                |\n" + //Testar
+                            "|3.Registrar peça                   |\n" + //Ainda não implementado
                             "|4.Registrar funcionário            |\n" + //Ainda não implementado
                             "|5.Excluir funcionário              |\n" + //Ainda não implementado
                             "|6.Excluir Coleção                  |\n" + //Ainda não implementado
@@ -58,6 +58,9 @@ public class Main{
                     adicionarVisitante(nomeVisitante, cpfVisitante);
                 break;
                 case "2":
+                    
+                break;
+                case "3":
                     System.out.println("Nome da peça a ser registrada");
                     String nomeObra = scan.nextLine();
                     System.out.println("Ano de criação da peça a ser registrada");
@@ -70,9 +73,6 @@ public class Main{
                     System.out.println("Colecao a ser inserida");
                     String colecao = scan.nextLine();
                     registrarPeca(nomeObra, anoDeCriacao, anoDeAquisicao, estado, colecao);
-                break;
-                case "3":
-                    
                 break;
                 case "4":
                     
