@@ -44,7 +44,14 @@ public class Main{
         Visita visita = new Visita(data, setoresVisitados);
         museu.registrarVisitante(nomeVisitante, cpf, visita);
     }
-
+    private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor)
+        if(getFuncionario(cpf) != null){
+            System.out.println("Funcionario já existe");
+        }else{
+            museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
+            System.out.println("Funcionario registrado!");
+        }
+    }
     private static void registrarPeca(String nomeObra, int anoDeCriacao, int anoDeAquisicao, String estado, String colecao) {
         Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
         museu.registrarPeca(peca, colecao);
@@ -150,7 +157,23 @@ public class Main{
                     registrarPeca(nomeObra, anoDeCriacao, anoDeAquisicao, estado, colecao);
                 break;
                 case "4":
-                    
+                    System.out.println("Escreva os dados do usuario");
+                    System.out.println("Nome");
+                    String nome;
+                    nome = scan.nextLine();
+                    System.out.println("CPF");
+                    long cpf;
+                    cpf = scan.nexLong();
+                    System.out.println("Salário");
+                    int salario;
+                    salario = scan.nextInt();
+                    System.out.println("Ocupação");
+                    String ocupacao;
+                    ocupacao = scan.nextLine();
+                    System.out.println("Nome do setor que ele irá trabalhar");
+                    String nomeSetor;
+                    nomeSetor = scan.nextLine();
+                    adicionarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
                 break;
                 case "5":
                     System.out.println("CPF do funcionário a ser excluído");
