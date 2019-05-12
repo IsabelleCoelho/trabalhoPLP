@@ -15,7 +15,7 @@ public class Main{
                             "|5. Excluir funcionário             |\n" + //Ainda não implementado
                             "|6. Excluir coleção                 |\n" + //Ainda não implementado
                             "|7. Listar funcionários             |\n" + //Ainda não implementado
-                            "|8. Consultar visitante             |\n" +
+                            "|8. Consultar visitante             |\n" + //Testar
                             "|9. Gerar relatório de obras        |\n" + //Ainda não implementado
                             "|10.Gerar relatório de visitantes   |\n" + //Ainda não implementado
                             "|0. Sair                            |\n" + //Ainda não implementado

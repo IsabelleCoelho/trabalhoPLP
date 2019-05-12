@@ -26,14 +26,11 @@ public class Museu{
     }
 
     public void registrarVisitante(String nome, int cpf, Visita visita){
-        boolean inserido = false;
-        for (Visitante visitante : visitantes) {
-            if(visitante.getCpf() == cpf){
-                visitante.adicionarVisita(visita);
-                inserido = true;
-            }
+        Visitante visitante = getVisitante(cpf);
+        if(visitante != null){
+            visitante.adicionarVisita(visita);
         }
-        if(!inserido){
+        else{
             System.out.println("Usuário ainda não inserido. Deseja cadastrar interesse, origem e idade? (s/n)");
             Visitante novo = new Visitante(nome, cpf);
             novo.adicionarVisita(visita);
