@@ -233,10 +233,10 @@ public class Main{
                 break;
                 case "13":
                     System.out.println("Qual coleção será alterada?");
-                    String nomeColecao = scan.nextLine();
+                    String nomeColecao_alterarEstado = scan.nextLine();
                     System.out.println("Para colocar a coleção em exibição digite 'expor'. Se deseja tira-la de exibição, digite 'retirar' .");
-                    String opcao = scan.nextLine();
-                    mudarEstadoColecao(nomeColecao, opcao);
+                    String opcaoEscolhida = scan.nextLine();
+                    mudarEstadoColecao(nomeColecao_alterarEstado, opcaoEscolhida);
                 break;
                 case "14":
                     System.out.println("CPF do funcionario");
