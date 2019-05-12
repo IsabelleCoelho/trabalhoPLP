@@ -45,12 +45,9 @@ public class Main{
         museu.registrarPeca(peca, colecao);
     }
     private static void adicionarColecao(String nome){
-        System.out.println("Digite o nome da nova coleção");
-        String lido;
-        lido = scan.nextLine();
         Colecao colecao = museu.getColecao(lido);
         if (colecao != null) {
-            System.out.println("Colecao ja inserida");
+            System.out.println("Colecão já inserida");
         }
         else {
             museu.registrarColecao(new Colecao(lido));
@@ -86,7 +83,10 @@ public class Main{
                     adicionarVisitante(nomeVisitante, cpfVisitante);
                 break;
                 case "2":
-                    
+                    System.out.println("Digite o nome da nova coleção");
+                    String lido;
+                    lido = scan.nextLine();
+                    adicionarColecao(lido);
                 break;
                 case "3":
                     System.out.println("Nome da peça a ser registrada");
