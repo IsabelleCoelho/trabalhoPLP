@@ -8,16 +8,17 @@ public class Main{
     private static void mainMenu(){
         System.out.println ("|-----------------------------------|\n" +
                             "|MENU:                              |\n" +
-                            "|1.Registrar visita                 |\n" +
-                            "|2.Registrar coleção                |\n" + //Ainda não implementado
-                            "|3.Registrar peça                   |\n" + //Testar
-                            "|4.Registrar funcionário            |\n" + //Ainda não implementado
-                            "|5.Excluir funcionário              |\n" + //Ainda não implementado
-                            "|6.Excluir coleção                  |\n" + //Ainda não implementado
-                            "|7.Listar funcionários              |\n" + //Ainda não implementado
-                            "|8.Gerar relatório de obras         |\n" + //Ainda não implementado
-                            "|9.Gerar relatório de visitantes    |\n" + //Ainda não implementado
-                            "|0.Sair                             |\n" + //Ainda não implementado
+                            "|1. Registrar visita                |\n" +
+                            "|2. Registrar coleção               |\n" + //Ainda não implementado
+                            "|3. Registrar peça                  |\n" + //Testar
+                            "|4. Registrar funcionário           |\n" + //Ainda não implementado
+                            "|5. Excluir funcionário             |\n" + //Ainda não implementado
+                            "|6. Excluir coleção                 |\n" + //Ainda não implementado
+                            "|7. Listar funcionários             |\n" + //Ainda não implementado
+                            "|8. Consultar visitante             |\n" +
+                            "|9. Gerar relatório de obras        |\n" + //Ainda não implementado
+                            "|10.Gerar relatório de visitantes   |\n" + //Ainda não implementado
+                            "|0. Sair                            |\n" + //Ainda não implementado
                             "|-----------------------------------|\n" );
     }
 
@@ -64,6 +65,12 @@ public class Main{
             System.out.println("Funcionario não registrado.");
         }
     }
+    private static void consultarVisitante(String nomeConsultaVisitante, int CPFconsultaVisitante){
+        Visitante visitante;
+        visitante = museu.getVisitante(CPFconsultaVisitante);
+        System.out.println(visitante.toString());
+    }
+
     public static void main(String[] args) {
         String opcao;
         do{
@@ -113,7 +120,12 @@ public class Main{
                     
                 break;
                 case "9":
-
+                    System.out.println("Nome do visitante a ser consultado");
+                    String nomeConsultaVisitante = scan.nextLine();
+                    System.out.println("CPF do visitante");
+                    int CPFconsultaVisitante = scan.nextInt();
+                    scan.nextLine();
+                    consultarVisitante(nomeConsultaVisitante, CPFconsultaVisitante);
                 break;
                 case "0":
                     scan.close();

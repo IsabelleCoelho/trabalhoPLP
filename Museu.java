@@ -166,5 +166,14 @@ public class Museu{
         }
         return out;
     }
+
+    public Visitante getVisitante(int CPFconsultaVisitante){
+        for(Visitante visitante : visitantes){
+            if(visitante.getCpf() == CPFconsultaVisitante){
+                return visitante;
+            }
+        }
+        return null;
+    }
 }
 
