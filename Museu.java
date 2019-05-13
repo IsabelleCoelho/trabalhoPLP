@@ -207,7 +207,7 @@ public class Museu{
     public boolean retirarDeExibicao(String nomeColecao){
         Colecao colecao = getColecao(nomeColecao);
         colecao.setExposto(false);
-        return colecao.getSetor().removerColecao(nomeColecao);
+        return colecao.retirarExposto();
     }
 
     public boolean colocarEmExibicao(String nomeColecao,String nomeSetor){

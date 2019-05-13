@@ -120,13 +120,15 @@ public class Main{
             System.out.println("Coleção não registrada.");
         }
         else{
-            if(opcao == "retirar"){
+            if("retirar".equals(opcao)){
                 museu.retirarDeExibicao(nomeColecao);
+                System.out.println("Coleção retirada de exposição");
             }
             else{
                 System.out.println("Qual o setor no qual a coleção será exibida?");
                 String setor = scan.nextLine();
                 museu.colocarEmExibicao(nomeColecao,setor);
+                System.out.println("Coleção colocada em exposição");
             }
         }
     }
