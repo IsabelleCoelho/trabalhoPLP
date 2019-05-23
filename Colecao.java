@@ -3,11 +3,13 @@ public class Colecao{
     private ArrayList<Peca> pecas;
     private String nome;
     private boolean exposto;
+    private Setor setor;
 
     public Colecao(String nome){
         pecas = new ArrayList<Peca>();
         this.exposto = false;
         this.nome = nome;
+        this.setor = null;
     }
     public int getQuantidadeDePecas(){
         return pecas.size();
@@ -15,11 +17,20 @@ public class Colecao{
     public String getNome(){
         return nome;
     }
+    public void setSetor(Setor setor) {
+        this.setor = setor;
+    }
+    public Setor getSetor() {
+        return setor;
+    }
     public void setExposto(boolean exposto){
         this.exposto = exposto;
     }
     public boolean isExposto(){
         return exposto;
+    }
+    public boolean retirarExposto(){
+       return this.exposto = false;
     }
     public boolean adicionarPeca(Peca umaPeca){
         return pecas.add(umaPeca);

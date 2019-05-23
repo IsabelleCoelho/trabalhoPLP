@@ -1,15 +1,15 @@
 public class Pessoa {
     private String nome;
-    private int cpf;
+    private Long cpf;
 
-    public Pessoa(String nome, int cpf) {
+    public Pessoa(String nome, Long cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
     public String getNome() {
         return nome;
     }
-    public int getCpf(){
+    public long getCpf(){
         return cpf;
     }
     @Override

@@ -191,7 +191,7 @@ public class Main{
         }
     }
 
-    private static void adicionarVisitante(String nomeVisitante, int cpf){
+    private static void adicionarVisitante(String nomeVisitante, long cpf){
         System.out.println("Quais setores " + nomeVisitante + " visitou?");
         System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
         System.out.println(museu.listarSetores());
@@ -208,8 +208,8 @@ public class Main{
         Visita visita = new Visita(data, setoresVisitados);
         museu.registrarVisitante(nomeVisitante, cpf, visita);
     }
-    private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor)
-        if(getFuncionario(cpf) != null){
+    private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor){
+        if(museu.getFuncionario(cpf) != null){
             System.out.println("Funcionario já existe");
         }else{
             museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
@@ -230,7 +230,7 @@ public class Main{
         }
     }
 
-    private static void removerFuncionario(int cpf){
+    private static void removerFuncionario(long cpf){
         if (museu.excluirFuncionario(cpf)) {
             System.out.println("Funcionário removido com sucesso!");
         }
@@ -246,7 +246,7 @@ public class Main{
             System.out.println("Coleção não registrada.");
         }
     }
-    private static void consultarVisitante(String nomeConsultaVisitante, int CPFconsultaVisitante){
+    private static void consultarVisitante(long CPFconsultaVisitante){
         Visitante visitante;
         visitante = museu.getVisitante(CPFconsultaVisitante);
         if(visitante != null){
@@ -266,7 +266,7 @@ public class Main{
             System.out.println("Coleção não registrada.");
         }
     }
-    private static void consultarFuncionario(int CPFfuncionario){
+    private static void consultarFuncionario(long CPFfuncionario){
         Funcionario funcionario;
         funcionario = museu.getFuncionario(CPFfuncionario);
         if(funcionario != null){
@@ -278,12 +278,61 @@ public class Main{
         
     }
 
+    private static void mudarEstadoColecao(String nomeColecao, String opcao){
+        if(museu.getColecao(nomeColecao) == null){
+            System.out.println("Coleção não registrada.");
+        }
+        else{
+            if("retirar".equals(opcao)){
+                museu.retirarDeExibicao(nomeColecao);
+                System.out.println("Coleção retirada de exposição");
+            }
+            else{
+                System.out.println("Qual o setor no qual a coleção será exibida?");
+                String setor = scan.nextLine();
+                museu.colocarEmExibicao(nomeColecao,setor);
+                System.out.println("Coleção colocada em exposição");
+            }
+        }
+    }
+
     private static void consultarPeca(String nomePeca, String nomeColecao){
         Peca peca = museu.consultarPeca(nomePeca, nomeColecao);
         if (peca != null) {
             System.out.println(peca);
         }
         System.out.println("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
+    }
+
+    private static void testarMuseu(){
+        adicionarColecao("Astronomia atraves dos seculos");
+        registrarPeca("Galileu", 1, 2, "Bom", "Astronomia atraves dos seculos");
+        registrarPeca("Descoberta de venus", 2, 3, "Ruim", "Astronomia atraves dos seculos");
+        registrarPeca("Não é magia, é ciência", 3, 4, "Otimo", "Astronomia atraves dos seculos");
+        registrarPeca("Lunetas", 4, 5, "Bom", "Astronomia atraves dos seculos");
+        System.out.println(museu.listarColecoes());
+        
+        adicionarColecao("Armas históricas");
+        registrarPeca("Lanças históricas", 5, 6, "Bom", "Armas históricas");
+        registrarPeca("Primeira arma de fogo", 6, 7, "Bom", "Armas históricas");
+        registrarPeca("Ak-47?", 7, 8, "Bom", "Armas históricas");
+        registrarPeca("Arcos e tudo mais", 8, 9, "Bom", "Armas históricas");
+        System.out.println(museu.listarColecoes());
+
+        adicionarColecao("Invenções classicas");
+        registrarPeca("Asas?!", 9, 10, "Bom", "Invenções classicas");
+        registrarPeca("Primeiro avião", 10, 11, "Bom", "Invenções classicas");
+        registrarPeca("França, mãe da aviação", 11, 12, "Bom", "Invenções classicas");
+        registrarPeca("Revolução do vapor", 12, 13, "Bom", "Invenções classicas");
+        System.out.println(museu.listarColecoes());
+
+        adicionarColecao("Leonardo da Vinci arte e invenções");
+        registrarPeca("Replica Monalisa", 13, 14, "Bom", "Leonardo da Vinci arte e invenções");
+        registrarPeca("Maquina voadora", 14, 15, "Bom", "Leonardo da Vinci arte e invenções");
+        registrarPeca("Tanque de guerra", 15, 16, "Bom", "Leonardo da Vinci arte e invenções");
+        registrarPeca("Criptex", 16, 17, "Bom", "Leonardo da Vinci arte e invenções");
+        System.out.println(museu.listarColecoes());
+        
     }
 
     public static void main(String[] args) {
@@ -293,7 +342,15 @@ public class Main{
             opcao = scan.nextLine();
             switch (opcao){
                 case "1":
+<<<<<<< HEAD
                     MenuRegistrar();
+=======
+                    System.out.println("Nome do visitante a ser registrado");
+                    String nomeVisitante = scan.nextLine();
+                    System.out.println("CPF do visitante a ser registrado");
+                    long cpfVisitante = scan.nextLong();
+                    adicionarVisitante(nomeVisitante, cpfVisitante);
+>>>>>>> 9d8e65b408f765457c070935a8f7ef000cab7745
                 break;
                 case "2":
                     MenuExcluir();
@@ -302,11 +359,97 @@ public class Main{
                     MenuListar();
                 break;
                 case "4":
+<<<<<<< HEAD
                    MenuConsultar();
                 break;
                 case "5":
                    MenuGerarRelatorio();
                 break;
+=======
+                    System.out.println("Escreva os dados do usuario");
+                    System.out.println("Nome");
+                    String nome;
+                    nome = scan.nextLine();
+                    System.out.println("CPF");
+                    long cpf;
+                    cpf = scan.nextLong();
+                    System.out.println("Salário");
+                    float salario;
+                    salario = scan.nextFloat();
+                    System.out.println("Ocupação");
+                    String ocupacao;
+                    ocupacao = scan.nextLine();
+                    System.out.println("Nome do setor que ele irá trabalhar");
+                    String nomeSetor;
+                    nomeSetor = scan.nextLine();
+                    adicionarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
+                break;
+                case "5":
+                    System.out.println("CPF do funcionário a ser excluído");
+                    long cpfFuncionario = scan.nextLong();
+                    removerFuncionario(cpfFuncionario);
+                break;
+                case "6":
+                    System.out.println("Nome da coleção a ser removida");
+                    String nomeColecao = scan.nextLine();
+                    removerColecao(nomeColecao);
+                break;
+                case "7":
+                    System.out.println(museu.listarFuncionarios());
+                break;
+                case "8":
+                    System.out.println(museu.listarVisitantes());
+                break;
+                case "9":
+                    System.out.println(museu.listarColecoes());
+                break;
+                case "10":
+                    System.out.println("CPF do visitante");
+                    long CPFconsultaVisitante = scan.nextLong();
+                    scan.nextLine();
+                    consultarVisitante(CPFconsultaVisitante);
+                break;
+                case "11":
+                    System.out.println("Nome da coleção a ser consultado");
+                    String nomeColecaoConsulta = scan.nextLine();
+                    consultarColecao(nomeColecaoConsulta);
+                break;
+                case "12":
+                    System.out.println("Nome da peca a ser consultado:");
+                    String nomePeca = scan.nextLine();
+                    System.out.println("Nome da coleção onde a peça se encontra:");
+                    String nomeColecao_consultaObra = scan.nextLine();
+                    consultarPeca(nomePeca, nomeColecao_consultaObra);
+                break;
+                case "13":
+                    System.out.println("CPF do funcionario");
+                    long CPFconsultaFuncionario = scan.nextLong();
+                    scan.nextLine();
+                    consultarFuncionario(CPFconsultaFuncionario);
+                break;
+                case "14":
+                    System.out.println("Qual coleção será alterada?");
+                    String nomeColecao_alterarEstado = scan.nextLine();
+                    System.out.println("Para colocar a coleção em exibição digite 'expor'. Se deseja tira-la de exibição, digite 'retirar' .");
+                    String opcaoEscolhida = scan.nextLine();
+                    mudarEstadoColecao(nomeColecao_alterarEstado, opcaoEscolhida);
+                break;
+                case "15":
+                    System.out.println("Ainda não implementado");
+                break;
+                case "16":
+                    System.out.println("Ainda não implementado");
+                break;
+                case "0":
+                    scan.close();
+                break;
+                case "-5":
+                    // Método de teste ou hot setup
+                    testarMuseu();
+                break;
+                default:
+            }
+>>>>>>> 9d8e65b408f765457c070935a8f7ef000cab7745
         }while(!opcao.equals("0"));
     }
 }

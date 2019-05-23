@@ -15,8 +15,8 @@ public class Setor {
     }
 
     /** Adicionanda uma nova peça a um setor */
-    public void adicionarColecao(Colecao umaColecao) {
-        colecoes.add(umaColecao);
+    public boolean adicionarColecao(Colecao umaColecao) {
+        return colecoes.add(umaColecao);
     }
 
     public String getNomeSetor() {
@@ -29,7 +29,21 @@ public class Setor {
     public void setTipoDeExibicao(String tipoDeExibicao){
         this.tipoDeExibicao = tipoDeExibicao;
     }
-
+    private Colecao getColecao(String nomeColecao){
+        for (Colecao colecao : colecoes) {
+            if(nomeColecao.equals(colecao.getNome())){
+                return colecao;
+            }
+        }
+        return null;
+    }
+    public boolean removerColecao(String nomeColecao){
+        Colecao colecao = getColecao(nomeColecao);
+        if(colecao != null){
+            return colecoes.remove(colecao);
+        }
+        return false;
+    }
     @Override
     public String toString(){
         String out = "Setor " + nomeSetor + " exibe ";
