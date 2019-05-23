@@ -190,7 +190,29 @@ public class Main{
             }
         }while(!opcao.equals("0"));
     }
-
+    private static void MenuAlterar(){
+        System.out.println ("|------------------------------------|\n" +
+                            "|MENU ALTERAR:                       |\n" +
+                            "|1.  Alterar visitante               |\n" + 
+                            "|2.  Alterar colecao                 |\n" +
+                            "|3.  Alterar funcionário             |\n" +
+                            "|4.  Alterar peça                    |\n" +
+                            "|5.  Alterar exibição do setor       |\n" + 
+                            "|0.  Voltar                          |\n" +  
+                            "|------------------------------------|\n" );
+        String opcao;
+        do{
+            opcao = scan.nextLine();
+            switch (opcao){
+                case "1":
+                    System.out.println("Ainda não implementado");
+                break;
+                case "2":
+                    System.out.println("Ainda não implementado");
+                break;
+            }
+        }while(!opcao.equals("0"));
+    }
     private static void adicionarVisitante(String nomeVisitante, long cpf){
         System.out.println("Quais setores " + nomeVisitante + " visitou?");
         System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
