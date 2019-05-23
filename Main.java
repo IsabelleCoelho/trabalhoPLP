@@ -139,6 +139,37 @@ public class Main{
         System.out.println("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
     }
 
+    private static void testarMuseu(){
+        adicionarColecao("Astronomia atraves dos seculos");
+        registrarPeca("Galileu", 1, 2, "Bom", "Astronomia atraves dos seculos");
+        registrarPeca("Descoberta de venus", 2, 3, "Ruim", "Astronomia atraves dos seculos");
+        registrarPeca("Não é magia, é ciência", 3, 4, "Otimo", "Astronomia atraves dos seculos");
+        registrarPeca("Lunetas", 4, 5, "Bom", "Astronomia atraves dos seculos");
+        System.out.println(museu.listarColecoes());
+        
+        adicionarColecao("Armas históricas");
+        registrarPeca("Lanças históricas", 5, 6, "Bom", "Armas históricas");
+        registrarPeca("Primeira arma de fogo", 6, 7, "Bom", "Armas históricas");
+        registrarPeca("Ak-47?", 7, 8, "Bom", "Armas históricas");
+        registrarPeca("Arcos e tudo mais", 8, 9, "Bom", "Armas históricas");
+        System.out.println(museu.listarColecoes());
+
+        adicionarColecao("Invenções classicas");
+        registrarPeca("Asas?!", 9, 10, "Bom", "Invenções classicas");
+        registrarPeca("Primeiro avião", 10, 11, "Bom", "Invenções classicas");
+        registrarPeca("França, mãe da aviação", 11, 12, "Bom", "Invenções classicas");
+        registrarPeca("Revolução do vapor", 12, 13, "Bom", "Invenções classicas");
+        System.out.println(museu.listarColecoes());
+
+        adicionarColecao("Leonardo da Vinci arte e invenções");
+        registrarPeca("Replica Monalisa", 13, 14, "Bom", "Leonardo da Vinci arte e invenções");
+        registrarPeca("Maquina voadora", 14, 15, "Bom", "Leonardo da Vinci arte e invenções");
+        registrarPeca("Tanque de guerra", 15, 16, "Bom", "Leonardo da Vinci arte e invenções");
+        registrarPeca("Criptex", 16, 17, "Bom", "Leonardo da Vinci arte e invenções");
+        System.out.println(museu.listarColecoes());
+        
+    }
+
     public static void main(String[] args) {
         String opcao;
         do{
@@ -181,8 +212,8 @@ public class Main{
                     long cpf;
                     cpf = scan.nextLong();
                     System.out.println("Salário");
-                    int salario;
-                    salario = scan.nextInt();
+                    float salario;
+                    salario = scan.nextFloat();
                     System.out.println("Ocupação");
                     String ocupacao;
                     ocupacao = scan.nextLine();
@@ -249,6 +280,10 @@ public class Main{
                 break;
                 case "0":
                     scan.close();
+                break;
+                case "-5":
+                    // Método de teste ou hot setup
+                    testarMuseu();
                 break;
                 default:
             }
