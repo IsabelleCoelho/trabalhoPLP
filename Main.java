@@ -205,10 +205,31 @@ public class Main{
             opcao = scan.nextLine();
             switch (opcao){
                 case "1":
-                    System.out.println("Ainda não implementado");
+                    MenuVisitante();
                 break;
                 case "2":
-                    System.out.println("Ainda não implementado");
+                    MenuColecao();
+                break;
+                case "3":
+                    MenuFuncionario();
+                break;
+                case "4":
+                    MenuPeca();
+                break;
+                case "5":
+                    String nome;
+                    System.out.println("Digite o nome do setor:");
+                    nome = scan.nextLine();
+                    Setor setorAlterado=museu.getSetor(nome);
+                    if(setorAlterado==null){
+                        System.out.println("Setor não existe!");
+                    }else{
+                        System.out.println("Exibição atual do setor:");
+                        System.out.println(setorAlterado.getTipoDeExibicao());
+                        System.out.println("Digite o nome da nova exibição:");
+                        String novo = scan.nextLine();
+                        setorAlterado.setTipoDeExibicao(novo);
+                    }
                 break;
             }
         }while(!opcao.equals("0"));
