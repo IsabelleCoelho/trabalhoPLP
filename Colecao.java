@@ -29,6 +29,9 @@ public class Colecao{
     public boolean isExposto(){
         return exposto;
     }
+    public boolean retirarExposto(){
+       return this.exposto = false;
+    }
     public boolean adicionarPeca(Peca umaPeca){
         return pecas.add(umaPeca);
     }
