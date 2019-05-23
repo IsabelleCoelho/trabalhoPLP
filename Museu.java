@@ -24,7 +24,12 @@ public class Museu{
     public String gerarRelatorioObras(){
         return "";
     }
-
+/**
+ * @return the funcionarios
+ */
+public ArrayList<Funcionario> getFuncionarios() {
+    return funcionarios;
+}
     public void registrarVisitante(String nome, long cpf, Visita visita){
         Visitante visitante = getVisitante(cpf);
         if(visitante != null){

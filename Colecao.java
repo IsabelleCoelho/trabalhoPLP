@@ -26,6 +26,9 @@ public class Colecao{
     public void setExposto(boolean exposto){
         this.exposto = exposto;
     }
+    public void setNome(String nome){
+        this.nome = nome;
+    }
     public boolean isExposto(){
         return exposto;
     }

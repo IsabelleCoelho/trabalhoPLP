@@ -191,27 +191,31 @@ public class Main{
         }while(!opcao.equals("0"));
     }
 
-    private static void MenuAlterar(){
-        System.out.println ("|------------------------------------|\n" +
-                            "|MENU ALTERAR:                       |\n" +
-                            "|1.  Alterar visitante               |\n" + 
-                            "|2.  Alterar colecao                 |\n" +
-                            "|3.  Alterar funcionário             |\n" +
-                            "|4.  Alterar peça                    |\n" +
-                            "|5.  Alterar exibição do setor       |\n" + 
-                            "|0.  Voltar                          |\n" +  
-                            "|------------------------------------|\n" );
+    private static void MenuAlterar() throws Exception {
+        System.out.println ("|----------------------------------------|\n" +
+                            "|MENU ALTERAR:                           |\n" +
+                            "|1.  Alterar visitante                   |\n" + 
+                            "|2.  Alterar colecao                     |\n" +
+                            "|3.  Alterar funcionário                 |\n" +
+                            "|4.  Alterar peça                        |\n" +
+                            "|5.  Alterar tipo de exibição do setor   |\n" + 
+                            "|0.  Voltar                              |\n" +  
+                            "|----------------------------------------|\n" );
         String opcao;
         do{
             opcao = scan.nextLine();
             switch (opcao){
                 case "1":
+                    MenuAlterarVisitante();
                 break;
                 case "2":
+                    MenuAlterarColecao();
                 break;
                 case "3":
+                    MenuAlterarFuncionario();
                 break;
                 case "4":
+                    MenuAlterarPeca();
                 break;
                 case "5":
                     String nome;
@@ -221,9 +225,7 @@ public class Main{
                     if(setorAlterado==null){
                         System.out.println("Setor não existe!");
                     }else{
-                        System.out.println("Nome atual de exibição atual do setor:");
-                        System.out.println(setorAlterado.getTipoDeExibicao());
-                        System.out.println("Digite a nova exibição:");
+                        System.out.println("Digite o novo tipo de exibição:");
                         String novo = scan.nextLine();
                         setorAlterado.setTipoDeExibicao(novo);
                     }
@@ -232,67 +234,84 @@ public class Main{
         }while(!opcao.equals("0"));
     }
 
-    private static void MenuAlterarVisitante(){
+    private static void MenuAlterarVisitante() throws Exception {
         System.out.println ("|------------------------------------|\n" +
                             "|MENU ALTERAR VISITANTE:             |\n" +
                             "|1.  Alterar nome                    |\n" + 
                             "|2.  Alterar interesse               |\n" +
                             "|3.  Alterar faixa etária            |\n" +
-                            "|4.  Alterar visita                  |\n" +
                             "|0.  Voltar                          |\n" +  
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                break;
-                case "2":
-                break;
-                case "3":
-                break;
-                case "4":
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        System.out.println("Digite o CPF do visitante:");
+        Long cpf = scan.nextLong();
+        Visitante visitante = museu.getVisitante(cpf);
+        scan.nextLine();
+        if(visitante == null){
+            System.out.println("Visitante não cadastrado!");
+            throw new Exception("Visitante não cadastrado");
+        }
+        switch (opcao){
+            case "1":
+                System.out.println("Digite o novo nome do visitante:");
+                String nome = scan.nextLine();
+                visitante.setNome(nome);
+            break;
+            case "2":
+                System.out.println("Digite o novo interesse do visitante:");
+                String interesse = scan.nextLine();
+                visitante.setInteresse(interesse);
+            break;
+            case "3":
+                System.out.println("Digite a nova faixa etária do visitante:");
+                String faixaEtaria = scan.nextLine();
+                visitante.setFaixaEtaria(faixaEtaria);
+            break;
+        }
     }
 
-    private static void MenuAlterarVisita(){
-        System.out.println ("|------------------------------------|\n" +
-                            "|MENU ALTERAR VISITA:                |\n" +
-                            "|1.  Alterar data                    |\n" + 
-                            "|2.  Alterar setor                   |\n" +
-                            "|0.  Voltar                          |\n" +  
-                            "|------------------------------------|\n" );
-        String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                break;
-                case "2":
-                break;
-            }
-        }while(!opcao.equals("0"));
-    }
 
-    private static void MenuAlterarColecao(){
+    private static void MenuAlterarColecao() throws Exception {
         System.out.println ("|------------------------------------|\n" +
                             "|MENU ALTERAR COLEÇÃO:               |\n" +
                             "|1.  Alterar nome                    |\n" + 
                             "|2.  Alterar setor                   |\n" +
+                            "|3.  Alterar estado                  |\n" +
                             "|0.  Voltar                          |\n" +  
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                break;
-                case "2":
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        System.out.println("Digite o nome atual da coleção:");
+        String nomeColecao = scan.nextLine();
+        Colecao colecao = museu.getColecao(nomeColecao);
+        if(colecao == null){
+            System.out.println("Coleção não cadastrado!");
+            throw new Exception("Coleção não cadastrado!");
+        }
+        switch (opcao){
+            case "1":
+                System.out.println("Digite o novo nome da coleção:");
+                String nome = scan.nextLine();
+                colecao.setNome(nome);
+            break;
+            case "2":
+                System.out.println("Digite o novo setor:");
+                String nomeSetor = scan.nextLine();
+                Setor setor = museu.getSetor(nomeSetor);
+                if(setor == null){
+                    System.out.println("Setor inválido!");
+                    throw new Exception("Setor inválido!");
+                }
+                colecao.setSetor(setor);
+            break;
+            case "3":
+                System.out.println("Digite 'retirar' para remover de exibição da coleção.
+                Senão, digite 'colocar' para colocar uma coleção em exibição.");
+                String opcao = scan.nextLine();
+                mudarEstadoColecao(colecao, opcao);
+            break;
+        }
     }
 
     private static void MenuAlterarFuncionario(){
@@ -304,19 +323,18 @@ public class Main{
                             "|4.  Alterar setor                   |\n" +
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                break;
-                case "2":
-                break;
-                case "3":
-                break;
-                case "4":
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        switch (opcao){
+            case "1":
+
+            break;
+            case "2":
+            break;
+            case "3":
+            break;
+            case "4":
+            break;
+        }
     }
 
     private static void MenuAlterarPeca(){
@@ -327,17 +345,15 @@ public class Main{
                             "|0.  Voltar                          |\n" +  
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                break;
-                case "2":
-                break;
-                case "3":
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        switch (opcao){
+            case "1":
+            break;
+            case "2":
+            break;
+            case "3":
+            break;
+        }
     }
     
     private static void adicionarVisitante(String nomeVisitante, long cpf){
