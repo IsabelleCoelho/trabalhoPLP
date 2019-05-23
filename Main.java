@@ -221,7 +221,7 @@ public class Main{
                     if(setorAlterado==null){
                         System.out.println("Setor não existe!");
                     }else{
-                        System.out.println("Exibição atual do setor:");
+                        System.out.println("Nome atual de exibição atual do setor:");
                         System.out.println(setorAlterado.getTipoDeExibicao());
                         System.out.println("Digite a nova exibição:");
                         String novo = scan.nextLine();
