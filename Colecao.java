@@ -30,7 +30,7 @@ public class Colecao{
         return exposto;
     }
     public boolean retirarExposto(){
-       return this.exposto = false;
+        return this.exposto = false;
     }
     public boolean adicionarPeca(Peca umaPeca){
         return pecas.add(umaPeca);

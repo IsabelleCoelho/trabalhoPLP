@@ -2,14 +2,14 @@ import java.util.ArrayList;
 public class Visitante extends Pessoa {
     private String origem;
     private String interesse;
-    private int faixaEtaria;
+    private String faixaEtaria;
     private ArrayList<Visita> visitas;
     
     public Visitante(String nome, long cpf){
         super(nome, cpf);
         this.origem = null;
         this.interesse = null;
-        this.faixaEtaria = -1;
+        this.faixaEtaria = null;
         this.visitas = new ArrayList<Visita>();
     }
     public void adicionarVisita(Visita visita){
@@ -22,7 +22,7 @@ public class Visitante extends Pessoa {
     public void setInteresse(String interesse) {
         this.interesse = interesse;
     }
-    public void setFaixaEtaria(int i) {
+    public void setFaixaEtaria(String i) {
         this.faixaEtaria = i;
     }
     public String getOrigem() {
@@ -31,14 +31,14 @@ public class Visitante extends Pessoa {
     public String getInteresse() {
         return interesse;
     }
-    public int getFaixaEtaria() {
+    public String getFaixaEtaria() {
         return faixaEtaria;
     }
 
     @Override
     public String toString(){
         String out = "Visitante " + super.getNome() + " de CPF " + super.getCpf();
-        if(origem != null && interesse != null && faixaEtaria != -1){
+        if(origem != null && interesse != null && faixaEtaria != null){
             out += " oriundo de " + getOrigem() + " ";
             out += getFaixaEtaria() + " anos de idade ";
             out += "Com interesse em " + getInteresse();
