@@ -12,7 +12,7 @@ public class Main{
                             "|2.  Excluir                         |\n" + 
                             "|3.  Listar                          |\n" +
                             "|4.  Consultar                       |\n" +
-                            "|5.  Gerar Relatório                 |\n" +
+                            "|5.  Gerar relatório                 |\n" +
                             "|0.  Sair                            |\n" +
                             "|------------------------------------|\n" );
     }
