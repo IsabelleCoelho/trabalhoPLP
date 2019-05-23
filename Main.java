@@ -357,6 +357,9 @@ public class Main{
                 case "5":
                     MenuGerarRelatorio();
                 break;
+                case "-5":
+                    testarMuseu();
+                break;
             }
         }while(!opcao.equals("0"));
     }
