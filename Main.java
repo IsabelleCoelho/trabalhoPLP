@@ -224,11 +224,11 @@ public class Main{
                     Setor setorAlterado=museu.getSetor(nome);
                     if(setorAlterado==null){
                         System.out.println("Setor não existe!");
-                    }else{
-                        System.out.println("Digite o novo tipo de exibição:");
-                        String novo = scan.nextLine();
-                        setorAlterado.setTipoDeExibicao(novo);
+                        throw new Exception("Setor não existe!");
                     }
+                    System.out.println("Digite o novo tipo de exibição:");
+                    String novo = scan.nextLine();
+                    setorAlterado.setTipoDeExibicao(novo);
                 break;
             }
         }while(!opcao.equals("0"));
@@ -376,10 +376,10 @@ public class Main{
     private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor){
         if(museu.getFuncionario(cpf) != null){
             System.out.println("Funcionario já existe");
-        }else{
-            museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
-            System.out.println("Funcionario registrado!");
+            throw new Exception("Funcionario já existe");
         }
+        museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
+        System.out.println("Funcionario registrado!");
     }
     private static void registrarPeca(String nomeObra, int anoDeCriacao, int anoDeAquisicao, String estado, String colecao) {
         Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
@@ -389,10 +389,9 @@ public class Main{
         Colecao colecao = museu.getColecao(nomeColecao);
         if (colecao != null) {
             System.out.println("Colecão já inserida");
+            throw new Exception("Colecão já inserida");
         }
-        else {
-            museu.registrarColecao(new Colecao(nomeColecao));
-        }
+        museu.registrarColecao(new Colecao(nomeColecao));
     }
 
     private static void removerFuncionario(long cpf){
@@ -414,59 +413,56 @@ public class Main{
     private static void consultarVisitante(long CPFconsultaVisitante){
         Visitante visitante;
         visitante = museu.getVisitante(CPFconsultaVisitante);
-        if(visitante != null){
-            System.out.println(visitante.toString());
-        }
-        else{
+        if(visitante == null){
             System.out.println("Visitante não registrado.");
+            throw new Exception("Visitante não registrado.");
         }
+        System.out.println(visitante.toString());
     }
     private static void consultarColecao(String nomeColecao){
         Colecao colecao;
         colecao = museu.getColecao(nomeColecao);
-        if(colecao != null){
-            System.out.println(colecao.toString());
-        }
-        else{
+        if(colecao == null){
             System.out.println("Coleção não registrada.");
+            throw new Exception("Coleção não registrada.");
         }
+        System.out.println(colecao.toString());
     }
     private static void consultarFuncionario(long CPFfuncionario){
         Funcionario funcionario;
         funcionario = museu.getFuncionario(CPFfuncionario);
-        if(funcionario != null){
-            System.out.println(funcionario.toString());
-        }
-        else{
+        if(funcionario == null){
             System.out.println("Funcionario não registrado.");
+            throw new Exception("Funcionario não registrado.");
         }
+        System.out.println(funcionario.toString());
         
     }
 
     private static void mudarEstadoColecao(String nomeColecao, String opcao){
         if(museu.getColecao(nomeColecao) == null){
             System.out.println("Coleção não registrada.");
+            throw new Exception("Coleção não registrada.");
+        }
+        if("retirar".equals(opcao)){
+             museu.retirarDeExibicao(nomeColecao);
+            System.out.println("Coleção retirada de exposição");
         }
         else{
-            if("retirar".equals(opcao)){
-                museu.retirarDeExibicao(nomeColecao);
-                System.out.println("Coleção retirada de exposição");
-            }
-            else{
-                System.out.println("Qual o setor no qual a coleção será exibida?");
-                String setor = scan.nextLine();
-                museu.colocarEmExibicao(nomeColecao,setor);
-                System.out.println("Coleção colocada em exposição");
-            }
+            System.out.println("Qual o setor no qual a coleção será exibida?");
+            String setor = scan.nextLine();
+            museu.colocarEmExibicao(nomeColecao,setor);
+            System.out.println("Coleção colocada em exposição");
         }
     }
 
     private static void consultarPeca(String nomePeca, String nomeColecao){
         Peca peca = museu.consultarPeca(nomePeca, nomeColecao);
-        if (peca != null) {
-            System.out.println(peca);
+        if (peca == null) {
+            System.out.println("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
+            throw new Exception("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
         }
-        System.out.println("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
+        System.out.println(peca);
     }
 
     /** Testes já implementados */
