@@ -24,12 +24,7 @@ public class Museu{
     public String gerarRelatorioObras(){
         return "";
     }
-/**
- * @return the funcionarios
- */
-public ArrayList<Funcionario> getFuncionarios() {
-    return funcionarios;
-}
+
     public void registrarVisitante(String nome, long cpf, Visita visita){
         Visitante visitante = getVisitante(cpf);
         if(visitante != null){
@@ -103,8 +98,10 @@ public ArrayList<Funcionario> getFuncionarios() {
         return false;
     }
     public boolean exibirColecao(String nomeSetor, String nomeColecao){
-        Setor set = null;
-        Colecao col = null;
+        //Inseri este erro de forma proposital
+        //Verifiquem e simplifiquem este método com os métodos já existentes
+        Setor set = null
+        Colecao col = null
         for (Setor setor : setores) {
             if(nomeSetor.equals(setor.getNomeSetor())){
                 set = setor;

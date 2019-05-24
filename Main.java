@@ -12,7 +12,8 @@ public class Main{
                             "|2.  Excluir                         |\n" + 
                             "|3.  Listar                          |\n" +
                             "|4.  Consultar                       |\n" +
-                            "|5.  Gerar relatório                 |\n" +
+                            "|5.  Alterar                         |\n" +
+                            "|6.  Gerar relatório                 |\n" +
                             "|0.  Sair                            |\n" +
                             "|------------------------------------|\n" );
     }
@@ -26,57 +27,55 @@ public class Main{
                             "|0.  Voltar                          |\n" +  
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                    System.out.println("Nome do visitante a ser registrado:");
-                    String nomeVisitante =  scan.nextLine();
-                    System.out.println("CPF do visitante a ser registrado:");
-                    long cpfVisitante = scan.nextLong();
-                    adicionarVisitante(nomeVisitante , cpfVisitante);
-                break;
-                case "2":
-                    System.out.println("Digite o nome da nova coleção");
-                    String lido;
-                    lido = scan.nextLine();
-                    adicionarColecao(lido);  
-                break;
-                case "3":
-                    System.out.println("Nome da peça a ser registrada");
-                    String nomeObra = scan.nextLine();
-                    System.out.println("Ano de criação da peça a ser registrada");
-                    int anoDeCriacao = scan.nextInt();
-                    System.out.println("Ano de aquisição da peça a ser registrada");
-                    int anoDeAquisicao = scan.nextInt();
-                    scan.nextLine();
-                    System.out.println("Estado de conservação da peça a ser registrada");
-                    String estado = scan.nextLine();
-                    System.out.println("Colecao a ser inserida");
-                    String colecao = scan.nextLine();
-                    registrarPeca(nomeObra, anoDeCriacao, anoDeAquisicao, estado, colecao);
-                break;
-                case "4":
-                    System.out.println("Escreva os dados do usuario");
-                    System.out.println("Nome");
-                    String nome;
-                    nome = scan.nextLine();
-                    System.out.println("CPF");
-                    long cpf;
-                    cpf = scan.nextLong();
-                    System.out.println("Salário");
-                    int salario;
-                    salario = scan.nextInt();
-                    System.out.println("Ocupação");
-                    String ocupacao;
-                    ocupacao = scan.nextLine();
-                    System.out.println("Nome do setor que ele irá trabalhar");
-                    String nomeSetor;
-                    nomeSetor = scan.nextLine();
-                    adicionarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        switch (opcao){
+            case "1":
+                System.out.println("Nome do visitante a ser registrado:");
+                String nomeVisitante =  scan.nextLine();
+                System.out.println("CPF do visitante a ser registrado:");
+                long cpfVisitante = scan.nextLong();
+                adicionarVisitante(nomeVisitante , cpfVisitante);
+            break;
+            case "2":
+                System.out.println("Digite o nome da nova coleção");
+                String lido;
+                lido = scan.nextLine();
+                adicionarColecao(lido);  
+            break;
+            case "3":
+                System.out.println("Nome da peça a ser registrada");
+                String nomeObra = scan.nextLine();
+                System.out.println("Ano de criação da peça a ser registrada");
+                int anoDeCriacao = scan.nextInt();
+                System.out.println("Ano de aquisição da peça a ser registrada");
+                int anoDeAquisicao = scan.nextInt();
+                scan.nextLine();
+                System.out.println("Estado de conservação da peça a ser registrada");
+                String estado = scan.nextLine();
+                System.out.println("Colecao a ser inserida");
+                String colecao = scan.nextLine();
+                registrarPeca(nomeObra, anoDeCriacao, anoDeAquisicao, estado, colecao);
+            break;
+            case "4":
+                System.out.println("Escreva os dados do usuario");
+                System.out.println("Nome");
+                String nome;
+                nome = scan.nextLine();
+                System.out.println("CPF");
+                long cpf;
+                cpf = scan.nextLong();
+                System.out.println("Salário");
+                int salario;
+                salario = scan.nextInt();
+                System.out.println("Ocupação");
+                String ocupacao;
+                ocupacao = scan.nextLine();
+                System.out.println("Nome do setor que ele irá trabalhar");
+                String nomeSetor;
+                nomeSetor = scan.nextLine();
+                adicionarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
+            break;
+        }
     }
 
     private static void MenuExcluir(){
@@ -87,21 +86,19 @@ public class Main{
                             "|0.  Voltar                          |\n" +  
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                    System.out.println("CPF do funcionário a ser excluído");
-                    int cpf = scan.nextInt();
-                    removerFuncionario(cpf);
-                break;
-                case "2":
-                    System.out.println("Nome da coleção a ser removida");
-                    String nome = scan.nextLine();
-                    removerColecao(nome);
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        switch (opcao){
+            case "1":
+                System.out.println("CPF do funcionário a ser excluído");
+                int cpf = scan.nextInt();
+                removerFuncionario(cpf);
+            break;
+            case "2":
+                System.out.println("Nome da coleção a ser removida");
+                String nome = scan.nextLine();
+                removerColecao(nome);
+            break;
+        }
     }
 
     private static void MenuListar(){
@@ -113,20 +110,18 @@ public class Main{
                             "|0.  Voltar                          |\n" +  
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                    System.out.println(museu.listarFuncionarios());
-                break;
-                case "2":
-                    System.out.println(museu.listarVisitantes());
-                break;
-                case "3":
-                    System.out.println(museu.listarColecoes());
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        switch (opcao){
+            case "1":
+                System.out.println(museu.listarFuncionarios());
+            break;
+            case "2":
+                System.out.println(museu.listarVisitantes());
+            break;
+            case "3":
+                System.out.println(museu.listarColecoes());
+            break;
+        }
     }
 
     private static void MenuConsultar(){
@@ -139,35 +134,33 @@ public class Main{
                             "|0.  Voltar                          |\n" +  
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                    System.out.println("CPF do visitante");
-                    int CPFconsultaVisitante = scan.nextInt();
-                    scan.nextLine();
-                    consultarVisitante(CPFconsultaVisitante);
-                break;
-                case "2":
-                    System.out.println("Nome da coleção a ser consultado");
-                    String nomeColecao = scan.nextLine();
-                    consultarColecao(nomeColecao);
-                break;
-                case "3":
-                    System.out.println("Nome da peca a ser consultado:");
-                    String nomePeca = scan.nextLine();
-                    System.out.println("Nome da coleção onde a peça se encontra:");
-                    String nomeColecao_consultaObra = scan.nextLine();
-                    consultarPeca(nomePeca, nomeColecao_consultaObra);
-                break;
-                case"4":
-                    System.out.println("CPF do funcionario");
-                    int CPFconsultaFuncionario = scan.nextInt();
-                    scan.nextLine();
-                    consultarFuncionario(CPFconsultaFuncionario);
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        switch (opcao){
+            case "1":
+                System.out.println("CPF do visitante");
+                int CPFconsultaVisitante = scan.nextInt();
+                scan.nextLine();
+                consultarVisitante(CPFconsultaVisitante);
+            break;
+            case "2":
+                System.out.println("Nome da coleção a ser consultado");
+                String nomeColecao = scan.nextLine();
+                consultarColecao(nomeColecao);
+            break;
+            case "3":
+                System.out.println("Nome da peca a ser consultado:");
+                String nomePeca = scan.nextLine();
+                System.out.println("Nome da coleção onde a peça se encontra:");
+                String nomeColecao_consultaObra = scan.nextLine();
+                consultarPeca(nomePeca, nomeColecao_consultaObra);
+            break;
+            case"4":
+                System.out.println("CPF do funcionario");
+                long CPFconsultaFuncionario = scan.nextLong();
+                scan.nextLine();
+                consultarFuncionario(CPFconsultaFuncionario);
+            break;
+        }
     }
     
     private static void MenuGerarRelatorio(){
@@ -178,20 +171,18 @@ public class Main{
                             "|0.  Voltar                          |\n" +  
                             "|------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
-                    System.out.println("Ainda não implementado");
-                break;
-                case "2":
-                    System.out.println("Ainda não implementado");
-                break;
-            }
-        }while(!opcao.equals("0"));
+        opcao = scan.nextLine();
+        switch (opcao){
+            case "1":
+                System.out.println("Ainda não implementado");
+            break;
+            case "2":
+                System.out.println("Ainda não implementado");
+            break;
+        }
     }
 
-    private static void MenuAlterar() throws Exception {
+    private static void MenuAlterar(){
         System.out.println ("|----------------------------------------|\n" +
                             "|MENU ALTERAR:                           |\n" +
                             "|1.  Alterar visitante                   |\n" + 
@@ -202,36 +193,55 @@ public class Main{
                             "|0.  Voltar                              |\n" +  
                             "|----------------------------------------|\n" );
         String opcao;
-        do{
-            opcao = scan.nextLine();
-            switch (opcao){
-                case "1":
+        opcao = scan.nextLine();
+        switch (opcao){
+            case "1":
+                try{
                     MenuAlterarVisitante();
-                break;
-                case "2":
+                }
+                catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
+            break;
+            case "2":
+                try{
                     MenuAlterarColecao();
-                break;
-                case "3":
+                }
+                catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
+            break;
+            case "3":
+                try{
                     MenuAlterarFuncionario();
-                break;
-                case "4":
+                }
+                catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
+            break;
+            case "4":
+                try{
                     MenuAlterarPeca();
-                break;
-                case "5":
-                    String nome;
-                    System.out.println("Digite o nome do setor:");
-                    nome = scan.nextLine();
-                    Setor setorAlterado=museu.getSetor(nome);
-                    if(setorAlterado==null){
-                        System.out.println("Setor não existe!");
-                    }else{
-                        System.out.println("Digite o novo tipo de exibição:");
-                        String novo = scan.nextLine();
-                        setorAlterado.setTipoDeExibicao(novo);
-                    }
-                break;
-            }
-        }while(!opcao.equals("0"));
+                }
+                catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
+            break;
+            case "5":
+                String nome;
+                System.out.println("Digite o nome do setor:");
+                nome = scan.nextLine();
+                Setor setorAlterado=museu.getSetor(nome);
+                if(setorAlterado==null){
+                    System.out.println("Setor inválido!");
+                }
+                else{
+                    System.out.println("Digite o novo tipo de exibição:");
+                    String novo = scan.nextLine();
+                    setorAlterado.setTipoDeExibicao(novo);
+                }
+            break;
+        }
     }
 
     private static void MenuAlterarVisitante() throws Exception {
@@ -249,8 +259,7 @@ public class Main{
         Visitante visitante = museu.getVisitante(cpf);
         scan.nextLine();
         if(visitante == null){
-            System.out.println("Visitante não cadastrado!");
-            throw new Exception("Visitante não cadastrado");
+            throw new Exception("Visitante não cadastrado!");
         }
         switch (opcao){
             case "1":
@@ -286,8 +295,7 @@ public class Main{
         String nomeColecao = scan.nextLine();
         Colecao colecao = museu.getColecao(nomeColecao);
         if(colecao == null){
-            System.out.println("Coleção não cadastrado!");
-            throw new Exception("Coleção não cadastrado!");
+            throw new Exception("Coleção não cadastrada!");
         }
         switch (opcao){
             case "1":
@@ -306,15 +314,14 @@ public class Main{
                 colecao.setSetor(setor);
             break;
             case "3":
-                System.out.println("Digite 'retirar' para remover de exibição da coleção.
-                Senão, digite 'colocar' para colocar uma coleção em exibição.");
-                String opcao = scan.nextLine();
-                mudarEstadoColecao(colecao, opcao);
+                System.out.println("Digite 'retirar' para remover de exibição da coleção. Senão, digite 'colocar' para colocar uma coleção em exibição.");
+                String escolha = scan.nextLine();
+                mudarEstadoColecao(nomeColecao, escolha);
             break;
         }
     }
 
-    private static void MenuAlterarFuncionario(){
+    private static void MenuAlterarFuncionario() throws Exception {
         System.out.println ("|------------------------------------|\n" +
                             "|MENU ALTERAR FUNCIONÁRIO:           |\n" +
                             "|1.  Alterar nome                    |\n" + 
@@ -324,20 +331,43 @@ public class Main{
                             "|------------------------------------|\n" );
         String opcao;
         opcao = scan.nextLine();
+        System.out.println("Digite o CPF do funcionário:");
+        Long cpfFuncionario = scan.nextLong();
+        scan.nextLine();
+        Funcionario funcionario = museu.getFuncionario(cpfFuncionario);
+        if(funcionario == null){
+            throw new Exception("Funcionário não cadastrado!");
+        }
         switch (opcao){
             case "1":
-
+                System.out.println("Digite o novo nome do funcionário:");
+                String nome = scan.nextLine();
+                funcionario.setNome(nome);
             break;
             case "2":
+                System.out.println("Digite a nova ocupação do funcionário:");
+                String ocupacao = scan.nextLine();
+                funcionario.setOcupacao(ocupacao);
             break;
             case "3":
+                System.out.println("Digite o novo salário do funcionário:");
+                Float salario = scan.nextFloat();
+                scan.nextLine();
+                funcionario.setSalario(salario);
             break;
             case "4":
+                System.out.println("Digite alterar setor:");
+                String nomeSetor = scan.nextLine();
+                Setor setor = museu.getSetor(nomeSetor);
+                if(setor == null){
+                    throw new Exception("Setor inválido!");
+                }
+                funcionario.setTrabalhaEm(setor);
             break;
         }
     }
 
-    private static void MenuAlterarPeca(){
+    private static void MenuAlterarPeca() throws Exception {
         System.out.println ("|------------------------------------|\n" +
                             "|MENU ALTERAR PEÇA:                  |\n" +
                             "|1.  Alterar nome                    |\n" + 
@@ -346,12 +376,28 @@ public class Main{
                             "|------------------------------------|\n" );
         String opcao;
         opcao = scan.nextLine();
+        System.out.println("Digite o nome da coleção da peça:");
+        String nomeColecao = scan.nextLine();
+        Colecao colecao = museu.getColecao(nomeColecao);
+        if(colecao == null){
+            throw new Exception("Coleção inválida!");
+        }
+        System.out.println("Digite nome da peça:");
+        String nomePeca = scan.nextLine();
+        Peca peca = colecao.getPeca(nomePeca);
+        if(peca == null){
+            throw new Exception("Nome inválido!");
+        }
         switch (opcao){
             case "1":
+                System.out.println("Digite o novo nome da peça:");
+                String nome = scan.nextLine();
+                peca.setNomeObra(nome);
             break;
             case "2":
-            break;
-            case "3":
+                System.out.println("Digite o novo estado da peça:");
+                String estado = scan.nextLine();
+                peca.setEstado(estado);
             break;
         }
     }
@@ -452,11 +498,14 @@ public class Main{
                 museu.retirarDeExibicao(nomeColecao);
                 System.out.println("Coleção retirada de exposição");
             }
-            else{
+            else if("colocar".equals(opcao)){
                 System.out.println("Qual o setor no qual a coleção será exibida?");
                 String setor = scan.nextLine();
                 museu.colocarEmExibicao(nomeColecao,setor);
                 System.out.println("Coleção colocada em exposição");
+            }
+            else{
+                System.out.println("Opção inválida!");
             }
         }
     }
@@ -469,7 +518,8 @@ public class Main{
         System.out.println("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
     }
 
-    /** Testes já implementados */
+    /* Testes já implementados */
+    /* Setup do museu */
     private static void testarMuseu(){
         adicionarColecao("Astronomia atraves dos seculos");
         registrarPeca("Galileu", 1, 2, "Bom", "Astronomia atraves dos seculos");
@@ -498,7 +548,20 @@ public class Main{
         registrarPeca("Tanque de guerra", 15, 16, "Bom", "Leonardo da Vinci arte e invenções");
         registrarPeca("Criptex", 16, 17, "Bom", "Leonardo da Vinci arte e invenções");
         System.out.println(museu.listarColecoes());
-        
+
+        System.out.println("Cadastrando 10 funcionários");
+        museu.contratarFuncionario("Lucas", 10000000000l, 2234.4f, "guia", "Setor 1");
+        museu.contratarFuncionario("João Pedro", 99999999999l, 2343.4f, "guia", "Setor 2");
+        museu.contratarFuncionario("Eduardo", 88888888888l, 1222.4f, "guia", "Setor 3");
+        museu.contratarFuncionario("Igor", 77777777777l, 1233.6f, "guia", "Setor 1");
+        museu.contratarFuncionario("João", 66666666666l, 5555.5f, "guia", "Setor 2");
+        museu.contratarFuncionario("Cristina", 55555555555l, 12000.9f, "guia", "Setor 3");
+        museu.contratarFuncionario("Pedro", 44444444444l, 5000.6f, "guia", "Setor 1");
+        museu.contratarFuncionario("Glaucia", 33333333333l, 4000.5f, "guia", "Setor 2");
+        museu.contratarFuncionario("Julimara", 22222222222l, 3000.98f, "guia", "Setor 3");
+        museu.contratarFuncionario("Eder", 11111111111l, 4448.05f, "guia", "Setor 1");
+
+        System.out.println(museu.listarFuncionarios());
     }
 
     public static void main(String[] args) {
@@ -519,8 +582,11 @@ public class Main{
                 case "4":
                     MenuConsultar();
                 break;
-                case "5":
+                case "6":
                     MenuGerarRelatorio();
+                break;
+                case "5":
+                    MenuAlterar();
                 break;
                 case "-5":
                     testarMuseu();
