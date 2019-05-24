@@ -17,7 +17,7 @@ public class Main{
                             "|0.  Sair                            |\n" +
                             "|------------------------------------|\n" );
     }
-    private static void MenuRegistrar(){
+    private static void MenuRegistrar() throws Exception {
         System.out.println ("|------------------------------------|\n" +
                             "|MENU REGISTRAR:                     |\n" +
                             "|1.  Registrar visita                |\n" +
@@ -124,7 +124,7 @@ public class Main{
         }
     }
 
-    private static void MenuConsultar(){
+    private static void MenuConsultar() throws Exception {
         System.out.println ("|------------------------------------|\n" +
                             "|MENU CONSULTAR:                     |\n" +
                             "|1.  Consultar visitante             |\n" +
@@ -419,26 +419,24 @@ public class Main{
         Visita visita = new Visita(data, setoresVisitados);
         museu.registrarVisitante(nomeVisitante, cpf, visita);
     }
-    private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor){
+    private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor)
+            throws Exception {
         if(museu.getFuncionario(cpf) != null){
-            System.out.println("Funcionario já existe");
-        }else{
-            museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
-            System.out.println("Funcionario registrado!");
+            throw new Exception("Funcionario já existe");
         }
+        museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
+        System.out.println("Funcionario registrado!");
     }
     private static void registrarPeca(String nomeObra, int anoDeCriacao, int anoDeAquisicao, String estado, String colecao) {
         Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
         museu.registrarPeca(peca, colecao);
     }
-    private static void adicionarColecao(String nomeColecao){
+    private static void adicionarColecao(String nomeColecao) throws Exception {
         Colecao colecao = museu.getColecao(nomeColecao);
         if (colecao != null) {
-            System.out.println("Colecão já inserida");
+            throw new Exception("Colecão já inserida");
         }
-        else {
-            museu.registrarColecao(new Colecao(nomeColecao));
-        }
+        museu.registrarColecao(new Colecao(nomeColecao));
     }
 
     private static void removerFuncionario(long cpf){
@@ -457,41 +455,39 @@ public class Main{
             System.out.println("Coleção não registrada.");
         }
     }
-    private static void consultarVisitante(long CPFconsultaVisitante){
+    private static void consultarVisitante(long CPFconsultaVisitante) throws Exception {
         Visitante visitante;
         visitante = museu.getVisitante(CPFconsultaVisitante);
-        if(visitante != null){
-            System.out.println(visitante.toString());
+        if(visitante == null){
+            throw new Exception("Visitante não registrado.");
         }
-        else{
-            System.out.println("Visitante não registrado.");
-        }
+        System.out.println(visitante.toString());
     }
-    private static void consultarColecao(String nomeColecao){
+    private static void consultarColecao(String nomeColecao) throws Exception {
         Colecao colecao;
         colecao = museu.getColecao(nomeColecao);
-        if(colecao != null){
-            System.out.println(colecao.toString());
+        if(colecao == null){
+            throw new Exception("Coleção não registrada.");
         }
-        else{
-            System.out.println("Coleção não registrada.");
-        }
+        System.out.println(colecao.toString());
     }
-    private static void consultarFuncionario(long CPFfuncionario){
+    private static void consultarFuncionario(long CPFfuncionario) throws Exception {
         Funcionario funcionario;
         funcionario = museu.getFuncionario(CPFfuncionario);
-        if(funcionario != null){
-            System.out.println(funcionario.toString());
+        if(funcionario == null){
+            throw new Exception("Funcionario não registrado.");
         }
-        else{
-            System.out.println("Funcionario não registrado.");
-        }
+        System.out.println(funcionario.toString());
         
     }
 
-    private static void mudarEstadoColecao(String nomeColecao, String opcao){
+    private static void mudarEstadoColecao(String nomeColecao, String opcao) throws Exception {
         if(museu.getColecao(nomeColecao) == null){
-            System.out.println("Coleção não registrada.");
+            throw new Exception("Coleção não registrada.");
+        }
+        if("retirar".equals(opcao)){
+            museu.retirarDeExibicao(nomeColecao);
+            System.out.println("Coleção retirada de exposição");
         }
         else{
             if("retirar".equals(opcao)){
@@ -510,17 +506,17 @@ public class Main{
         }
     }
 
-    private static void consultarPeca(String nomePeca, String nomeColecao){
+    private static void consultarPeca(String nomePeca, String nomeColecao) throws Exception {
         Peca peca = museu.consultarPeca(nomePeca, nomeColecao);
-        if (peca != null) {
-            System.out.println(peca);
+        if (peca == null) {
+            throw new Exception("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
         }
-        System.out.println("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
+        System.out.println(peca);
     }
 
     /* Testes já implementados */
     /* Setup do museu */
-    private static void testarMuseu(){
+    private static void testarMuseu() throws Exception {
         adicionarColecao("Astronomia atraves dos seculos");
         registrarPeca("Galileu", 1, 2, "Bom", "Astronomia atraves dos seculos");
         registrarPeca("Descoberta de venus", 2, 3, "Ruim", "Astronomia atraves dos seculos");
@@ -564,32 +560,67 @@ public class Main{
         System.out.println(museu.listarFuncionarios());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String opcao;
         do{
             mainMenu();
             opcao = scan.nextLine();
             switch (opcao){
                 case "1":
-                    MenuRegistrar();
+                    try{
+                        MenuRegistrar();
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 break;
                 case "2":
-                    MenuExcluir();
+                    try{
+                        MenuExcluir();
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 break;
                 case "3":
-                    MenuListar();
+                    try{
+                        MenuListar();
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 break;
                 case "4":
-                    MenuConsultar();
+                    try{
+                        MenuConsultar();
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 break;
                 case "6":
-                    MenuGerarRelatorio();
+                    try{
+                        MenuGerarRelatorio();
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 break;
                 case "5":
-                    MenuAlterar();
+                    try{
+                        MenuAlterar();
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 break;
                 case "-5":
-                    testarMuseu();
+                    try{
+                        testarMuseu();
+                    }
+                    catch(Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 break;
             }
         }while(!opcao.equals("0"));
