@@ -554,7 +554,7 @@ public class Main{
         museu.contratarFuncionario("Cristina", 55555555555l, 12000.9f, "guia", "Setor 3");
         museu.contratarFuncionario("Pedro", 44444444444l, 5000.6f, "guia", "Setor 1");
         museu.contratarFuncionario("Glaucia", 33333333333l, 4000.5f, "guia", "Setor 2");
-        museu.contratarFuncionario("Julimara", 22222222222l, 3000.98f, "guia", "Setor 3");
+        museu.contratarFuncionario("Raquel", 22222222222l, 3000.98f, "guia", "Setor 3");
         museu.contratarFuncionario("Eder", 11111111111l, 4448.05f, "guia", "Setor 1");
 
         System.out.println(museu.listarFuncionarios());
