@@ -98,33 +98,20 @@ public class Museu{
         return false;
     }
     public boolean exibirColecao(String nomeSetor, String nomeColecao){
-        //Inseri este erro de forma proposital
-        //Verifiquem e simplifiquem este método com os métodos já existentes
-        Setor set = null
-        Colecao col = null
-        for (Setor setor : setores) {
-            if(nomeSetor.equals(setor.getNomeSetor())){
-                set = setor;
-            }
-        }
-        for (Colecao colecao : colecoes) {
-            if(nomeColecao.equals(colecao.getNome())){
-                col = colecao;
-            }
-        }
-        if(set != null && col != null){
-            if(col.isExposto()){
+        Setor setor = getSetor(nomeSetor);
+        Colecao colecao = getColecao(nomeColecao);
+        if(setor != null && colecao != null){
+            if(colecao.isExposto()){
                 System.out.println("Colecao já em exposicao");
                 return false;
             }
             else{
                 System.out.println("Sucesso!!!");
-                col.setExposto(true);
-                set.adicionarColecao(col);
+                colecao.setExposto(true);
+                setor.adicionarColecao(colecao);
                 return true;
             }
         }
-        System.out.println("Parâmetros inválidos");
         return false;
     }
     public String listarSetores(){
@@ -197,6 +184,7 @@ public class Museu{
         return null;
     }
 
+    /** Método o qual retorna os dados acerca de determinada peça, pertencente a determinada coleção */
     public Peca consultarPeca(String peca, String nomeColecao){
         Colecao colecao = getColecao(nomeColecao);
         if (colecao != null) {
@@ -205,12 +193,14 @@ public class Museu{
         return null;
     }
 
+    /** Método o qual retira de exibição a coleção fornecida */
     public boolean retirarDeExibicao(String nomeColecao){
         Colecao colecao = getColecao(nomeColecao);
         colecao.setExposto(false);
         return colecao.retirarExposto();
     }
 
+    /** Método o qual coloca determinada coleção em exibição em determinado setor */
     public boolean colocarEmExibicao(String nomeColecao,String nomeSetor){
         Colecao colecao = getColecao(nomeColecao);
         colecao.setExposto(true);
