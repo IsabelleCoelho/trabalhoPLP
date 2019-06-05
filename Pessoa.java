@@ -12,11 +12,6 @@ public class Pessoa {
     public long getCpf(){
         return cpf;
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    
     @Override
     public String toString() {
         return nome;

@@ -21,9 +21,6 @@ public class Peca {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    public void setNomeObra(String nomeObra) {
-        this.nomeObra = nomeObra;
-    }
     public int getAnoDeCriacao() {
         return anoDeCriacao;
     }
