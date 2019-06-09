@@ -31,4 +31,10 @@ public class Funcionario extends Pessoa {
     public void setOcupacao(String ocupacao) {
         this.ocupacao = ocupacao;
     }
+    @Override
+    public String toString(){
+        String out = "Funcionário " + super.getNome() + " de CPF " + super.getCpf()+
+        " trabalha como " + getOcupacao() + " no setor " + getTrabalhaEm() + ". Recebe " + getSalario();
+        return out;
+    }
 }
