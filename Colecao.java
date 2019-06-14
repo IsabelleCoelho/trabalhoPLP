@@ -11,6 +11,14 @@ public class Colecao{
         this.nome = nome;
         this.setor = null;
     }
+
+    public Colecao(String nome, Boolean exposto, Setor setor, ArrayList<Peca> pecas){
+        this.pecas = pecas;
+        this.exposto = exposto;
+        this.nome = nome;
+        this.setor = setor;
+    }
+
     public int getQuantidadeDePecas(){
         return pecas.size();
     }
@@ -25,9 +33,6 @@ public class Colecao{
     }
     public void setExposto(boolean exposto){
         this.exposto = exposto;
-    }
-    public void setNome(String nome){
-        this.nome = nome;
     }
     public boolean isExposto(){
         return exposto;
@@ -63,5 +68,13 @@ public class Colecao{
             }
         }
         return null;
+    }
+
+    public String toArchive(){
+        String out = nome + "\n" + exposto + "\n" + setor.getNomeSetor() + "\n";
+        for (Peca peca : pecas) {
+            out += peca.toArchive();
+        }
+        return out;
     }
 }

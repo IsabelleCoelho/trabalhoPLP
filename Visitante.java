@@ -22,8 +22,8 @@ public class Visitante extends Pessoa {
     public void setInteresse(String interesse) {
         this.interesse = interesse;
     }
-    public void setFaixaEtaria(String faixaEtaria) {
-        this.faixaEtaria = faixaEtaria;
+    public void setFaixaEtaria(String i) {
+        this.faixaEtaria = i;
     }
     public String getOrigem() {
         return origem;
@@ -46,6 +46,14 @@ public class Visitante extends Pessoa {
         out += " Visitou: \n";
         for (Visita visita : visitas) {
             out += visita.toString();
+        }
+        return out;
+    }
+
+    public String toArchive(){
+        String out = getNome() + "\n" + getCpf() + "\n" + origem + "\n" + interesse + "\n" + faixaEtaria + "\n";
+        for (Visita visita : visitas) {
+            out += visita.toArchive();
         }
         return out;
     }
