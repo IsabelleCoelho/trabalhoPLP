@@ -214,4 +214,3 @@ public class Museu{
         return setor.adicionarColecao(colecao);
     }
 }
-
