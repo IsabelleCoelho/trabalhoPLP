@@ -55,4 +55,7 @@ public class Setor {
         }
         return out;
     }
+    public String toArchive(){
+        return tipoDeExibicao + "\n" + nomeSetor + "\n";
+    }
 }

@@ -37,4 +37,7 @@ public class Funcionario extends Pessoa {
         " trabalha como " + getOcupacao() + " no setor " + getTrabalhaEm() + ". Recebe " + getSalario();
         return out;
     }
+    public String toArchive(){
+        return getNome() + "\n" + getCpf() + "\n" + salario + "\n" + ocupacao + "\n" + trabalhaEm.getNomeSetor() + "\n";
+    }
 }

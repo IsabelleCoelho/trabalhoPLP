@@ -16,6 +16,12 @@ public class Museu{
         setores.add(new Setor("Temporario", "Setor 2"));
         setores.add(new Setor("Temporario", "Setor 3"));
     }
+    public Museu(ArrayList<Visitante> visitantes, ArrayList<Funcionario> funcionarios, ArrayList<Setor> setores, ArrayList<Colecao> colecoes){
+        this.visitantes = visitantes;
+        this.funcionarios = funcionarios;
+        this.setores = setores;
+        this.colecoes = colecoes;
+    }
 
     public String gerarRelatorioPessoas(){
         return "";
@@ -86,7 +92,7 @@ public class Museu{
         Setor novoSetor = getSetor(nomeSetor);
         for (Funcionario funcionario : funcionarios) {
             if(funcionario.getCpf() == cpf){
-                System.out.println("CPF já cadastrado, erro");
+                System.out.println("CPF já cadastrado. Erro!");
                 return false;
             }
         }
@@ -94,7 +100,7 @@ public class Museu{
             funcionarios.add(new Funcionario(nome, cpf, salario, ocupacao, novoSetor));
             return true;
         }
-        System.out.println("Setor não cadastrado, erro na contratação");
+        System.out.println("Setor não cadastrado. Erro na contratação");
         return false;
     }
     public boolean exibirColecao(String nomeSetor, String nomeColecao){

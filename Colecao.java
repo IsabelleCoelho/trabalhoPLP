@@ -64,4 +64,11 @@ public class Colecao{
         }
         return null;
     }
+    public String toArchive(){
+        String out = nome + "\n" + exposto + "\n" + setor.getNomeSetor() + "\n";
+        for (Peca peca : pecas) {
+            out += peca.toArchive();
+        }
+        return out;
+    }
 }

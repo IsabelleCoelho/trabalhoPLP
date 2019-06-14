@@ -34,4 +34,7 @@ public class Peca {
     public String toString(){
         return "A peça " + nomeObra + " adquirida no ano " + anoDeAquisicao + " foi criada no ano " + anoDeCriacao;
     }
+    public String toArchive(){
+        return anoDeCriacao + "\n" + anoDeAquisicao + "\n" + nomeObra + "\n" + estado + "\n";
+    }
 }
