@@ -8,6 +8,13 @@ public class Data {
         this.mes = mes;
         this.ano = ano;
     }
+    public Data(String stringData){
+        String[] data = stringData.split("/");
+        this.dia = Integer.parseInt(data[0]);
+        this.mes = Integer.parseInt(data[1]);
+        this.ano = Integer.parseInt(data[2]);
+    }
+
     public void setData(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;

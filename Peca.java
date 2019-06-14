@@ -5,8 +5,7 @@ public class Peca {
     private String estado;
     
 
-    public Peca(String nomeObra, int anoDeCriacao, 
-                int anoDeAquisicao, String estado) {
+    public Peca(String nomeObra, int anoDeCriacao, int anoDeAquisicao, String estado) {
         this.nomeObra = nomeObra;
         this.anoDeCriacao = anoDeCriacao;
         this.anoDeAquisicao = anoDeAquisicao;
@@ -30,5 +29,9 @@ public class Peca {
     @Override
     public String toString(){
         return "A peça " + nomeObra + " adquirida no ano " + anoDeAquisicao + " foi criada no ano " + anoDeCriacao;
+    }
+
+    public String toArchive(){
+        return anoDeCriacao + "\n" + anoDeAquisicao + "\n" + nomeObra + "\n" + estado + "\n";
     }
 }

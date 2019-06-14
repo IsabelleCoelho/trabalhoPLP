@@ -17,6 +17,13 @@ public class Museu{
         setores.add(new Setor("Temporario", "Setor 3"));
     }
 
+    public Museu(ArrayList<Visitante> visitantes, ArrayList<Funcionario> funcionarios, ArrayList<Setor> setores, ArrayList<Colecao> colecoes){
+        this.visitantes = visitantes;
+        this.funcionarios = funcionarios;
+        this.setores = setores;
+        this.colecoes = colecoes;
+    }
+
     public String gerarRelatorioPessoas(){
         return "";
     }

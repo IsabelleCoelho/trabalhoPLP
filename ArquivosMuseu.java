@@ -92,11 +92,10 @@ public class ArquivosMuseu{
             for (int i = 0; i < qtdFuncionarios; i++) {
                 String nome = bufferLeitura.readLine();
                 long cpf = Long.getLong(bufferLeitura.readLine());
-                float salario = Float.getFloat(bufferLeitura.readLine());
+                float salario = Float.parseFloat(bufferLeitura.readLine());
                 String ocupacao = bufferLeitura.readLine();
                 Setor trabalhaEm = getSetor(bufferLeitura.readLine());
-                funcionarios.add(new Funcionario(nome, cpf, salario,
-                                 ocupacao, trabalhaEm));
+                funcionarios.add(new Funcionario(nome, cpf, salario, ocupacao, trabalhaEm));
             }
             bufferLeitura.close();
         }
@@ -115,18 +114,18 @@ public class ArquivosMuseu{
                 boolean exposto = Boolean.getBoolean(bufferLeitura.readLine());
                 Setor setor = getSetor(bufferLeitura.readLine());
 
-                ArrayList<Peca> pecas = new Peca();
+                ArrayList<Peca> pecas = new ArrayList<Peca>();
                 int qtdPecas = Integer.getInteger(bufferLeitura.readLine());
                 for (int j = 0; j < qtdPecas; i++) {
                     int anoDeCriacao = Integer.getInteger(bufferLeitura.readLine());
                     int anoDeAquisicao = Integer.getInteger(bufferLeitura.readLine());
                     String nomeObra = bufferLeitura.readLine();
                     String estado = bufferLeitura.readLine();
-                    pecas.add(new Peca(anoDeCriacao,
-                              anoDeAquisicao, nomeObra, estado));
+                    pecas.add(new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado));
                 }
-                colecoes.add(new Colecao(nome, exposto,
-                             setor, pecas));
+                Colecao colecao = new Colecao(nome, exposto, setor, pecas);
+                colecoes.add(colecao);
+                setor.adicionarColecao(colecao);
             }
             bufferLeitura.close();
         }
@@ -140,16 +139,16 @@ public class ArquivosMuseu{
         carregarVisitantes();
         carregarFuncionarios();
         carregarColecoes();
-        return new Museu(setores, visitantes, funcionarios, colecoes);
+        return new Museu(visitantes, funcionarios, setores, colecoes);
     }
 
-    private void salvarSetores(ArrayList setores) {
+    private void salvarSetores(ArrayList<Setor> setores) {
         try {
             FileWriter arqEscrita = new FileWriter(arqSetores);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
-            bufferEscrita.write(String.getString(setores.length));
-            for (Setor setor : setores) {
-                bufferEscrita.write(String.getString(setor));
+            bufferEscrita.write(String.valueOf(setores.size()));
+            for(Setor setor : setores) {
+                bufferEscrita.write(setor.toArchive());
             }
             bufferEscrita.close();
         }
@@ -158,13 +157,13 @@ public class ArquivosMuseu{
         }
     }
 
-    private void salvarVisitantes(ArrayList visitantes) {
+    private void salvarVisitantes(ArrayList<Visitante> visitantes) {
         try {
             FileWriter arqEscrita = new FileWriter(arqVisitante);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
-            bufferEscrita.write(String.getString(visitantes.length));
-            for (Setor visitante : visitantes) {
-                bufferEscrita.write(String.getString(visitante));
+            bufferEscrita.write(String.valueOf(visitantes.size()));
+            for (Visitante visitante : visitantes) {
+                bufferEscrita.write(visitante.toArchive());
             }
             bufferEscrita.close();
         }
@@ -173,13 +172,13 @@ public class ArquivosMuseu{
         }
     }
 
-    private void salvarFuncionarios(ArrayList funcionarios) {
+    private void salvarFuncionarios(ArrayList<Funcionario> funcionarios) {
         try {
             FileWriter arqEscrita = new FileWriter(arqFuncionario);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
-            bufferEscrita.write(String.getString(funcionarios.length));
-            for (Setor funcionario : funcionarios) {
-                bufferEscrita.write(String.getString(funcionario));
+            bufferEscrita.write(String.valueOf(funcionarios.size()));
+            for (Funcionario funcionario : funcionarios) {
+                bufferEscrita.write(funcionario.toArchive());
             }
             bufferEscrita.close();
         }
@@ -188,13 +187,13 @@ public class ArquivosMuseu{
         }
     }
 
-    private void salvarColecoes(ArrayList colecoes) {
+    private void salvarColecoes(ArrayList<Colecao> colecoes) {
         try {
             FileWriter arqEscrita = new FileWriter(arqColecaoPecas);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
-            bufferEscrita.write(String.getString(colecoes.length));
-            for (Setor colecao : colecoes) {
-                bufferEscrita.write(String.getString(colecao));
+            bufferEscrita.write(String.valueOf(colecoes.size()));
+            for (Colecao colecao : colecoes) {
+                bufferEscrita.write(colecao.toArchive());
             }
             bufferEscrita.close();
         }
@@ -203,8 +202,7 @@ public class ArquivosMuseu{
         }
     }
 
-    public void salvar(ArrayList setores, ArrayList visitantes,
-                       ArrayList funcionarios, ArrayList colecoes) {
+    public void salvar(ArrayList<Setor> setores, ArrayList<Visitante> visitantes, ArrayList<Funcionario> funcionarios, ArrayList<Colecao> colecoes) {
         salvarSetores(setores);
         salvarVisitantes(visitantes);
         salvarFuncionarios(funcionarios);
