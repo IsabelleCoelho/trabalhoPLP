@@ -33,26 +33,37 @@ public class Museu{
         return "";
     }
 
-    /** Método o qual registra um novo visitante */
+    public ArrayList<Visitante> getVisitantes() {
+        return visitantes;
+    }
+
+    public ArrayList<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public ArrayList<Setor> getSetores() {
+        return setores;
+    }
+
+    public ArrayList<Colecao> getColecoes() {
+        return colecoes;
+    }
+
     public void registrarVisitante(String nome, long cpf, Visita visita){
         Visitante visitante = getVisitante(cpf);
         if(visitante != null){
             visitante.adicionarVisita(visita);
         }
         else{
-            System.out.println("Usuário ainda não inserido. Deseja cadastrar interesse, origem e Idade? (s/n)");
             Visitante novo = new Visitante(nome, cpf);
             novo.adicionarVisita(visita);
             Scanner scan = new Scanner(System.in);
-            String check = scan.nextLine();
-            if(check.equals("s")){
-                System.out.println("Origem do Visitante: ");
-                novo.setOrigem(scan.nextLine());
-                System.out.println("Idade do visitante: ");
-                novo.setFaixaEtaria(scan.nextLine());
-                System.out.println("Interesse do visitante: ");
-                novo.setInteresse(scan.nextLine());
-            }
+            System.out.println("Origem do Visitante: ");
+            novo.setOrigem(scan.nextLine());
+            System.out.println("Idade do visitante: ");
+            novo.setFaixaEtaria(scan.nextLine());
+            System.out.println("Interesse do visitante: ");
+            novo.setInteresse(scan.nextLine());
             visitantes.add(novo);
             System.out.println(novo);
             System.out.println("Pressione 'ENTER' para finalizar a operação.");

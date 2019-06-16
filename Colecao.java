@@ -12,6 +12,14 @@ public class Colecao{
         this.setor = null;
     }
 
+    public Colecao(String nome, boolean exposto, Setor setor, ArrayList<Peca> pecas) {
+        this.nome = nome;
+        this.exposto = exposto;
+        this.setor = setor;
+        this.pecas = pecas;
+    }
+    
+
     /** getters e setters da classe */
     public int getQuantidadeDePecas(){
         return pecas.size();
@@ -89,7 +97,11 @@ public class Colecao{
 
     /** Método responsável por converter o tipo das variáveis para salvar no arquivo */
     public String toArchive(){
-        String out = nome + "\n" + exposto + "\n" + setor.getNomeSetor() + "\n";
+        String out = nome + "\n" + exposto + "\n";;
+        if (exposto) {
+            out += setor.getNomeSetor() + "\n";    
+        }
+        out += pecas.size() + "\n";
         for (Peca peca : pecas) {
             out += peca.toArchive();
         }

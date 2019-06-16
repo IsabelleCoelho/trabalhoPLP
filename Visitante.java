@@ -57,6 +57,7 @@ public class Visitante extends Pessoa {
     /** Método responsável por converter o tipo das variáveis para salvar no arquivo */
     public String toArchive(){
         String out = getNome() + "\n" + getCpf() + "\n" + origem + "\n" + interesse + "\n" + faixaEtaria + "\n";
+        out += visitas.size() + "\n";
         for (Visita visita : visitas) {
             out += visita.toArchive();
         }
