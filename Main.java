@@ -36,6 +36,7 @@ public class Main{
                 System.out.println("CPF do visitante a ser registrado:");
                 long cpfVisitante = scan.nextLong();
                 adicionarVisitante(nomeVisitante , cpfVisitante);
+                scan.nextLine();
             break;
             case "2":
                 System.out.println("Digite o nome da nova coleção");
@@ -60,20 +61,16 @@ public class Main{
             case "4":
                 System.out.println("Escreva os dados do usuario");
                 System.out.println("Nome");
-                String nome;
-                nome = scan.nextLine();
+                String nome = scan.nextLine();
                 System.out.println("CPF");
-                long cpf;
-                cpf = scan.nextLong();
+                long cpf = scan.nextLong();
                 System.out.println("Salário");
-                int salario;
-                salario = scan.nextInt();
+                int salario = scan.nextInt();
+                scan.nextLine();
                 System.out.println("Ocupação");
-                String ocupacao;
-                ocupacao = scan.nextLine();
+                String ocupacao = scan.nextLine();
                 System.out.println("Nome do setor que ele irá trabalhar");
-                String nomeSetor;
-                nomeSetor = scan.nextLine();
+                String nomeSetor = scan.nextLine();
                 adicionarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
             break;
         }
@@ -93,6 +90,7 @@ public class Main{
                 System.out.println("CPF do funcionário a ser excluído");
                 Long cpf = scan.nextLong();
                 removerFuncionario(cpf);
+                scan.nextLine();
             break;
             case "2":
                 System.out.println("Nome da coleção a ser removida");
@@ -140,6 +138,10 @@ public class Main{
             case "1":
                 System.out.println("CPF do visitante");
                 Long CPFconsultaVisitante = scan.nextLong();
+<<<<<<< HEAD
+=======
+                scan.nextLine();
+>>>>>>> 75b9a227f756ee4e21e2175f7a5909653d80ab03
                 consultarVisitante(CPFconsultaVisitante);
             break;
             case "2":
@@ -402,28 +404,30 @@ public class Main{
     
     private static void adicionarVisitante(String nomeVisitante, long cpf){
         System.out.println("Quais setores " + nomeVisitante + " visitou?");
-        System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
+        System.out.println("Setores diponíveis do museu:");
         System.out.println(museu.listarSetores());
+        System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
         ArrayList<Setor> setoresVisitados = new ArrayList<Setor>();
-        String read = "-1";
+        String read = "0";
         Setor setor;
-        do {
+        while(!read.equals("-1")){
             read = scan.nextLine();
             setor = museu.getSetor(read);
             if(setor != null){
                 setoresVisitados.add(setor);
             }
-        } while (!read.equals("-1"));
+        } 
         Visita visita = new Visita(data, setoresVisitados);
         museu.registrarVisitante(nomeVisitante, cpf, visita);
     }
     private static void adicionarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor)
             throws Exception {
         if(museu.getFuncionario(cpf) != null){
-            throw new Exception("Funcionario já existe");
+            throw new Exception("Funcionario já existe.");
         }
-        museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
-        System.out.println("Funcionario registrado!");
+        if(museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor)){
+            System.out.println("Funcionario registrado!");
+        }
     }
     private static void registrarPeca(String nomeObra, int anoDeCriacao, int anoDeAquisicao, String estado, String colecao) {
         Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
@@ -432,7 +436,7 @@ public class Main{
     private static void adicionarColecao(String nomeColecao) throws Exception {
         Colecao colecao = museu.getColecao(nomeColecao);
         if (colecao != null) {
-            throw new Exception("Colecão já inserida");
+            throw new Exception("Colecão já inserida!");
         }
         museu.registrarColecao(new Colecao(nomeColecao));
     }
@@ -447,7 +451,7 @@ public class Main{
     }
     private static void removerColecao(String nome){
         if (museu.excluirColecao(nome)){
-            System.out.println("Coleção removido com sucesso!");
+            System.out.println("Coleção removida com sucesso!");
         }
         else{
             System.out.println("Coleção não registrada.");
@@ -485,18 +489,18 @@ public class Main{
         }
         if("retirar".equals(opcao)){
             museu.retirarDeExibicao(nomeColecao);
-            System.out.println("Coleção retirada de exposição");
+            System.out.println("Coleção retirada de exposição.");
         }
         else{
             if("retirar".equals(opcao)){
                 museu.retirarDeExibicao(nomeColecao);
-                System.out.println("Coleção retirada de exposição");
+                System.out.println("Coleção retirada de exposição.");
             }
             else if("colocar".equals(opcao)){
                 System.out.println("Qual o setor no qual a coleção será exibida?");
                 String setor = scan.nextLine();
                 museu.colocarEmExibicao(nomeColecao,setor);
-                System.out.println("Coleção colocada em exposição");
+                System.out.println("Coleção colocada em exposição.");
             }
             else{
                 System.out.println("Opção inválida!");
@@ -507,7 +511,7 @@ public class Main{
     private static void consultarPeca(String nomePeca, String nomeColecao) throws Exception {
         Peca peca = museu.consultarPeca(nomePeca, nomeColecao);
         if (peca == null) {
-            throw new Exception("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas");
+            throw new Exception("Combinação de chaves inválida, por favor consulte a listagem de coleções e pecas.");
         }
         System.out.println(peca);
     }

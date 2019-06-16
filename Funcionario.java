@@ -34,7 +34,7 @@ public class Funcionario extends Pessoa {
     @Override
     public String toString(){
         String out = "Funcionário " + super.getNome() + " de CPF " + super.getCpf()+
-        " trabalha como " + getOcupacao() + " no setor " + getTrabalhaEm() + ". Recebe " + getSalario();
+        " trabalha como " + getOcupacao() + " no " + getTrabalhaEm() + ". Recebe " + getSalario();
         return out;
     }
     public String toArchive(){
