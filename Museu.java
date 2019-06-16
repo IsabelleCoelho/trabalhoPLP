@@ -6,6 +6,7 @@ public class Museu{
     private ArrayList<Setor> setores;
     private ArrayList<Colecao> colecoes;
 
+    /** Método de criação de museu default */
     public Museu(){
         visitantes = new ArrayList<Visitante>();
         funcionarios = new ArrayList<Funcionario>();
@@ -16,6 +17,7 @@ public class Museu{
         setores.add(new Setor("Temporario", "Setor 2"));
         setores.add(new Setor("Temporario", "Setor 3"));
     }
+    /** Método de criação do museu com base no arquivo*/
     public Museu(ArrayList<Visitante> visitantes, ArrayList<Funcionario> funcionarios, ArrayList<Setor> setores, ArrayList<Colecao> colecoes){
         this.visitantes = visitantes;
         this.funcionarios = funcionarios;
@@ -31,6 +33,7 @@ public class Museu{
         return "";
     }
 
+    /** Método o qual registra um novo visitante */
     public void registrarVisitante(String nome, long cpf, Visita visita){
         Visitante visitante = getVisitante(cpf);
         if(visitante != null){
@@ -55,6 +58,8 @@ public class Museu{
             System.out.println("Pressione 'ENTER' para finalizar a operação.");
         }
     }
+
+    /** Método o qual registra uma nova coleção */
     public boolean registrarColecao(Colecao colecao){
         boolean inserido = false;
         for (Colecao col : colecoes) {
@@ -73,6 +78,8 @@ public class Museu{
         System.out.println("#debug possível erro de lógica");
         return false; //Nunca chegará neste return
     }
+
+    /** Método o qual, a partir de um nome, retorna um setor  */
     public Setor getSetor(String nomeSetor){
         for (Setor setor : setores) {
             if(nomeSetor.equals(setor.getNomeSetor())){
@@ -81,6 +88,8 @@ public class Museu{
         }
         return null;
     }
+
+    /** Método o qual, a partir de um CPF, retorna um funcionário */
     public Funcionario getFuncionario(long cpf){
         for (Funcionario funcionario : funcionarios) {
             if(cpf == funcionario.getCpf()){
@@ -89,6 +98,8 @@ public class Museu{
         }
         return null;
     }
+
+    /** Método o qual registra um funcionário */
     public boolean contratarFuncionario(String nome, long cpf, float salario, String ocupacao, String nomeSetor){
         Setor novoSetor = getSetor(nomeSetor);
         for (Funcionario funcionario : funcionarios) {
@@ -104,6 +115,8 @@ public class Museu{
         System.out.println("Setor não cadastrado. Erro na contratação.");
         return false;
     }
+
+    /** Método o qual coloca uma coleção em exibição em determinado setor */
     public boolean exibirColecao(String nomeSetor, String nomeColecao){
         Setor setor = getSetor(nomeSetor);
         Colecao colecao = getColecao(nomeColecao);
@@ -121,6 +134,8 @@ public class Museu{
         }
         return false;
     }
+
+    /** Método o qual lista todos os setores registrados */
     public String listarSetores(){
         String out = "";
         for (Setor setor : setores) {
@@ -128,6 +143,8 @@ public class Museu{
         }
         return out;
     }
+
+    /** Método o qual, a partir de um nome, retorna a coleção correspondente */
     public Colecao getColecao(String nomeColecao){
         for (Colecao colecao : colecoes) {
             if(colecao.getNome().equals(nomeColecao)){
@@ -136,6 +153,8 @@ public class Museu{
         }
         return null;
     }
+
+    /** Método o qual insere uma peça em determinada coleção  */
     public boolean registrarPeca(Peca peca, String nomeColecao){
         Colecao colecao = getColecao(nomeColecao);
         if(colecao != null){
@@ -144,6 +163,8 @@ public class Museu{
         System.out.println("Colecao não existe.");
         return false;
     }
+
+    /** Método o qual, a partir de um CPF, exclui um funcionário */
     public boolean excluirFuncionario(long cpf){
         Funcionario funcionario = getFuncionario(cpf);
         if(funcionario != null){
@@ -151,7 +172,8 @@ public class Museu{
         }
         return false;
     }
-    
+
+    /** Método o qual, a partir de um nome, remove uma coleção */
     public boolean excluirColecao(String nome){
         Colecao colecao = getColecao(nome);
         if(colecao != null){
@@ -159,6 +181,8 @@ public class Museu{
         }
         return false;
     }
+
+    /** Método o qual lista todos os visitantes cadatrados */
     public String listarVisitantes(){
         String out = "";
         for (Visitante visitante : visitantes) {
@@ -167,6 +191,7 @@ public class Museu{
         return out;
     }
 
+    /** Método o qual lista todos os funcionáriios registrados */
     public String listarFuncionarios(){
         String out = "";
         for (Funcionario funcionario : funcionarios) {
@@ -175,6 +200,7 @@ public class Museu{
         return out;
     }
 
+    /** Método o qual lista todas as coleções registradas */
     public String listarColecoes(){
         String out = "";
         for (Colecao colecao : colecoes) {
@@ -183,6 +209,7 @@ public class Museu{
         return out;
     }
 
+    /** Método o qual, a partir de um CPF fornecido, retorna um visitante correspondente */
     public Visitante getVisitante(long CPFconsultaVisitante){
         for(Visitante visitante : visitantes){
             if(visitante.getCpf() == CPFconsultaVisitante){
@@ -208,7 +235,7 @@ public class Museu{
         return colecao.retirarExposto();
     }
 
-    /** Método o qual coloca determinada coleção em exibição em determinado setor */
+    /** Método o qual coloca uma coleção em exibição em determinado setor */
     public boolean colocarEmExibicao(String nomeColecao,String nomeSetor){
         Colecao colecao = getColecao(nomeColecao);
         colecao.setExposto(true);
