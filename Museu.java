@@ -64,19 +64,15 @@ public class Museu{
             visitante.adicionarVisita(visita);
         }
         else{
-            System.out.println("Usuário ainda não inserido. Deseja cadastrar interesse, origem e Idade? (s/n)");
             Visitante novo = new Visitante(nome, cpf);
             novo.adicionarVisita(visita);
             Scanner scan = new Scanner(System.in);
-            String check = scan.nextLine();
-            if(check.equals("s")){
-                System.out.println("Origem do Visitante: ");
-                novo.setOrigem(scan.nextLine());
-                System.out.println("Idade do visitante: ");
-                novo.setFaixaEtaria(scan.nextLine());
-                System.out.println("Interesse do visitante: ");
-                novo.setInteresse(scan.nextLine());
-            }
+            System.out.println("Origem do Visitante: ");
+            novo.setOrigem(scan.nextLine());
+            System.out.println("Idade do visitante: ");
+            novo.setFaixaEtaria(scan.nextLine());
+            System.out.println("Interesse do visitante: ");
+            novo.setInteresse(scan.nextLine());
             visitantes.add(novo);
             System.out.println(novo);
             System.out.println("Pressione 'ENTER' para finalizar a operação.");

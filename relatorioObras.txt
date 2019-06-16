@@ -1,0 +1,10 @@
+-------Relatorio das Colecoes e Obras-------
+Nome da coleção: Colecao
+Não está em um setor
+Com: 1 obras
+Nome da obra: peca
+Está em estado: Bom
+Foi criado em: 2000
+Foi adquirido em: 2018
+---
+------

@@ -9,6 +9,7 @@ public class Data {
         this.ano = ano;
     }
 
+    /** getters e setters da classe */
     public Data(String data){
         String[] dataAux = data.split("/");
         dia = Integer.parseInt(dataAux[0]);
@@ -31,6 +32,7 @@ public class Data {
         return this.ano;
     }
 
+    /** Método responsável por converter o tipo das variáveis para mostra-las na tela */
     @Override
     public String toString(){
         return getDia() + "/" + getMes() + "/" + getAno();

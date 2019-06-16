@@ -11,6 +11,7 @@ public class Colecao{
         this.nome = nome;
         this.setor = null;
     }
+
     public Colecao(String nome, boolean exposto, Setor setor, ArrayList<Peca> pecas) {
         this.nome = nome;
         this.exposto = exposto;
@@ -18,6 +19,8 @@ public class Colecao{
         this.pecas = pecas;
     }
     
+
+    /** getters e setters da classe */
     public int getQuantidadeDePecas(){
         return pecas.size();
     }
@@ -33,34 +36,9 @@ public class Colecao{
     public void setExposto(boolean exposto){
         this.exposto = exposto;
     }
+
     public void setNome(String nome){
         this.nome = nome;
-    }
-    public boolean isExposto(){
-        return exposto;
-    }
-    public boolean retirarExposto(){
-        return this.exposto = false;
-    }
-    public boolean adicionarPeca(Peca umaPeca){
-        return pecas.add(umaPeca);
-    }
-    public boolean removerPeca(String nomeObra){
-        for (Peca peca : pecas) {
-            if(peca.getNomeObra().equals(nomeObra)){
-                pecas.remove(peca);
-                return true;
-            }
-        }
-        return false;
-    }
-    @Override
-    public String toString(){
-        String out = "Peças da Coleção " + nome + ":\n" ;
-        for(Peca peca : pecas){
-            out += peca.getNomeObra() + "\n";
-        } 
-        return out;
     }
 
     public Peca getPeca(String nomePeca){
@@ -71,6 +49,53 @@ public class Colecao{
         }
         return null;
     }
+
+    /** Método responsável por retornar se a peça está exposta ou não */
+    public boolean isExposto(){
+        return exposto;
+    }
+
+    /** Método reponsável por retirar uma peça de exposição */
+    public boolean retirarExposto(){
+        return this.exposto = false;
+    }
+
+    /** Método responsável por adicionar uma nova peça */
+    public boolean adicionarPeca(Peca umaPeca){
+        return pecas.add(umaPeca);
+    }
+
+    /** Método responsável por remover uma paça, utilizando como base um nome */
+    public boolean removerPeca(String nomeObra){
+        for (Peca peca : pecas) {
+            if(peca.getNomeObra().equals(nomeObra)){
+                pecas.remove(peca);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Método responsável por converter o tipo das variáveis para mostra-las na tela */
+    @Override
+    public String toString(){
+        System.out.println("Estado da coleção: ");
+        if (exposto == false) {
+            System.out.println("Não exposta.");
+        }
+        else{
+            System.out.println("Exposta.");
+        }
+        String out = "Peças da Coleção " + nome + ":\n" ;
+        for(Peca peca : pecas){
+            out += peca.getNomeObra() + "\n";
+        } 
+        return out;
+    }
+
+
+
+    /** Método responsável por converter o tipo das variáveis para salvar no arquivo */
     public String toArchive(){
         String out = nome + "\n" + exposto + "\n";;
         if (exposto) {
@@ -90,10 +115,11 @@ public class Colecao{
         } else {
             out += "Não está em um setor" + "\n";
         }
-        out += "Com: " + pecas.size() + "obras" + "\n";
+        out += "Com: " + pecas.size() + " obras" + "\n";
         for (Peca peca : pecas) {
             out += peca.toForm();
         }
+        out += "------" + "\n";
         return out;
     }
 }

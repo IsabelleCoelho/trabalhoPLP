@@ -71,7 +71,7 @@ public class ArquivosMuseu{
                     String nomeSetores = bufferLeitura.readLine();
                     String[] setores = nomeSetores.split(" % ");
                     for (int j = 0; j < setores.length; j++) {
-                        setoresList.add(getSetor(setores[i]));
+                        setoresList.add(getSetor(setores[j]));
                     }
                     Data data = new Data(bufferLeitura.readLine());
                     visitante.adicionarVisita(new Visita(data, setoresList));
@@ -176,7 +176,6 @@ public class ArquivosMuseu{
             bufferEscrita.newLine();
             for (Visitante visitante : visitantes) {
                 bufferEscrita.write(visitante.toArchive());
-                System.out.println(visitante);
             }
             bufferEscrita.close();
             arqEscrita.close();

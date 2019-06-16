@@ -268,6 +268,10 @@ public class Main{
                             "|------------------------------------|\n" );
         String opcao;
         opcao = scan.nextLine();
+        if (opcao.equals("0")) {
+            MenuAlterar();
+            return;
+        }
         System.out.println("Digite o CPF do visitante:");
         Long cpf = scan.nextLong();
         Visitante visitante = museu.getVisitante(cpf);
@@ -305,6 +309,10 @@ public class Main{
                             "|------------------------------------|\n" );
         String opcao;
         opcao = scan.nextLine();
+        if (opcao.equals("0")) {
+            MenuAlterar();
+            return;
+        }
         System.out.println("Digite o nome atual da coleção:");
         String nomeColecao = scan.nextLine();
         Colecao colecao = museu.getColecao(nomeColecao);
@@ -342,9 +350,14 @@ public class Main{
                             "|2.  Alterar ocupação                |\n" +
                             "|3.  Alterar salário                 |\n" +
                             "|4.  Alterar setor                   |\n" +
+                            "|0.  Voltar                          |\n" +
                             "|------------------------------------|\n" );
         String opcao;
         opcao = scan.nextLine();
+        if (opcao.equals("0")) {
+            MenuAlterar();
+            return;
+        }
         System.out.println("Digite o CPF do funcionário:");
         Long cpfFuncionario = scan.nextLong();
         Funcionario funcionario = museu.getFuncionario(cpfFuncionario);
@@ -369,7 +382,7 @@ public class Main{
                 funcionario.setSalario(salario);
             break;
             case "4":
-                System.out.println("Digite alterar setor:");
+                System.out.println("Digite o novo nome do setor:");
                 String nomeSetor = scan.nextLine();
                 Setor setor = museu.getSetor(nomeSetor);
                 if(setor == null){
@@ -389,6 +402,10 @@ public class Main{
                             "|------------------------------------|\n" );
         String opcao;
         opcao = scan.nextLine();
+        if (opcao.equals("0")) {
+            MenuAlterar();
+            return;
+        }
         System.out.println("Digite o nome da coleção da peça:");
         String nomeColecao = scan.nextLine();
         Colecao colecao = museu.getColecao(nomeColecao);

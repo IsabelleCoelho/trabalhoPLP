@@ -8,7 +8,8 @@ public class Visita {
         this.dataVisitacao = dataVisitacao;
         this.listaSetores = listaSetoresVisitados;
     }
-    
+
+    /** Método responsável por converter o tipo das variáveis para mostra-las na tela */
     @Override
     public String toString() {
         String out = "Visita do dia: " + dataVisitacao.toString();
@@ -17,13 +18,15 @@ public class Visita {
         }
         return out;
     }
+
+    /** Método responsável por converter o tipo das variáveis para salvar no arquivo */
     public String toArchive(){
         String out = "";
         for (int i = 0; i < (listaSetores.size()-1); i++) {
             out += listaSetores.get(i).getNomeSetor() + " % ";
         }
         out += listaSetores.get(listaSetores.size()-1).getNomeSetor() + "\n";
-        out += dataVisitacao.toString();
+        out += dataVisitacao.toString() + "\n";
         return out;
     }
     public String toForm(){
