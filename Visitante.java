@@ -12,10 +12,8 @@ public class Visitante extends Pessoa {
         this.faixaEtaria = null;
         this.visitas = new ArrayList<Visita>();
     }
-    public void adicionarVisita(Visita visita){
-        visitas.add(visita);
-    }
 
+    /** getters e setters da classe */
     public void setOrigem(String origem) {
         this.origem = origem;
     }
@@ -35,6 +33,12 @@ public class Visitante extends Pessoa {
         return faixaEtaria;
     }
 
+    /** Método responsável por adicionar uma nova visita */
+    public void adicionarVisita(Visita visita){
+        visitas.add(visita);
+    }
+
+    /** Método responsável por converter o tipo das variáveis para mostra-las na tela */
     @Override
     public String toString(){
         String out = "Visitante " + super.getNome() + " de CPF " + super.getCpf();
@@ -49,6 +53,8 @@ public class Visitante extends Pessoa {
         }
         return out;
     }
+
+    /** Método responsável por converter o tipo das variáveis para salvar no arquivo */
     public String toArchive(){
         String out = getNome() + "\n" + getCpf() + "\n" + origem + "\n" + interesse + "\n" + faixaEtaria + "\n";
         for (Visita visita : visitas) {

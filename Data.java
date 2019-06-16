@@ -8,6 +8,8 @@ public class Data {
         this.mes = mes;
         this.ano = ano;
     }
+
+    /** getters e setters da classe */
     public void setData(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
@@ -23,6 +25,7 @@ public class Data {
         return this.ano;
     }
 
+    /** Método responsável por converter o tipo das variáveis para mostra-las na tela */
     @Override
     public String toString(){
         return getDia() + "/" + getMes() + "/" + getAno();
