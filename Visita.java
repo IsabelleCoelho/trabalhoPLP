@@ -23,7 +23,7 @@ public class Visita {
             out += listaSetores.get(i).getNomeSetor() + " % ";
         }
         out += listaSetores.get(listaSetores.size()-1).getNomeSetor() + "\n";
-        out += dataVisitacao.toString();
+        out += dataVisitacao.toString() + "\n";
         return out;
     }
 }
