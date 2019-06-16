@@ -406,15 +406,15 @@ public class Main{
         System.out.println(museu.listarSetores());
         System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
         ArrayList<Setor> setoresVisitados = new ArrayList<Setor>();
-        String read = "-1";
+        String read = "0";
         Setor setor;
-        do {
+        while(!read.equals("-1")){
             read = scan.nextLine();
             setor = museu.getSetor(read);
             if(setor != null){
                 setoresVisitados.add(setor);
             }
-        } while (!read.equals("-1"));
+        } 
         Visita visita = new Visita(data, setoresVisitados);
         museu.registrarVisitante(nomeVisitante, cpf, visita);
     }
