@@ -51,6 +51,7 @@ public class Visitante extends Pessoa {
     }
     public String toArchive(){
         String out = getNome() + "\n" + getCpf() + "\n" + origem + "\n" + interesse + "\n" + faixaEtaria + "\n";
+        out += visitas.size() + "\n";
         for (Visita visita : visitas) {
             out += visita.toArchive();
         }

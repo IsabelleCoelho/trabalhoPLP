@@ -31,6 +31,22 @@ public class Museu{
         return "";
     }
 
+    public ArrayList<Visitante> getVisitantes() {
+        return visitantes;
+    }
+
+    public ArrayList<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public ArrayList<Setor> getSetores() {
+        return setores;
+    }
+
+    public ArrayList<Colecao> getColecoes() {
+        return colecoes;
+    }
+
     public void registrarVisitante(String nome, long cpf, Visita visita){
         Visitante visitante = getVisitante(cpf);
         if(visitante != null){
@@ -49,7 +65,6 @@ public class Museu{
                 novo.setFaixaEtaria(scan.nextLine());
                 System.out.println("Interesse do visitante");
                 novo.setInteresse(scan.nextLine());
-                scan.nextLine();
             }
             visitantes.add(novo);
             System.out.println(novo);

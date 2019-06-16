@@ -1,7 +1,8 @@
 import java.util.*;
+import java.io.*;
 
 public class Main{
-    private static Museu museu = new Museu();
+    private static Museu museu;
     private static Scanner scan = new Scanner(System.in);
     private static Data data = new Data(12, 5, 2019);
 
@@ -90,7 +91,7 @@ public class Main{
         switch (opcao){
             case "1":
                 System.out.println("CPF do funcionário a ser excluído");
-                int cpf = scan.nextInt();
+                Long cpf = scan.nextLong();
                 removerFuncionario(cpf);
             break;
             case "2":
@@ -138,8 +139,7 @@ public class Main{
         switch (opcao){
             case "1":
                 System.out.println("CPF do visitante");
-                int CPFconsultaVisitante = scan.nextInt();
-                scan.nextLine();
+                Long CPFconsultaVisitante = scan.nextLong();
                 consultarVisitante(CPFconsultaVisitante);
             break;
             case "2":
@@ -156,8 +156,7 @@ public class Main{
             break;
             case"4":
                 System.out.println("CPF do funcionario");
-                long CPFconsultaFuncionario = scan.nextLong();
-                scan.nextLine();
+                Long CPFconsultaFuncionario = scan.nextLong();
                 consultarFuncionario(CPFconsultaFuncionario);
             break;
         }
@@ -333,7 +332,6 @@ public class Main{
         opcao = scan.nextLine();
         System.out.println("Digite o CPF do funcionário:");
         Long cpfFuncionario = scan.nextLong();
-        scan.nextLine();
         Funcionario funcionario = museu.getFuncionario(cpfFuncionario);
         if(funcionario == null){
             throw new Exception("Funcionário não cadastrado!");
@@ -561,7 +559,14 @@ public class Main{
     }
 
     public static void main(String[] args) throws Exception {
-        String opcao;
+        File arqEntrada = new File("visitantes.txt");
+        ArquivosMuseu arquivo = new ArquivosMuseu();
+        if (arqEntrada.exists()) {
+            museu = arquivo.caregar();
+        } else {
+            museu = new Museu();
+        }
+            String opcao;
         do{
             mainMenu();
             opcao = scan.nextLine();
@@ -624,5 +629,6 @@ public class Main{
                 break;
             }
         }while(!opcao.equals("0"));
+        arquivo.salvar(museu.getSetores(), museu.getVisitantes(), museu.getFuncionarios(), museu.getColecoes());
     }
 }

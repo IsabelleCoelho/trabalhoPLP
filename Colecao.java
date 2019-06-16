@@ -11,6 +11,13 @@ public class Colecao{
         this.nome = nome;
         this.setor = null;
     }
+    public Colecao(String nome, boolean exposto, Setor setor, ArrayList<Peca> pecas) {
+        this.nome = nome;
+        this.exposto = exposto;
+        this.setor = setor;
+        this.pecas = pecas;
+    }
+    
     public int getQuantidadeDePecas(){
         return pecas.size();
     }
@@ -66,6 +73,7 @@ public class Colecao{
     }
     public String toArchive(){
         String out = nome + "\n" + exposto + "\n" + setor.getNomeSetor() + "\n";
+        out += pecas.size() + "\n";
         for (Peca peca : pecas) {
             out += peca.toArchive();
         }

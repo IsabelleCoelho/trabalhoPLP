@@ -38,12 +38,17 @@ public class ArquivosMuseu{
             FileReader arqLeitura = new FileReader(arqSetores);
             BufferedReader bufferLeitura = new BufferedReader(arqLeitura);
             int qtdSetores = Integer.getInteger(bufferLeitura.readLine());
+            System.out.print("Carregado qtdSetores: ");
+            System.out.println(qtdSetores);
             for (int i = 0; i < qtdSetores; i++) {
                 String tipoDeExibicao = bufferLeitura.readLine();
                 String nomeSetor = bufferLeitura.readLine();
+                String debug = "Carregando: " + tipoDeExibicao + "nomeSetor: " + nomeSetor + "\n";
+                System.out.print(debug);
                 setores.add(new Setor(tipoDeExibicao, nomeSetor));
             }
             bufferLeitura.close();
+            arqLeitura.close();
         }
         catch(Exception e) {
             System.err.println(e.getMessage());
@@ -72,12 +77,15 @@ public class ArquivosMuseu{
                     for (int j = 0; j < setores.length; j++) {
                         setoresList.add(getSetor(setores[i]));
                     }
-                    Data data = new Data(bufferLeitura.readLine());
+                    String bufferData = bufferLeitura.readLine();
+                    String[] aux = bufferData.split("/");
+                    Data data = new Data(Integer.getInteger(aux[0]), Integer.getInteger(aux[1]), Integer.getInteger(aux[2]));
                     visitante.adicionarVisita(new Visita(data, setoresList));
                 }
                 visitantes.add(visitante);
             }
             bufferLeitura.close();
+            arqLeitura.close();
         }
         catch(Exception e){
             System.err.println(e.getMessage());
@@ -98,6 +106,7 @@ public class ArquivosMuseu{
                 funcionarios.add(new Funcionario(nome, cpf, salario, ocupacao, trabalhaEm));
             }
             bufferLeitura.close();
+            arqLeitura.close();
         }
         catch(Exception e) {
             System.err.println(e.getMessage());
@@ -128,6 +137,7 @@ public class ArquivosMuseu{
                 setor.adicionarColecao(colecao);
             }
             bufferLeitura.close();
+            arqLeitura.close();
         }
         catch(Exception e) {
             System.err.println(e.getMessage());
@@ -147,10 +157,12 @@ public class ArquivosMuseu{
             FileWriter arqEscrita = new FileWriter(arqSetores);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
             bufferEscrita.write(String.valueOf(setores.size()));
+            bufferEscrita.newLine();
             for(Setor setor : setores) {
                 bufferEscrita.write(setor.toArchive());
             }
             bufferEscrita.close();
+            arqEscrita.close();
         }
         catch(Exception e) {
             System.err.println(e.getMessage());
@@ -161,11 +173,16 @@ public class ArquivosMuseu{
         try {
             FileWriter arqEscrita = new FileWriter(arqVisitante);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
+            System.out.print(visitantes.size());
             bufferEscrita.write(String.valueOf(visitantes.size()));
+            bufferEscrita.newLine();
+            System.out.println("a");
             for (Visitante visitante : visitantes) {
+                System.out.println("b");
                 bufferEscrita.write(visitante.toArchive());
             }
             bufferEscrita.close();
+            arqEscrita.close();
         }
         catch(Exception e) {
             System.err.println(e.getMessage());
@@ -177,10 +194,12 @@ public class ArquivosMuseu{
             FileWriter arqEscrita = new FileWriter(arqFuncionario);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
             bufferEscrita.write(String.valueOf(funcionarios.size()));
+            bufferEscrita.newLine();
             for (Funcionario funcionario : funcionarios) {
                 bufferEscrita.write(funcionario.toArchive());
             }
             bufferEscrita.close();
+            arqEscrita.close();
         }
         catch(Exception e) {
             System.err.println(e.getMessage());
@@ -192,10 +211,12 @@ public class ArquivosMuseu{
             FileWriter arqEscrita = new FileWriter(arqColecaoPecas);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
             bufferEscrita.write(String.valueOf(colecoes.size()));
+            bufferEscrita.newLine();
             for (Colecao colecao : colecoes) {
                 bufferEscrita.write(colecao.toArchive());
             }
             bufferEscrita.close();
+            arqEscrita.close();
         }
         catch(Exception e) {
             System.err.println(e.getMessage());
@@ -203,9 +224,13 @@ public class ArquivosMuseu{
     }
 
     public void salvar(ArrayList<Setor> setores, ArrayList<Visitante> visitantes, ArrayList<Funcionario> funcionarios, ArrayList<Colecao> colecoes) {
+        System.out.println("--------");
         salvarSetores(setores);
+        System.out.println("--------");
         salvarVisitantes(visitantes);
+        System.out.println("--------");
         salvarFuncionarios(funcionarios);
+        System.out.println("--------");
         salvarColecoes(colecoes);
     }
 }
