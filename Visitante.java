@@ -41,11 +41,11 @@ public class Visitante extends Pessoa {
         if(origem != null && interesse != null && faixaEtaria != null){
             out += " oriundo de " + getOrigem() + ", cuja idade é ";
             out += getFaixaEtaria() + " anos, ";
-            out += "possui interesse em " + getInteresse() + ". \n";
+            out += "possui interesse em " + getInteresse() + ".";
         }
-        out += "Visitou: \n";
+        out += "\n" + "Visitou: \n";
         for (Visita visita : visitas) {
-            out += visita.toString();
+            out += visita.toString() + "\n" ;
         }
         return out;
     }
