@@ -26,11 +26,20 @@ public class Museu{
     }
 
     public String gerarRelatorioPessoas(){
-        return "";
+        String out = "-------Relatorio dos Visitantes-------" + "\n";
+        for (Visitante visitante : visitantes) {
+            System.out.println("Entrei!!! \n");
+            out += visitante.toForm();
+        }
+        return out;
     }
 
     public String gerarRelatorioObras(){
-        return "";
+        String out = "-------Relatorio das Colecoes e Obras-------" + "\n";
+        for (Colecao colecao : colecoes) {
+            out += colecao.toForm();
+        }
+        return out;
     }
 
     public ArrayList<Visitante> getVisitantes() {

@@ -82,4 +82,18 @@ public class Colecao{
         }
         return out;
     }
+
+    public String toForm(){
+        String out = "Nome da coleção: " + nome + "\n";
+        if (exposto) {
+            out += "Está no setor: " + setor.getNomeSetor() + "\n";
+        } else {
+            out += "Não está em um setor" + "\n";
+        }
+        out += "Com: " + pecas.size() + "obras" + "\n";
+        for (Peca peca : pecas) {
+            out += peca.toForm();
+        }
+        return out;
+    }
 }

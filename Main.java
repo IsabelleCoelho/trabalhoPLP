@@ -172,10 +172,26 @@ public class Main{
         opcao = scan.nextLine();
         switch (opcao){
             case "1":
-                System.out.println("Ainda não implementado");
+                try {
+                    FileWriter relatorioObras = new FileWriter("relatorioObras.txt");
+                    BufferedWriter bufferEscrita = new BufferedWriter(relatorioObras);
+                    bufferEscrita.write(museu.gerarRelatorioObras());
+                    bufferEscrita.close();
+                    relatorioObras.close();
+                } catch(Exception e) {
+                    System.err.println(e.getMessage());
+                }
             break;
             case "2":
-                System.out.println("Ainda não implementado");
+                try {
+                    FileWriter relatorioVisitantes = new FileWriter("relatorioVisitantes.txt");
+                    BufferedWriter bufferEscrita = new BufferedWriter(relatorioVisitantes);
+                    bufferEscrita.write(museu.gerarRelatorioPessoas());
+                    bufferEscrita.close();
+                    relatorioVisitantes.close();
+                } catch(Exception e) {
+                    System.err.println(e.getMessage());
+                }
             break;
         }
     }

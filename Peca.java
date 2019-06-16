@@ -37,4 +37,10 @@ public class Peca {
     public String toArchive(){
         return anoDeCriacao + "\n" + anoDeAquisicao + "\n" + nomeObra + "\n" + estado + "\n";
     }
+    public String toForm(){
+        String out = "Nome da obra: " + nomeObra + "\n" + "Está em estado: " + estado + "\n" + "Estado: " + estado + "\n";
+        out += "Foi criado em: " + anoDeCriacao + "\n";
+        out += "Foi adquirido em: " + anoDeAquisicao + "\n";
+        return out;
+    }
 }

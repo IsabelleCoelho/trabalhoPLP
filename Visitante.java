@@ -57,4 +57,13 @@ public class Visitante extends Pessoa {
         }
         return out;
     }
+
+    public String toForm(){
+        String out = "Nome: " + getNome() + "\n" + "CPF: " + getCpf() + "\n" + "Origem: " + origem + "\n" + "Com interesse em: " + interesse + "\n" + "Idade: " + faixaEtaria + "\n";
+        for (Visita visita : visitas) {
+            out += visita.toForm();
+        }
+        out += "------" + "\n";
+        return out;
+    }
 }

@@ -26,4 +26,13 @@ public class Visita {
         out += dataVisitacao.toString();
         return out;
     }
+    public String toForm(){
+        String out = "Setores visitados: ";
+        for (int i = 0; i < (listaSetores.size()-1); i++) {
+            out += listaSetores.get(i).getNomeSetor() + ", ";
+        }
+        out += listaSetores.get(listaSetores.size()-1).getNomeSetor() + "\n";
+        out += "No dia: " + dataVisitacao.toString() + "\n";
+        return out;
+    }
 }
