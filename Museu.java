@@ -11,7 +11,7 @@ public class Museu{
         funcionarios = new ArrayList<Funcionario>();
         setores = new ArrayList<Setor>();
         colecoes = new ArrayList<Colecao>();
-        //Adicionar aqui os setores a serem adicionados
+        //Setores default
         setores.add(new Setor("Permanente", "Setor 1"));
         setores.add(new Setor("Temporario", "Setor 2"));
         setores.add(new Setor("Temporario", "Setor 3"));
@@ -53,6 +53,7 @@ public class Museu{
             }
             visitantes.add(novo);
             System.out.println(novo);
+            System.out.println("Pressione 'ENTER' para finalizar a operação.");
         }
     }
     public boolean registrarColecao(Colecao colecao){
@@ -100,7 +101,7 @@ public class Museu{
             funcionarios.add(new Funcionario(nome, cpf, salario, ocupacao, novoSetor));
             return true;
         }
-        System.out.println("Setor não cadastrado. Erro na contratação");
+        System.out.println("Setor não cadastrado. Erro na contratação.");
         return false;
     }
     public boolean exibirColecao(String nomeSetor, String nomeColecao){
@@ -173,6 +174,7 @@ public class Museu{
         }
         return out;
     }
+
     public String listarColecoes(){
         String out = "";
         for (Colecao colecao : colecoes) {

@@ -35,6 +35,7 @@ public class Main{
                 System.out.println("CPF do visitante a ser registrado:");
                 long cpfVisitante = scan.nextLong();
                 adicionarVisitante(nomeVisitante , cpfVisitante);
+                scan.nextLine();
             break;
             case "2":
                 System.out.println("Digite o nome da nova coleção");
@@ -59,20 +60,16 @@ public class Main{
             case "4":
                 System.out.println("Escreva os dados do usuario");
                 System.out.println("Nome");
-                String nome;
-                nome = scan.nextLine();
+                String nome = scan.nextLine();
                 System.out.println("CPF");
-                long cpf;
-                cpf = scan.nextLong();
+                long cpf = scan.nextLong();
                 System.out.println("Salário");
-                int salario;
-                salario = scan.nextInt();
+                int salario = scan.nextInt();
+                scan.nextLine();
                 System.out.println("Ocupação");
-                String ocupacao;
-                ocupacao = scan.nextLine();
+                String ocupacao = scan.nextLine();
                 System.out.println("Nome do setor que ele irá trabalhar");
-                String nomeSetor;
-                nomeSetor = scan.nextLine();
+                String nomeSetor = scan.nextLine();
                 adicionarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
             break;
         }
@@ -90,8 +87,9 @@ public class Main{
         switch (opcao){
             case "1":
                 System.out.println("CPF do funcionário a ser excluído");
-                int cpf = scan.nextInt();
+                Long cpf = scan.nextLong();
                 removerFuncionario(cpf);
+                scan.nextLine();
             break;
             case "2":
                 System.out.println("Nome da coleção a ser removida");
@@ -404,8 +402,9 @@ public class Main{
     
     private static void adicionarVisitante(String nomeVisitante, long cpf){
         System.out.println("Quais setores " + nomeVisitante + " visitou?");
-        System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
+        System.out.println("Setores diponíveis do museu:");
         System.out.println(museu.listarSetores());
+        System.out.println("Digite o nome dos setores visitados seguido de enter e para finalizar a inserção digite -1");
         ArrayList<Setor> setoresVisitados = new ArrayList<Setor>();
         String read = "-1";
         Setor setor;
@@ -424,8 +423,9 @@ public class Main{
         if(museu.getFuncionario(cpf) != null){
             throw new Exception("Funcionario já existe");
         }
-        museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor);
-        System.out.println("Funcionario registrado!");
+        if(museu.contratarFuncionario(nome , cpf , salario , ocupacao , nomeSetor)){
+            System.out.println("Funcionario registrado!");
+        }
     }
     private static void registrarPeca(String nomeObra, int anoDeCriacao, int anoDeAquisicao, String estado, String colecao) {
         Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
