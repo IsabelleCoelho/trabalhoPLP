@@ -33,7 +33,6 @@ public class Museu{
         return "";
     }
 
-<<<<<<< HEAD
     public ArrayList<Visitante> getVisitantes() {
         return visitantes;
     }
@@ -50,9 +49,6 @@ public class Museu{
         return colecoes;
     }
 
-=======
-    /** Método o qual registra um novo visitante */
->>>>>>> 75b9a227f756ee4e21e2175f7a5909653d80ab03
     public void registrarVisitante(String nome, long cpf, Visita visita){
         Visitante visitante = getVisitante(cpf);
         if(visitante != null){

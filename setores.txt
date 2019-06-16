@@ -1,0 +1,7 @@
+3
+Permanente
+Setor 1
+Temporario
+Setor 2
+Temporario
+Setor 3

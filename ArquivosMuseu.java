@@ -37,14 +37,10 @@ public class ArquivosMuseu{
         try {
             FileReader arqLeitura = new FileReader(arqSetores);
             BufferedReader bufferLeitura = new BufferedReader(arqLeitura);
-            int qtdSetores = Integer.getInteger(bufferLeitura.readLine());
-            System.out.print("Carregado qtdSetores: ");
-            System.out.println(qtdSetores);
+            int qtdSetores = Integer.parseInt(bufferLeitura.readLine());
             for (int i = 0; i < qtdSetores; i++) {
                 String tipoDeExibicao = bufferLeitura.readLine();
                 String nomeSetor = bufferLeitura.readLine();
-                String debug = "Carregando: " + tipoDeExibicao + "nomeSetor: " + nomeSetor + "\n";
-                System.out.print(debug);
                 setores.add(new Setor(tipoDeExibicao, nomeSetor));
             }
             bufferLeitura.close();
@@ -59,16 +55,16 @@ public class ArquivosMuseu{
         try{
             FileReader arqLeitura = new FileReader(arqVisitante);
             BufferedReader bufferLeitura = new BufferedReader(arqLeitura);
-            int qtdVisitantes = Integer.getInteger(bufferLeitura.readLine());
+            int qtdVisitantes = Integer.parseInt(bufferLeitura.readLine());
             for (int i = 0; i < qtdVisitantes; i++) {
                 String nome = bufferLeitura.readLine();
-                long cpf = Long.getLong(bufferLeitura.readLine());
+                long cpf = Long.parseLong(bufferLeitura.readLine());
                 Visitante visitante = new Visitante(nome, cpf);
                 visitante.setOrigem(bufferLeitura.readLine());
                 visitante.setInteresse(bufferLeitura.readLine());
                 visitante.setFaixaEtaria(bufferLeitura.readLine());
 
-                int qtdVisitas = Integer.getInteger(bufferLeitura.readLine());
+                int qtdVisitas = Integer.parseInt(bufferLeitura.readLine());
                 for (int k = 0; k < qtdVisitas; k++){
                     //Ler visitas
                     ArrayList<Setor> setoresList = new ArrayList<Setor>();
@@ -77,9 +73,7 @@ public class ArquivosMuseu{
                     for (int j = 0; j < setores.length; j++) {
                         setoresList.add(getSetor(setores[i]));
                     }
-                    String bufferData = bufferLeitura.readLine();
-                    String[] aux = bufferData.split("/");
-                    Data data = new Data(Integer.getInteger(aux[0]), Integer.getInteger(aux[1]), Integer.getInteger(aux[2]));
+                    Data data = new Data(bufferLeitura.readLine());
                     visitante.adicionarVisita(new Visita(data, setoresList));
                 }
                 visitantes.add(visitante);
@@ -96,10 +90,10 @@ public class ArquivosMuseu{
         try {
             FileReader arqLeitura = new FileReader(arqFuncionario);
             BufferedReader bufferLeitura = new BufferedReader(arqLeitura);
-            int qtdFuncionarios = Integer.getInteger(bufferLeitura.readLine());
+            int qtdFuncionarios = Integer.parseInt(bufferLeitura.readLine());
             for (int i = 0; i < qtdFuncionarios; i++) {
                 String nome = bufferLeitura.readLine();
-                long cpf = Long.getLong(bufferLeitura.readLine());
+                long cpf = Long.parseLong(bufferLeitura.readLine());
                 float salario = Float.parseFloat(bufferLeitura.readLine());
                 String ocupacao = bufferLeitura.readLine();
                 Setor trabalhaEm = getSetor(bufferLeitura.readLine());
@@ -117,24 +111,29 @@ public class ArquivosMuseu{
         try {
             FileReader arqLeitura = new FileReader(arqColecaoPecas);
             BufferedReader bufferLeitura = new BufferedReader(arqLeitura);
-            int qtdColecoes = Integer.getInteger(bufferLeitura.readLine());
+            int qtdColecoes = Integer.parseInt(bufferLeitura.readLine());
             for (int i = 0; i < qtdColecoes; i++) {
                 String nome = bufferLeitura.readLine();
-                boolean exposto = Boolean.getBoolean(bufferLeitura.readLine());
-                Setor setor = getSetor(bufferLeitura.readLine());
-
+                boolean exposto = Boolean.parseBoolean(bufferLeitura.readLine());
+                Setor setor = null;
+                if (exposto) {
+                    setor = getSetor(bufferLeitura.readLine());    
+                }
                 ArrayList<Peca> pecas = new ArrayList<Peca>();
-                int qtdPecas = Integer.getInteger(bufferLeitura.readLine());
-                for (int j = 0; j < qtdPecas; i++) {
-                    int anoDeCriacao = Integer.getInteger(bufferLeitura.readLine());
-                    int anoDeAquisicao = Integer.getInteger(bufferLeitura.readLine());
+                int qtdPecas = Integer.parseInt(bufferLeitura.readLine());
+                for (int j = 0; j < qtdPecas; j++) {
+                    int anoDeCriacao = Integer.parseInt(bufferLeitura.readLine());
+                    int anoDeAquisicao = Integer.parseInt(bufferLeitura.readLine());
                     String nomeObra = bufferLeitura.readLine();
                     String estado = bufferLeitura.readLine();
-                    pecas.add(new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado));
+                    Peca peca = new Peca(nomeObra, anoDeCriacao, anoDeAquisicao, estado);
+                    pecas.add(peca);
                 }
                 Colecao colecao = new Colecao(nome, exposto, setor, pecas);
                 colecoes.add(colecao);
-                setor.adicionarColecao(colecao);
+                if (exposto) {
+                    setor.adicionarColecao(colecao);    
+                }
             }
             bufferLeitura.close();
             arqLeitura.close();
@@ -173,13 +172,11 @@ public class ArquivosMuseu{
         try {
             FileWriter arqEscrita = new FileWriter(arqVisitante);
             BufferedWriter bufferEscrita = new BufferedWriter(arqEscrita);
-            System.out.print(visitantes.size());
             bufferEscrita.write(String.valueOf(visitantes.size()));
             bufferEscrita.newLine();
-            System.out.println("a");
             for (Visitante visitante : visitantes) {
-                System.out.println("b");
                 bufferEscrita.write(visitante.toArchive());
+                System.out.println(visitante);
             }
             bufferEscrita.close();
             arqEscrita.close();
@@ -224,13 +221,9 @@ public class ArquivosMuseu{
     }
 
     public void salvar(ArrayList<Setor> setores, ArrayList<Visitante> visitantes, ArrayList<Funcionario> funcionarios, ArrayList<Colecao> colecoes) {
-        System.out.println("--------");
         salvarSetores(setores);
-        System.out.println("--------");
         salvarVisitantes(visitantes);
-        System.out.println("--------");
         salvarFuncionarios(funcionarios);
-        System.out.println("--------");
         salvarColecoes(colecoes);
     }
 }

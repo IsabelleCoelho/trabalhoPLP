@@ -138,10 +138,7 @@ public class Main{
             case "1":
                 System.out.println("CPF do visitante");
                 Long CPFconsultaVisitante = scan.nextLong();
-<<<<<<< HEAD
-=======
                 scan.nextLine();
->>>>>>> 75b9a227f756ee4e21e2175f7a5909653d80ab03
                 consultarVisitante(CPFconsultaVisitante);
             break;
             case "2":
@@ -567,10 +564,11 @@ public class Main{
         ArquivosMuseu arquivo = new ArquivosMuseu();
         if (arqEntrada.exists()) {
             museu = arquivo.caregar();
-        } else {
+        }
+        else{
             museu = new Museu();
         }
-            String opcao;
+        String opcao;
         do{
             mainMenu();
             opcao = scan.nextLine();
