@@ -39,11 +39,11 @@ public class Visitante extends Pessoa {
     public String toString(){
         String out = "Visitante " + super.getNome() + " de CPF " + super.getCpf();
         if(origem != null && interesse != null && faixaEtaria != null){
-            out += " oriundo de " + getOrigem() + " ";
-            out += getFaixaEtaria() + " anos de idade ";
-            out += "Com interesse em " + getInteresse();
+            out += " oriundo de " + getOrigem() + ", cuja idade é ";
+            out += getFaixaEtaria() + " anos, ";
+            out += "possui interesse em " + getInteresse() + ". \n";
         }
-        out += " Visitou: \n";
+        out += "Visitou: \n";
         for (Visita visita : visitas) {
             out += visita.toString();
         }

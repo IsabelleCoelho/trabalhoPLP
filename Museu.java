@@ -47,9 +47,8 @@ public class Museu{
                 novo.setOrigem(scan.nextLine());
                 System.out.println("'Faixa etária' do visitante: ");
                 novo.setFaixaEtaria(scan.nextLine());
-                System.out.println("Interesse do visitante");
+                System.out.println("Interesse do visitante: ");
                 novo.setInteresse(scan.nextLine());
-                scan.nextLine();
             }
             visitantes.add(novo);
             System.out.println(novo);
@@ -61,13 +60,14 @@ public class Museu{
         for (Colecao col : colecoes) {
             if(col.getNome().equals(colecao.getNome())){
                 inserido = true;
-                System.out.println("Colecao já existe");
+                System.out.println("Colecao já existe.");
                 return false;
             }
         }
         if(!inserido){
             colecoes.add(colecao);
-            System.out.println("Coleção cadastrada");
+            System.out.println("Coleção cadastrada.");
+            System.out.println("Coleção não está em exibição.");
             return true;
         }
         System.out.println("#debug possível erro de lógica");
@@ -109,7 +109,7 @@ public class Museu{
         Colecao colecao = getColecao(nomeColecao);
         if(setor != null && colecao != null){
             if(colecao.isExposto()){
-                System.out.println("Colecao já em exposicao");
+                System.out.println("Colecao já em exposicao!");
                 return false;
             }
             else{
@@ -141,7 +141,7 @@ public class Museu{
         if(colecao != null){
             return colecao.adicionarPeca(peca);
         }
-        System.out.println("Colecao não existe");
+        System.out.println("Colecao não existe.");
         return false;
     }
     public boolean excluirFuncionario(long cpf){
