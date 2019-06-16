@@ -63,7 +63,7 @@ public class Visitante extends Pessoa {
         }
         return out;
     }
-
+    /** Método responsável por converter o tipo das variáveis para salvar no relatório */
     public String toForm(){
         String out = "Nome: " + getNome() + "\n" + "CPF: " + getCpf() + "\n" + "Origem: " + origem + "\n" + "Com interesse em: " + interesse + "\n" + "Idade: " + faixaEtaria + "\n";
         for (Visita visita : visitas) {

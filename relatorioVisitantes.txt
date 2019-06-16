@@ -1,9 +1,0 @@
--------Relatorio dos Visitantes-------
-Nome: Luis
-CPF: 10110110101
-Origem: África do Sul
-Com interesse em: Overwatch
-Idade: 27
-Setores visitados: Setor 1, Setor 2
-No dia: 12/5/2019
-------

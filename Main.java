@@ -360,6 +360,7 @@ public class Main{
         }
         System.out.println("Digite o CPF do funcionário:");
         Long cpfFuncionario = scan.nextLong();
+        scan.nextLine();
         Funcionario funcionario = museu.getFuncionario(cpfFuncionario);
         if(funcionario == null){
             throw new Exception("Funcionário não cadastrado!");

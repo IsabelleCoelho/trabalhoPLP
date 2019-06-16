@@ -43,6 +43,7 @@ public class Peca {
     public String toArchive(){
         return anoDeCriacao + "\n" + anoDeAquisicao + "\n" + nomeObra + "\n" + estado + "\n";
     }
+    /** Método responsável por converter o tipo das variáveis para salvar no relatório */
     public String toForm(){
         String out = "Nome da obra: " + nomeObra + "\n" + "Está em estado: " + estado + "\n";
         out += "Foi criado em: " + anoDeCriacao + "\n";

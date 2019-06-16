@@ -29,6 +29,7 @@ public class Visita {
         out += dataVisitacao.toString() + "\n";
         return out;
     }
+    /** Método responsável por converter o tipo das variáveis para salvar no relatório */
     public String toForm(){
         String out = "Setores visitados: ";
         for (int i = 0; i < (listaSetores.size()-1); i++) {

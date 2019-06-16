@@ -107,7 +107,7 @@ public class Colecao{
         }
         return out;
     }
-
+    /** Método responsável por converter o tipo das variáveis para salvar no relatório */
     public String toForm(){
         String out = "Nome da coleção: " + nome + "\n";
         if (exposto) {
